@@ -24,9 +24,32 @@ css命名的语义化是指：为html标签添加有意义的class，id补充未
 HTML5新增语义化标签：header、footer、nav、article、aside、section等。
 
 ##CSS
+
  1.排版
+ 
+ - position
+ 
+```
+    static 默认
+    relative 相对定位
+    absolute 绝对定位 飘出文档流
+    如果一个元素绝对定位后，其参照物是以离自身最近元素是否设置了相对定位，如果有设置将以离自己最近元素定位，如果没有将往其祖先元素寻找相对定位元素，一直     找到html为止。
+    fixed 固定 属于绝对定位
+    inherit 规定应该从父元素继承 position 属性的值
+```
+
+- display
+    ```
+    inline 默认。此元素会被显示为内联元素，元素前后没有换行符。
+    block 此元素将显示为块级元素，此元素前后会带有换行符。
+    inline-block 行内块元素。
+    flex 将对象作为弹性伸缩盒显示。
+    ```
+ 
  2.绘制
+ 
  3.动画
+ 
 ##JS
 <h3>ES6</h3>
 ##WEB API
