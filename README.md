@@ -60,6 +60,9 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
 ##版本控制
 ##优化
 ##算法
+
+1.堆排序
+    
 ##数据结构
 ##常见面试题
 1.从浏览器地址栏输入url到显示页面的步骤(以HTTP为例)？
