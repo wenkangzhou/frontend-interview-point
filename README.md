@@ -288,7 +288,70 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
         }
         </style>
  ```
- 
+4.其它
+
+- 继承性,特殊性,层叠性和重要性
+
+```
+    (1)继承性
+        继承是一种规则，它允许样式不仅应用于某个特定 html 标签元素，而且应用于其后代。
+        具有继承属性的标签：
+            关于文字排版的属性如：
+                font
+                word-break
+                letter-spacing
+                text-align
+                text-rendering
+                word-spacing
+                white-space
+                text-indent
+                text-transform
+                text-shadow
+                line-height
+            color
+            visibility
+            cursor
+    (2)特殊性
+        选择器的优先权：
+            1.  内联样式表的权值最高 1000；
+            2.  ID 选择器的权值为 100
+            3.  Class 类选择器的权值为 10
+            4.  HTML 标签选择器的权值为 1
+    (3)层叠性
+        层叠就是在html文件中对于同一个元素可以有多个css样式存在，当有相同权重的样式存在时，会根据这些css样式的前后顺序来决定，处于最后面的css样式会        被应用。
+    (4)重要性
+        CSS 优先级法则：
+            A  选择器都有一个权值，权值越大越优先；
+            B  当权值相等时，后出现的样式表设置要优于先出现的样式表设置；
+            C  创作者的规则高于浏览者：即网页编写者设置的CSS样式的优先权高于浏览器所设置的样式；
+            D  继承的CSS 样式不如后来指定的CSS 样式；
+            E  在同一组属性设置中标有“!important”规则的优先级最大； 
+```
+
+- BFC
+
+```
+    BFC 定义
+　　    BFC布局规则：BFC(Block formatting context)直译为"块级格式化上下文"。
+		它是一个独立的渲染区域，只有Block-level box参与， 它规定了内部的Block-level Box如何布局，并且与这个区域外部毫不相干。
+    BFC布局规则：
+        内部的Box会在垂直方向，一个接一个地放置。
+        Box垂直方向的距离由margin决定。属于同一个BFC的两个相邻Box的margin会发生重叠
+        每个元素的margin box的左边， 与包含块border box的左边相接触(对于从左往右的格式化，否则相反)。即使存在浮动也是如此。
+        BFC的区域不会与float box重叠。
+        BFC就是页面上的一个隔离的独立容器，容器里面的子元素不会影响到外面的元素。反之也如此。
+        计算BFC的高度时，浮动元素也参与计算
+    哪些元素会生成BFC?
+        根元素
+        float属性不为none
+        position为absolute或fixed
+        display为inline-block, table-cell, table-caption, flex, inline-flex
+        overflow不为visible
+    作用
+        可以包含浮动元素
+        不被浮动元素覆盖
+        阻止父子元素的margin折叠
+```
 ##JS
 <h3>ES6</h3>
 ##WEB API
