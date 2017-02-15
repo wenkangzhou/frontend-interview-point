@@ -68,14 +68,11 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
  
  ```
     内容(content)、填充(padding)、边框(border)、边界(margin)
-    内容（content（with/height））、内边距（padding）、边框（border）、外边距（margin）
+    内容（content（with/height））、内边距（padding）、边框（border）、外边距（margin）
     box-sizing
         box-sizing属性可以为三个值之一：content-box（default），border-box，padding-box。
-
         content-box，border和padding不计算入width之内
-
         padding-box，padding计算入width内
-
         border-box，border和padding计算入width之内，其实就是怪异模式了~
  ```
  
@@ -83,11 +80,11 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
  
  ```
     line-height（http://www.studyofnet.com/news/273.html）:
-        “行高“指一行文字的高度，具体来说是指两行文字间基线间的距离。在CSS，line-height被用来控制行与行之间的垂直距离。line-height 属性会影响行框的     布局。在应用到一个块级元素时，它定义了该元素中基线之间的最小距离而不是最大距离。
-        从上到下四条线分别是顶线、中线、基线、底线，很像才学英语字母时的四线三格，我们知道vertical-align属性中有top、middle、baseline、bottom，就     是和这四条线相关。
+        “行高“指一行文字的高度，具体来说是指两行文字间基线间的距离。在CSS，line-height被用来控制行与行之间的垂直距离。line-height 属性会影响行框的         布局。在应用到一个块级元素时，它定义了该元素中基线之间的最小距离而不是最大距离。
+        从上到下四条线分别是顶线、中线、基线、底线，很像才学英语字母时的四线三格，我们知道vertical-align属性中有top、middle、baseline、bottom，就         是和这四条线相关。
         行高是指上下文本行的基线间的垂直距离，即图中两条红线间垂直距离。
-    行距是指一行底线到下一行顶线的垂直距离，即第一行粉线和第二行绿线间的垂直距离。
-    半行距是行距的一半，即区域3垂直距离/2，区域1，2，3，4的距离之和为行高，而区域1，2，4距离之和为字体size，所以半行距也可以这么算：（行高-字体         size）/2
+        行距是指一行底线到下一行顶线的垂直距离，即第一行粉线和第二行绿线间的垂直距离。
+        半行距是行距的一半，即区域3垂直距离/2，区域1，2，3，4的距离之和为行高，而区域1，2，4距离之和为字体size，所以半行距也可以这么算：（行高-字体         size）/2
     vertical-align（http://www.zhangxinxu.com/wordpress/2010/05/%E6%88%91%E5%AF%B9css-vertical-align%E7%9A%84%E4%B8%80%E4%BA%9B%E7%90%86%E8%A7%A3%E4%B8%8E%E8%AE%A4%E8%AF%86%EF%BC%88%E4%B8%80%EF%BC%89/）
         定义和用法
         vertical-align 属性设置元素的垂直对齐方式。
@@ -295,6 +292,222 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
 ##JS
 <h3>ES6</h3>
 ##WEB API
+
+1.DOM API
+
+- insertBefore
+
+```
+    定义和用法
+    insertBefore() 方法在您指定的已有子节点之前插入新的子节点。
+    语法
+    node.insertBefore(newnode,existingnode)
+    参数	类型	描述
+    newnode	Node 对象	必需。需要插入的节点对象。
+    existingnode	Node object	可选。在其之前插入新节点的子节点。如果未规定，则 insertBefore 方法会在结尾插入 newnode。
+    例子
+        <script>
+        function myFunction()
+        {
+        var newItem=document.createElement("LI")
+        var textnode=document.createTextNode("Water")
+        newItem.appendChild(textnode)
+
+        var list=document.getElementById("myList")
+        list.insertBefore(newItem,list.childNodes[0]);
+        }
+        </script>
+```
+- appendChild
+
+```
+    定义和用法
+    appendChild() 方法向节点添加最后一个子节点。
+```
+
+- childNodes/parentNode
+
+```
+    定义和用法
+    childNodes 属性返回节点的子节点集合，以 NodeList 对象。
+    例子
+        <p><b>注释：</b>元素中的空格被视为文本，而文本被视为节点。</p>
+        var c=document.body.childNodes;
+        for (i=0; i<c.length; i++)
+        {
+        txt=txt + c[i].nodeName + "<br>";
+        };
+        打印出：
+            P
+            #text
+            BUTTON
+            #text
+            SCRIPT
+            #text
+            P
+            #text
+```
+- document.createElement/document.createTextNode/doucument.createDocumentFragment
+
+```
+    例子：
+        var list = doucument.getElementById("myList"),
+            fragment = doucument.createDocumentFragment(),
+            item,
+            i;
+        for(i = 0; i < 10; i++){
+            item = document.createElement("li");
+            fragment.appendChild(item);
+            item.appendChild(document.createTextNode("Item"+i))
+        }
+        list.appendChild(fragment);
+```
+- 事件
+   
+```
+    (1) 冒泡与捕获
+        事件捕获 html->body->div
+        事件冒泡 div->body->html
+        var useCapture = true; //false为冒泡获取【目标元素先触发】    true为捕获获取【父级元素先触发】
+        one.addEventListener('click', function() {
+            console.log('one');
+        }, useCapture);
+        阻止冒泡：
+        /*
+        * stopImmediatePropagation
+        * 除了阻止元素上其它的事件处理函数的执行，这个方法还会通过在内部调用 event.stopPropagation() 来停止事件冒泡。
+        * 如果仅仅想要停止事件冒泡到祖辈元素上，而让这个元素上的其它事件处理函数继续执行，我们可以使用 event.stopPropagation() 来代替。
+        * 相当于e.stopPropagation() and return fasle
+        */
+        e.stopImmediatePropagation();
+    (2) addEventListener/removeEventListener/attachEvent/detachEvent
+        var addMyEvent = function (el,ev,fn){
+            if(el.addEventListener){
+                el.addEventListener(ev,fn,false)
+            }else if(el.attachEvent){
+                el.attachEvent("on"+ev,fn)
+            }else{
+                el["on" + ev] = fn;
+            }
+        }
+    (3) createEvent/dispatchEvent
+        参数	事件接口	初始化方法
+        HTMLEvents	HTMLEvent	iniEvent()
+        MouseEvents	MouseEvent	iniMouseEvent()
+        UIEvents	UIEvent	iniUIEvent()
+        //例子
+        // Create the event.
+        var event = document.createEvent('Event');
+        // Define that the event name is 'build'.
+        event.initEvent('build', true, true);
+        // Listen for the event.
+        elem.addEventListener('build', function (e) {
+          // e.target matches elem
+        }, false);
+        // target can be any Element or other EventTarget.
+        elem.dispatchEvent(event);
+        
+```
+
+2.CSSDOM
+
+- doucment.getComputedStyle(http://www.zhangxinxu.com/wordpress/2012/05/getcomputedstyle-js-getpropertyvalue-currentstyle/)
+
+```
+    getComputedStyle是一个可以获取当前元素所有最终使用的CSS属性值。返回的是一个CSS样式声明对象([object CSSStyleDeclaration])，只读。
+    要写还是需要element.style
+    getPropertyValue来取值
+    语法如下：
+    var style = window.getComputedStyle("元素", "伪类");
+    例如：
+    var dom = document.getElementById("test"),
+    style = window.getComputedStyle(dom , ":after");
+    例子：
+    <style>
+     #elem-container{
+       position: absolute;
+       left:     100px;
+       top:      200px;
+       height:   100px;
+     }
+    </style>
+
+    <div id="elem-container">dummy</div>
+    <div id="output"></div>  
+
+    <script>
+      function getTheStyle(){
+        var elem = document.getElementById("elem-container");
+        var theCSSprop = window.getComputedStyle(elem,null).getPropertyValue("height");
+        document.getElementById("output").innerHTML = theCSSprop;
+       }
+      getTheStyle();
+    </script>
+```
+
+- getBoundingClientRect
+
+```
+    这个方法返回一个矩形对象，包含四个属性：left、top、right和bottom。分别表示元素各边与页面上边和左边的距离。
+    var box=document.getElementById('box');         // 获取元素
+    alert(box.getBoundingClientRect().top);         // 元素上边距离页面上边的距离
+    alert(box.getBoundingClientRect().right);       // 元素右边距离页面左边的距离
+    alert(box.getBoundingClientRect().bottom);      // 元素下边距离页面上边的距离
+    alert(box.getBoundingClientRect().left);        // 元素左边距离页面左边的距离
+
+    注意：IE、Firefox3+、Opera9.5、Chrome、Safari支持，在IE中，默认坐标从(2,2)开始计算，导致最终距离比其他浏览器多出两个像素，我们需要做个兼容。
+    document.documentElement.clientTop;  // 非IE为0，IE为2
+    document.documentElement.clientLeft; // 非IE为0，IE为2
+    functiongGetRect (element) {
+        var rect = element.getBoundingClientRect();
+        var top = document.documentElement.clientTop;
+        var left= document.documentElement.clientLeft;
+        return{
+            top    :   rect.top - top,
+            bottom :   rect.bottom - top,
+            left   :   rect.left - left,
+            right  :   rect.right - left
+        }
+    }
+    分别加上外边据、内边距、边框和滚动条，用于测试所有浏览器是否一致。
+```
+
+- getClientRects
+
+```
+    TextRectangle的组成为键值对，主要有包括：
+    {
+    top : (number)
+    bottom : (number)
+    left : (number)
+    right : (number)
+    width : (number)
+    height : (number)
+    }
+    getClientRects和getBoundingClientRect差异
+        getClientRects返回的其实是个数组，数组中有很多个类似getBoundingClientRect返回的对象。getBoundingClientRect返回的永远是最外框框的那个矩         形区域相关的坐标偏移对象；而getClientRects是多行文字区域的坐标偏移集合，在非IE浏览器下，只对inline的标签有反应。
+        一般getBoundingClientRect方法用的多一点。我们可以很容易获取某个元素的偏移值。甚至高宽都能很轻松的计算出来。所以，下载你想用js获取元素的高        宽尺寸，就可以试试getBoundingClientRect方法了。
+        对getClientRects和getBoundingClientRect可以得到一个更好的说明.
+        getClientRects 返回一个TextRectangle集合，就是TextRectangleList对象。
+        getBoundingClientRect 返回 一个TextRectangle对象。
+        那么这个TextRectangle对象有什么用呢，用来开判断文本是否换行！或者说用来获取矩形区域相关的坐标偏移对象！
+        TextRectangle数组的长度可知道文字是否换行，甚至是换了几行，
+        TextRectangle的几个属性和鼠标位置比较可以知道鼠标在哪一行上
+```
+
+3.canvas
+
+```
+    例子:
+        <canvas id="myCanvas">your browser does not support the canvas tag </canvas>
+        <script type="text/javascript">
+        var canvas=document.getElementById('myCanvas');
+        var ctx=canvas.getContext('2d');
+        ctx.fillStyle='#FF0000';
+        ctx.fillRect(0,0,80,100);
+        </script>
+```
+
 ##HTTP
 ##常见框架
 ##模块化开发
