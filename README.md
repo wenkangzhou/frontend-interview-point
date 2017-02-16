@@ -46,7 +46,7 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
     inline-block 行内块元素。
     flex（早期版本叫box） 将对象作为弹性伸缩盒显示。（http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html）
 ```
-    
+
 - float、clear
  
  ```
@@ -64,6 +64,7 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
         visibility: hidden;
     }
  ```
+ 
  - 盒子模型
  
  ```
@@ -80,11 +81,11 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
  
  ```
     line-height（http://www.studyofnet.com/news/273.html）:
-        “行高“指一行文字的高度，具体来说是指两行文字间基线间的距离。在CSS，line-height被用来控制行与行之间的垂直距离。line-height 属性会影响行框的         布局。在应用到一个块级元素时，它定义了该元素中基线之间的最小距离而不是最大距离。
-        从上到下四条线分别是顶线、中线、基线、底线，很像才学英语字母时的四线三格，我们知道vertical-align属性中有top、middle、baseline、bottom，就         是和这四条线相关。
+        “行高“指一行文字的高度，具体来说是指两行文字间基线间的距离。在CSS，line-height被用来控制行与行之间的垂直距离。line-height 属性会影响行框	  的布局。在应用到一个块级元素时，它定义了该元素中基线之间的最小距离而不是最大距离。
+        从上到下四条线分别是顶线、中线、基线、底线，很像才学英语字母时的四线三格，我们知道vertical-align属性中有top、middle、baseline、bottom，	      就是和这四条线相关。
         行高是指上下文本行的基线间的垂直距离，即图中两条红线间垂直距离。
         行距是指一行底线到下一行顶线的垂直距离，即第一行粉线和第二行绿线间的垂直距离。
-        半行距是行距的一半，即区域3垂直距离/2，区域1，2，3，4的距离之和为行高，而区域1，2，4距离之和为字体size，所以半行距也可以这么算：（行高-字体         size）/2
+        半行距是行距的一半，即区域3垂直距离/2，区域1，2，3，4的距离之和为行高，而区域1，2，4距离之和为字体size，所以半行距也可以这么算：（行高-字	    体size）/2
     vertical-align（http://www.zhangxinxu.com/wordpress/2010/05/%E6%88%91%E5%AF%B9css-vertical-align%E7%9A%84%E4%B8%80%E4%BA%9B%E7%90%86%E8%A7%A3%E4%B8%8E%E8%AE%A4%E8%AF%86%EF%BC%88%E4%B8%80%EF%BC%89/）
         定义和用法
         vertical-align 属性设置元素的垂直对齐方式。
@@ -134,11 +135,11 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
         word-wrap:break-word与word-break:break-all共同点是都能把长单词强行断句，不同点是word-wrap:break-word会首先起一个新行来放置长单词，新的         行还是放不下这个长单词则会对长单词进行强制断句；而word-break:break-all则不会把长单词放在一个新行里，当这一行放不下的时候就直接强制断句了。
  ```
  
- 2.绘制
-    
- - background
+2.绘制
+
+- background
  
- ```
+```
     值	描述	
     background-color	规定要使用的背景颜色。	
     background-position	规定背景图像的位置。	
@@ -167,10 +168,11 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
             标明背景图片缩放的尺寸大小
             (4)background-size: 50% 100%;
             百分比是根据内容标签元素大小，来缩放图片的尺寸大小
- ```
- - transform（转换）
+```
+
+- transform（转换）
  
- ```
+```
     定义和用法
     transform 属性向元素应用 2D 或 3D 转换。该属性允许我们对元素进行旋转、缩放、移动或倾斜。
     语法
@@ -207,13 +209,13 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
         -webkit-transform:rotate(7deg); /* Safari 和 Chrome */
         -o-transform:rotate(7deg); 	/* Opera */
         }
- ```
+```
+
+3.动画
  
- 3.动画
+- transition（过渡）
  
- - transition（过渡）
- 
- ```
+```
     语法
     transition: property duration timing-function delay;
     值	描述
@@ -249,7 +251,7 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
         width:300px;
         }
         </style>
- ```
+```
  
  - animation(动画)
  
