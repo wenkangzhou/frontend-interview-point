@@ -25,9 +25,9 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
 
 ##CSS
 
- 1.排版
+1.排版
  
- - position
+- position
  
 ```
     static 默认
@@ -47,7 +47,7 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
     flex（早期版本叫box） 将对象作为弹性伸缩盒显示。（http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html）
 ```
     
- - float、clear
+- float、clear
  
  ```
     HTML页面的标准文档流(默认布局)是：从上到下，从左到右，遇块(块级元素)换行。
@@ -288,7 +288,113 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
         }
         </style>
  ```
-4.其它
+4.理解和还原设计图意
+
+- 垂直居中（http://blog.csdn.net/freshlover/article/details/11579669）
+
+```
+	(1)绝对居中
+		.Center-Container {  
+		  position: relative;  
+		}  
+		.Absolute-Center {  
+		  width: 50%;  
+		  height: 50%;  
+		  overflow: auto;  
+		  margin: auto;  
+		  position: absolute;  
+		  top: 0; left: 0; bottom: 0; right: 0;  
+		}  
+	(2)负外边距(Negative Margins)
+		.is-Negative {  
+			width: 300px;  
+			height: 200px;  
+			padding: 20px;  
+			position: absolute;  
+			top: 50%; left: 50%;  
+			margin-left: -170px; /* (width + padding)/2 */  
+			margin-top: -120px; /* (height + padding)/2 */  
+		}  
+	(3)变形（Transforms）
+		.is-Transformed {   
+		  width: 50%;  
+		  margin: auto;  
+		  position: absolute;  
+		  top: 50%; left: 50%;  
+		  -webkit-transform: translate(-50%,-50%);  
+			  -ms-transform: translate(-50%,-50%);  
+				  transform: translate(-50%,-50%);  
+		}  
+	(4)表格单元格（Table-Cell）
+		<div class="Center-Container is-Table">  
+		  <div class="Table-Cell">  
+			<div class="Center-Block">  
+			<!-- CONTENT -->  
+			</div>  
+		  </div>  
+		</div>  
+		.Center-Container.is-Table { display: table; }  
+		.is-Table .Table-Cell {  
+		  display: table-cell;  
+		  vertical-align: middle;  
+		}  
+		.is-Table .Center-Block {  
+		  width: 50%;  
+		  margin: 0 auto;  
+		} 
+	(5)flex
+		body {
+		   /* Remember to use the other versions for IE 10 and older browsers! */
+		   display: flex;
+		   justify-content: center;
+		   align-items: center;
+		}
+```
+
+- 水平居中
+
+
+```
+	(1)如果需要居中的元素为常规流中inline元素，为父元素设置text-align: center;即可实现
+	(2)如果需要居中的元素为常规流中block元素，
+		1）为元素设置宽度，
+		2）设置左右margin为auto,
+		3）IE6下需在父元素上设置text-align: center;
+		4) 再给子元素	恢复需要的值
+	(3)如果需要居中的元素为浮动元素，
+		1）为元素设置宽度，
+		2）position: relative，
+		3）浮动方向偏移量（left或者right）设置为50%，
+		4）浮动方向上的margin设置为元素宽度一半乘以-1
+	(4)如果需要居中的元素为绝对定位元素，
+		1）为元素设置宽度，
+		2）偏移量设置为50%，
+		3）偏移方向外边距设置为元素宽度一半乘以-1
+	(5)如果需要居中的元素为绝对定位元素，
+		1）为元素设置宽度，
+		2）设置左右偏移量都为0,
+		3）设置左右外边距都为auto
+```
+
+- 多列等高
+
+```
+	(1)大的margin-bottom。这种技术的关键是给每个框设置大的底内边距，然后用数值相似的负外边距消除这个高度。这会导致每个列溢出容器元素。如果把容器的overflow属性设置	 为hidden,列就在最高点被裁切。		
+	(2)背景图片、背景色实现假等高
+	(3)css3 column-count
+```
+
+- 自适应宽
+
+```
+	(1)百分比
+   （2）@media screen 
+   （3）flex
+   （4）<meta name=”viewport” content=”width=device-width, initial-scale=1″ />
+   （5）相对大小的字体em
+```
+
+5.其它
 
 - 继承性,特殊性,层叠性和重要性
 
@@ -318,7 +424,7 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
             3.  Class 类选择器的权值为 10
             4.  HTML 标签选择器的权值为 1
     (3)层叠性
-        层叠就是在html文件中对于同一个元素可以有多个css样式存在，当有相同权重的样式存在时，会根据这些css样式的前后顺序来决定，处于最后面的css样式会        被应用。
+        层叠就是在html文件中对于同一个元素可以有多个css样式存在，当有相同权重的样式存在时，会根据这些css样式的前后顺序来决定，处于最后面的css样式会         被应用。
     (4)重要性
         CSS 优先级法则：
             A  选择器都有一个权值，权值越大越优先；
@@ -352,11 +458,133 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
         不被浮动元素覆盖
         阻止父子元素的margin折叠
 ```
+
 ##JS
-<h3>ES6</h3>
+
+1.基本概念
+
+- 标识符：首字母字母、下划线、美元符号，其它多一个数字
+
+- 基本数据类型：Undefined、Null、String、Number、Boolean
+
+- typeof操作符（检测基本类型）
+
+```
+	"undefined" - 这个值未定义
+	"boolean" - 这个值是布尔值
+	"string" - 这个值是字符串	
+	"number" - 这个值是数值
+	"object" - 这个值是对象或null
+	"function" - 这个值是函数	
+```
+
+- hasOwnProperty（给定的属性在当前对象实例中是否存在）
+
+```
+	for (i in parent){
+		if(parent.hasOwnProperty(i)){
+			child[i] = parent[i];
+		}
+	}
+```
+
+- instanceof(检测是不是某种类型对象)
+
+```
+	person instanceof Object //person是Object的吗？
+```
+
+2.函数
+
+- 闭包
+
+```
+	我的理解：无论通过何种手段将内部函数传递到所在的词法作用域以外，它都会持有对原始定义作用域的引
+	用，无论在何处执行这个函数都会使用闭包。
+	一、什么是闭包
+	简而言之，就是能够读取其他函数内部变量的函数。
+	由于JS变量作用域的特性，外部不能访问内部变量，内部可以外部变量。
+	二、使用场景
+	1. 实现私有成员。
+	2. 保护命名空间，避免污染全局变量。
+	3. 缓存变量。
+	三、注意事项
+	1. 内存泄漏
+	由于闭包会使得函数中的变量都被保存在内存中，内存消耗很大，所以不能滥用闭包，否则会造成网页的性能问题。
+	2. 变量命名
+	如果内部函数的变量和外部函数的变量名相同时，那么内部函数再也无法指向外部函数那个同名的变量。
+	
+	下面我们来看一段代码，清晰地展示了闭包：
+	function foo() {
+	var a = 2;
+	function bar() {
+	console.log( a );
+	}
+	return bar;
+	}
+	var baz = foo();
+	baz(); // 2 ———— 朋友，这就是闭包的效果。
+	函数bar()的词法作用域能够访问foo()的内部作用域。然后我们将bar()函数本身当作一个值类型
+	进行传递。在这个例子中，我们将bar所引用的函数对象本身当作返回值。
+	在foo()执行后，其返回值（也就是内部的bar()函数）赋值给变量baz并调用baz()，实际上只是通过
+	不同的标识符引用调用了内部的函数bar()。
+	bar()显然可以被正常执行。但是在这个例子中，它在自己定义的词法作用域以外的地方执行。
+	在foo()执行后，通常会期待foo()的整个内部作用域都被销毁，因为我们知道引擎有垃圾回收器用
+	来释放不再使用的内存空间。由于看上去foo()的内容不会再被使用，所以很自然地会考虑对其进
+	行回收。
+	而闭包的“神奇”之处正是可以阻止这件事情的发生。事实上内部作用域依然存在，因此没有被回
+	收。谁在使用这个内部作用域？原来是bar()本身在使用。
+	拜bar()所声明的位置所赐，它拥有涵盖foo()内部作用域的闭包，使得该作用域能够一直存活，以
+	供bar()在之后任何时间进行引用。
+	bar()依然持有对该作用域的引用，而这个引用就叫作闭包。
+	因此，在几微秒之后变量baz被实际调用（调用内部函数bar），不出意料它可以访问定义时的词法
+	作用域，因此它也可以如预期般访问变量a。
+	这个函数在定义时的词法作用域以外的地方被调用。闭包使得函数可以继续访问定义时的词法作
+	用域。
+	当然，无论使用何种方式对函数类型的值进行传递，当函数在别处被调用时都可以观察到闭包。
+
+```
+
+- 作用域（http://www.cnblogs.com/lhb25/archive/2011/09/06/javascript-scope-chain.html）
+
+```
+	1. 全局作用域（Global Scope）
+		（1）最外层函数和在最外层函数外面定义的变量拥有全局作用域
+		（2）所有末定义直接赋值的变量自动声明为拥有全局作用域
+		（3）所有window对象的属性拥有全局作用域
+	2. 局部作用域（Local Scope）
+		(1)和全局作用域相反，局部作用域一般只在固定的代码片段内可访问到，最常见的例如函数内部，所有在一些地方也会看到有人把这种作用域称为函数作用域
+	3. 作用域链（Scope Chain）
+		(1)改变作用域链
+			eval:避免使用			
+			with:避免使用	
+			catch:当try代码块中发生错误时，执行过程会跳转到catch语句，然后把异常对象推入一个可变对象并置于作用域的头部。在catch代码块内部，函数的			所有局部变量将会被放在第二个作用域链对象中。
+	4. 查找、声明
+		无所在哪声明，都等同于在函数顶部声明
+		自下而上，沿作用链向上查找	
+
+```
+
+- this(call/apply)
+
+
+- 垃圾收集
+
+```
+	(1) 标记清除：进入环境、离开环境标记，然后统一销毁带标记的	
+	(2) 引用计数：当声明一个变量并将引用类型值复制该值，引用次数为1，同个值又被赋给另一个变量，加1，相反，这个值引用的变量又得了另一个值，减1，为0			则回收	
+```
+
 ##WEB API
 
 1.DOM API
+
+- querySelector
+
+```
+	querySelector() 方法返回文档中匹配指定 CSS 选择器的一个元素。
+	document.querySelector(".example").style.backgroundColor = "red";
+```
 
 - insertBefore
 
@@ -381,6 +609,7 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
         }
         </script>
 ```
+
 - appendChild
 
 ```
@@ -410,6 +639,7 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
             P
             #text
 ```
+
 - document.createElement/document.createTextNode/doucument.createDocumentFragment
 
 ```
@@ -425,6 +655,7 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
         }
         list.appendChild(fragment);
 ```
+
 - 事件
    
 ```
@@ -569,6 +800,131 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
         ctx.fillStyle='#FF0000';
         ctx.fillRect(0,0,80,100);
         </script>
+```
+4.BOM
+
+- window对象
+
+```
+	Window 对象属性
+	属性	描述
+	closed	返回窗口是否已被关闭。
+	defaultStatus	设置或返回窗口状态栏中的默认文本。
+	document	对 Document 对象的只读引用。请参阅 Document 对象。
+	history	对 History 对象的只读引用。请参数 History 对象。
+	innerheight	返回窗口的文档显示区的高度。
+	innerwidth	返回窗口的文档显示区的宽度。
+	length	设置或返回窗口中的框架数量。
+	location	用于窗口或框架的 Location 对象。请参阅 Location 对象。
+	name	设置或返回窗口的名称。
+	Navigator	对 Navigator 对象的只读引用。请参数 Navigator 对象。
+	opener	返回对创建此窗口的窗口的引用。
+	outerheight	返回窗口的外部高度。
+	outerwidth	返回窗口的外部宽度。
+	pageXOffset	设置或返回当前页面相对于窗口显示区左上角的 X 位置。
+	pageYOffset	设置或返回当前页面相对于窗口显示区左上角的 Y 位置。
+	parent	返回父窗口。
+	Screen	对 Screen 对象的只读引用。请参数 Screen 对象。
+	self	返回对当前窗口的引用。等价于 Window 属性。
+	status	设置窗口状态栏的文本。
+	top	返回最顶层的先辈窗口。
+	window	window 属性等价于 self 属性，它包含了对窗口自身的引用。
+	screenLeft
+	screenTop
+	screenX
+	screenY
+	只读整数。声明了窗口的左上角在屏幕上的的 x 坐标和 y 坐标。IE、Safari 和 Opera 支持 screenLeft 和 screenTop，而 Firefox 和 Safari 支持 screenX 和 screenY。
+	Window 对象方法
+	方法	描述
+	alert()	显示带有一段消息和一个确认按钮的警告框。
+	blur()	把键盘焦点从顶层窗口移开。
+	clearInterval()	取消由 setInterval() 设置的 timeout。
+	clearTimeout()	取消由 setTimeout() 方法设置的 timeout。
+	close()	关闭浏览器窗口。
+	confirm()	显示带有一段消息以及确认按钮和取消按钮的对话框。
+	createPopup()	创建一个 pop-up 窗口。
+	focus()	把键盘焦点给予一个窗口。
+	moveBy()	可相对窗口的当前坐标把它移动指定的像素。
+	moveTo()	把窗口的左上角移动到一个指定的坐标。
+	open()	打开一个新的浏览器窗口或查找一个已命名的窗口。
+	print()	打印当前窗口的内容。
+	prompt()	显示可提示用户输入的对话框。
+	resizeBy()	按照指定的像素调整窗口的大小。
+	resizeTo()	把窗口的大小调整到指定的宽度和高度。
+	scrollBy()	按照指定的像素值来滚动内容。
+	scrollTo()	把内容滚动到指定的坐标。
+	setInterval()	按照指定的周期（以毫秒计）来调用函数或计算表达式。
+	setTimeout()	在指定的毫秒数后调用函数或计算表达式。
+```
+
+- location对象
+
+```
+	Location 对象属性
+	属性	描述
+	hash	设置或返回从井号 (#) 开始的 URL（锚）。
+	host	设置或返回主机名和当前 URL 的端口号。
+	hostname	设置或返回当前 URL 的主机名。
+	href	设置或返回完整的 URL。
+	pathname	设置或返回当前 URL 的路径部分。
+	port	设置或返回当前 URL 的端口号。
+	protocol	设置或返回当前 URL 的协议。
+	search	设置或返回从问号 (?) 开始的 URL（查询部分）。
+	Location 对象方法
+	assign()	加载新的文档。
+	reload()	重新加载当前文档。
+	replace()	用新的文档替换当前文档。
+```
+
+- navigator对象
+
+```
+	Navigator 对象属性
+	属性	描述
+	appCodeName	返回浏览器的代码名。
+	appMinorVersion	返回浏览器的次级版本。
+	appName	返回浏览器的名称。
+	appVersion	返回浏览器的平台和版本信息。
+	browserLanguage	返回当前浏览器的语言。
+	cookieEnabled	返回指明浏览器中是否启用 cookie 的布尔值。
+	cpuClass	返回浏览器系统的 CPU 等级。
+	onLine	返回指明系统是否处于脱机模式的布尔值。
+	platform	返回运行浏览器的操作系统平台。
+	systemLanguage	返回 OS 使用的默认语言。
+	userAgent	返回由客户机发送服务器的 user-agent 头部的值。
+	userLanguage	返回 OS 的自然语言设置。
+```
+
+- screen对象
+
+```
+	Screen 对象属性
+	属性	描述
+	availHeight	返回显示屏幕的高度 (除 Windows 任务栏之外)。
+	availWidth	返回显示屏幕的宽度 (除 Windows 任务栏之外)。
+	bufferDepth	设置或返回调色板的比特深度。
+	colorDepth	返回目标设备或缓冲器上的调色板的比特深度。
+	deviceXDPI	返回显示屏幕的每英寸水平点数。
+	deviceYDPI	返回显示屏幕的每英寸垂直点数。
+	fontSmoothingEnabled	返回用户是否在显示控制面板中启用了字体平滑。
+	height	返回显示屏幕的高度。
+	logicalXDPI	返回显示屏幕每英寸的水平方向的常规点数。
+	logicalYDPI	返回显示屏幕每英寸的垂直方向的常规点数。
+	pixelDepth	返回显示屏幕的颜色分辨率（比特每像素）。
+	updateInterval	设置或返回屏幕的刷新率。
+	width	返回显示器屏幕的宽度。
+```
+
+- history对象
+```
+	History 对象属性
+	属性	描述
+	length	返回浏览器历史列表中的 URL 数量。
+	History 对象方法
+	方法	描述
+	back()	加载 history 列表中的前一个 URL。
+	forward()	加载 history 列表中的下一个 URL。
+	go()	加载 history 列表中的某个具体页面。
 ```
 
 ##HTTP
