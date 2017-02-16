@@ -65,9 +65,10 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
     }
  ```
  
- - 盒子模型
+- 盒子模型
  
- ```
+ 
+```
     内容(content)、填充(padding)、边框(border)、边界(margin)
     内容（content（with/height））、内边距（padding）、边框（border）、外边距（margin）
     box-sizing
@@ -75,11 +76,11 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
         content-box，border和padding不计算入width之内
         padding-box，padding计算入width内
         border-box，border和padding计算入width之内，其实就是怪异模式了~
- ```
+```
  
- - 行
+- 行
  
- ```
+```
     line-height（http://www.studyofnet.com/news/273.html）:
         “行高“指一行文字的高度，具体来说是指两行文字间基线间的距离。在CSS，line-height被用来控制行与行之间的垂直距离。line-height 属性会影响行框	  的布局。在应用到一个块级元素时，它定义了该元素中基线之间的最小距离而不是最大距离。
         从上到下四条线分别是顶线、中线、基线、底线，很像才学英语字母时的四线三格，我们知道vertical-align属性中有top、middle、baseline、bottom，	      就是和这四条线相关。
@@ -103,11 +104,11 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
         bottom	把对齐的子元素的底端与line box底端对齐。
         text-bottom	把元素的底端与父元素内容区域的底端对齐。
         inherit	采用父元素相关属性的相同的指定值。
- ```
+```
  
- - 文本
+- 文本
  
- ```
+```
     whitespace
         定义和用法
         white-space 属性设置如何处理元素内的空白。
@@ -133,7 +134,7 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
         break-word	在长单词或 URL 地址内部进行换行。
     区别
         word-wrap:break-word与word-break:break-all共同点是都能把长单词强行断句，不同点是word-wrap:break-word会首先起一个新行来放置长单词，新的         行还是放不下这个长单词则会对长单词进行强制断句；而word-break:break-all则不会把长单词放在一个新行里，当这一行放不下的时候就直接强制断句了。
- ```
+```
  
 2.绘制
 
