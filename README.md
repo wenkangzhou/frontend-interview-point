@@ -291,7 +291,9 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
         }
         </style>
  ```
+ 
 4.理解和还原设计图意
+
 
 - 垂直居中（http://blog.csdn.net/freshlover/article/details/11579669）
 
