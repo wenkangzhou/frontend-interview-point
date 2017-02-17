@@ -950,7 +950,119 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
 
 - Array
 
+```
+	检查是否是数组
+    	ES5+ ： Array.isArray()
+
+    之前版本做兼容：
+    	if(typeof Array.isArray === "undefined"){
+    		Array.isArray = function (arg){
+    			return Object.prototype.toString.call(arg) === "[object Array]";
+    		}
+    	}
+	Array 对象方法
+		是否改变现有数组	方法	描述
+		否 	concat()	连接两个或更多的数组，并返回结果。  
+		否  join()	把数组的所有元素放入一个字符串。元素通过指定的分隔符进行分隔。
+		是  pop()	删除并返回数组的最后一个元素
+		是	push()	向数组的末尾添加一个或更多元素，并返回新的长度。
+		是	reverse()	颠倒数组中元素的顺序。
+		是	shift()	删除并返回数组的第一个元素
+		否	slice()	从某个已有的数组返回选定的元素
+		是	sort()	对数组的元素进行排序
+		是	splice()	删除元素，并向数组添加新元素。
+			toSource()	返回该对象的源代码。
+			toString()	把数组转换为字符串，并返回结果。
+			toLocaleString()	把数组转换为本地数组，并返回结果。 
+		是	unshift()	向数组的开头添加一个或更多元素，并返回新的长度。
+			valueOf()	返回数组对象的原始值
+```
+
 - Function
+
+```
+	创建函数的三种方式
+		1.函数声明
+		  	function sum1(n1,n2){
+				return n1+n2;
+		  	};
+		2.函数表达式，又叫函数字面量
+			var sum2=function(n1,n2){
+				return n1+n2;
+			};
+			几种自执行函数：
+				//可用来传参
+				(function(x,y){
+				  console.log(x+y);
+				})(2,3);
+
+				//带返回值
+				var sum=(function(x,y){
+				  return x+y;
+				})(2,3);
+				console.log(sum);
+
+				~function(){
+				  var name='~'
+				  console.log(name);
+				}();
+
+				!function(){
+				  var name='!'
+				  console.log(name);
+				}();
+
+				;(function(){
+				  var name=';'
+				  console.log(name);
+				})();
+
+				-function(){
+				  var name='-'
+				  console.log(name);
+				}();
+
+				//逗号运算符
+				1,function(){
+				  var name=',';
+				  console.log(name);
+				}();
+
+				//异或
+				1^function(){
+				  var name='^';
+				  console.log(name);
+				}();
+
+				//比较运算符
+				1>function(){
+				  var name='>';
+				  console.log(name);
+				}();
+
+				~+-!(function(){
+				  var name='~+-!';
+				  console.log(name);
+				})();
+
+				~!(function(){
+				  var name='~!';
+				  console.log(name);
+				})();
+
+				(function(){
+				  var name='call';
+				  console.log(name);
+				}).call();
+
+				(function(){
+				  var name='apply';
+				  console.log(name);
+				}).apply();
+		3.函数构造法，参数必须加引号
+			var sum3=new Function('n1','n2','return n1+n2');
+			console.log(sum3(2,3));//5
+```
 
 ##WEB API
 
@@ -1457,8 +1569,10 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
 ##算法
 
 1.堆排序
-    
+//排序、搜索、动态规划    
 ##数据结构
+1.二叉树（AVL树、红黑树）
+2.二叉堆
 ##常见面试题
 1.从浏览器地址栏输入url到显示页面的步骤(以HTTP为例)？
 ##坑
