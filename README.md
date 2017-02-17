@@ -568,8 +568,47 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
 
 ```
 
-- this(call/apply)
+- this
 
+```
+	1.在一般函数方法中使用 this 指代全局对象
+	2.作为对象方法调用，this 指代上级对象
+	3.作为构造函数调用，this 指代new 出的对象
+	4.apply 调用 ，apply方法作用是改变函数的调用对象，此方法的第一个参数为改变后调用这个函数的对象，this指代第一个参数
+```
+
+- call/apply
+
+```
+	call 和 apply 都是为了改变某个函数运行时的 context 即上下文而存在的，换句话说，就是为了改变函数体内部 this 的指向。因为 JavaScript 的函		     数存在「定义时上下文」和「运行时上下文」以及「上下文是可以改变的」这样的概念。
+
+	二者的作用完全一样，只是接受参数的方式不太一样。例如，有一个函数 func1 定义如下：
+	var func1 = function(arg1, arg2) {};
+	就可以通过 func1.call(this, arg1, arg2); 或者 func1.apply(this, [arg1, arg2]); 来调用。其中 this 是你想指定的上下文，他可以任何一个 	      JavaScript 对象(JavaScript 中一切皆对象)，call 需要把参数按顺序传递进去，而 apply 则是把参数放在数组里。
+
+	JavaScript 中，某个函数的参数数量是不固定的，因此要说适用条件的话，当你的参数是明确知道数量时，用 call，而不确定的时候，用 apply，然后把参         数 push 进数组传递进去。当参数数量不确定时，函数内部也可以通过 arguments 这个数组来便利所有的参数。
+	
+	_____________________________________
+	
+
+	在javascript OOP中，我们经常会这样定义：
+	function cat(){
+	}
+	cat.prototype={
+	food:"fish",
+	say: function(){
+	alert("I love "+this.food);
+	}
+	}
+
+	var blackCat = new cat;
+	blackCat.say();
+	但是如果我们有一个对象whiteDog = {food:"bone"},我们不想对它重新定义say方法，那么我们可以通过call或apply用blackCat的say方法：					blackCat.say.call(whiteDog);
+	所以，可以看出call和apply是为了动态改变this而出现的，当一个object没有某个方法，但是其他的有，我们可以借助call或apply用其它对象的方法来操作。
+	用的比较多的，通过document.getElementsByTagName选择的dom 节点是一种类似array的array。它不能应用Array下的push,pop等方法。我们可以通过：
+	var domNodes = Array.prototype.slice.call(document.getElementsByTagName("*"));
+	这样domNodes就可以应用Array下的所有方法了。
+```
 
 - 垃圾收集
 
@@ -577,6 +616,341 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
 	(1) 标记清除：进入环境、离开环境标记，然后统一销毁带标记的	
 	(2) 引用计数：当声明一个变量并将引用类型值复制该值，引用次数为1，同个值又被赋给另一个变量，加1，相反，这个值引用的变量又得了另一个值，减1，为0			则回收	
 ```
+
+3.对象
+
+- 创建对象
+
+```
+	1.工厂模式
+		function createPerson(name, age, job){
+			var o = new Object();
+			o.name = name;
+			o.age = age;
+			o.job = job;
+			o.sayName = function(){
+				alert(this.name);
+			}
+			return o;
+		}
+		var person1 = createPerson("Jimmy", 29, "Front-end Engineer");
+		var person2 = createPerson("David", 27, "Front-end Engineer");
+	2.构造函数模式
+		function Person(name, age, job){
+			this.name = name;
+			this.age = age;
+			this.job = job;
+			this.sayName = function(){
+				alert(this.name);
+			}
+		}
+		var person1 = new Person("Jimmy", 29, "Front-end Engineer");
+		var person2 = new Person("David", 27, "Front-end Engineer");
+	3.原型模式
+		function Person(){
+
+		}
+		Person.prototype.name="Jimmy";
+		Person.prototype.age=29;
+		Person.prototype.name="Front-end Engineer";
+		Person.prototype.sayName=function(){
+			alert(this.name)
+		}
+		var person1 = new Person();
+		person1.sayName();//"Jimmy"
+				
+		var person2 = new Person();
+		person2.sayName();//"Jimmy"
+		
+	4.组合使用构造函数模式和原型模式
+
+		function Person(name, age, job){
+			this.name = name;
+			this.age = age;
+			this.job = job;
+			this.friends = ["cate","lucy"];
+		}
+
+		Person.prototype = {
+			constructor : Person,
+			sayName : function(){
+				alert(this.name)
+			}
+		}
+		var person1 = new Person("Jimmy", 29, "Front-end Engineer");
+		var person2 = new Person("David", 27, "Front-end Engineer");
+
+		person1.friends.push("lily");
+		alert(person1.friends);//"cate,lucy,lily"
+		alert(person2.friends)//"cate,lucy"
+		alert(person1.friends === person2.friends)//false
+		alert(person1.sayName === person2.sayName)//false
+	
+	5.动态原型模式(best)
+
+		把原型的创建放在构造函数中完成。
+
+		function Person(name, age, job){
+			//属性
+			this.name = name;
+			this.age = age;
+			this.job = job;
+			//方法
+			if(typeof this.sayName != "function"){
+
+				Person.prototype.sayName = function(){
+					alert(this.name)
+				}
+
+			}
+		}
+
+		var friend = new Person("Jimmy", 29, "Front-end Engineer");
+
+		friend.sayName();
+```
+
+- 原型(https://segmentfault.com/a/1190000005824449)
+
+![图](https://sfault-image.b0.upaiyun.com/755/273/755273249-57a2e38acba17_articlex "title")
+```
+	万物初生时，一个null对象，凭空而生，接着Object、Function学着null的模样塑造了自己，并且它们彼此之间喜结连理，提供了prototype和constructor，一	   个给子孙提供了基因，一个则制造万千子子孙孙。
+    在JavaScript中，null也是作为一个对象存在，基于它继承的子子孙孙，当属对象。乍一看，null像是上帝,而Object和Function犹如JavaScript世界中的亚当     与夏娃。
+
+	原型指针 __proto__
+		在JavaScript中，每个对象都拥有一个原型对象，而指向该原型对象的内部指针则是__proto__,通过它可以从中继承原型对象的属性，原型是JavaScript中			的基因链接，有了这个，才能知道这个对象的祖祖辈辈。从对象中的__proto__可以访问到他所继承的原型对象。
+
+		var a = new Array();
+		a.__proto__ === Array.prototype // true
+		上面代码中，创建了一个Array的实例a，该实例的原型指向了Array.prototype。
+		Array.prototype本身也是一个对象，也有继承的原型:
+
+		a.__proto__.__proto__ === Object.prototype  // true
+		// 等同于 Array.prototype.__proto__ === Object.prototype
+		这就说了明了，Array本身也是继承自Object的，那么Object的原型指向的是谁呢？
+
+		a.__proto__.__proto__.__proto__ === null  // true
+		// 等同于 Object.prototype.__proto__ === null
+		所以说，JavaScript中的对象，追根溯源都是来自一个null对象。
+		除了使用.__proto__方式访问对象的原型，还可以通过Object.getPrototypeOf方法来获取对象的原型，以及通过Object.setPrototypeOf方法来重写对象		 的原型。
+	原型对象 prototype
+		函数作为JavaScript中的一等公民，它既是函数又是对象，函数的原型指向的是Function.prototype
+		
+		var Foo = function() {}
+		Foo.__proto__ === Function.prototype // true
+		函数实例除了拥有__proto__属性之外，还拥有prototype属性。通过该函数构造的新的实例对象，其原型指针__proto__会指向该函数的prototype属性。
+
+		var a = new Foo();
+		a.__proto__ === Foo.prototype; // true
+		而函数的prototype属性，本身是一个由Object构造的实例对象。
+
+		Foo.prototype.__proto__ === Object.prototype; // true
+		prototype属性很特殊，它还有一个隐式的constructor，指向了构造函数本身。
+
+		Foo.prototype.constructor === Foo; // true
+		a.constructor === Foo; // true
+		a.constructor === Foo.prototype.constructor; // true
+		PS: a.constructor属性并不属于a（a.hasOwnProperty("constructor") === false），而是读取的a.__proto__.constructor，所以上图用虚线表示		  a.constructor，方便理解。
+	原型链
+		概念：
+
+		原型链作为实现继承的主要方法，其基本思想是利用原型让一个引用类型继承另一个引用类型的属性和方法。
+		每个构造函数都有一个原型对象(prototype)，原型对象都包含一个指向构造函数的指针(constructor)，而实例都包含一个指向原型对象的内部指针				(__proto__)。
+
+		那么，假如我们让原型对象等于另一个类型的实例，此时的原型对象将包含一个指向另一个原型的指针，相应地，另一个原型中也包含着一个指向另一个构造函	      数的指针。假如另一个原型又是另一个类型的实例，那么上述关系依然成立。如此层层递进，就构造了实例与原型的链条，这就是原型链的基本概念。
+
+		意义：“原型链”的作用在于，当读取对象的某个属性时，JavaScript引擎先寻找对象本身的属性，如果找不到，就到它的原型去找，如果还是找不到，就到原		   型的原型去找。以此类推，如果直到最顶层的Object.prototype还是找不到，则返回undefine。
+	亲子鉴定
+		在JavaScript中，也存在鉴定亲子之间DNA关系的方法：
+
+		instanceof 运算符返回一个布尔值，表示一个对象是否由某个构造函数创建。
+		Object.isPrototypeOf() 只要某个对象处在原型链上，isProtypeOf都返回true
+		var Bar = function() {}
+		var b = new Bar();
+		b instanceof Bar // true
+		Bar.prototype.isPrototypeOf(b) // true
+		Object.prototype.isPrototypeOf(Bar) // true
+		要注意，实例b的原型是Bar.prototype而不是Bar
+```
+
+
+- 继承
+
+```
+	1.原型链
+		function SuperType(){
+			this.property = true;
+		}
+		SuperType.prototype.getSuperValue = function(){
+			return this.property;
+		}
+		function SubType(){
+			this.subproperty = false;
+		}
+		//继承SuperType
+		SubType.prototype = new SuperType();
+		SubType.prototype.getSubValue = function(){
+			return this.subproperty;
+		}
+
+		var instance = new SubType();
+		alert(instance.getSuperValue());//true
+
+		所有函数的默认原型都是Object的实例
+	2.借用构造函数
+
+		function SuperType(){
+			this.colors = ["red","black","blue"];
+		}
+		function SubType(){
+			//继承SuperType
+			SuperType.call(this);
+		}
+
+		var instance1 = new SubType();
+		instance1.colors.push("green");
+		alert(instance1.colors)//"red,black,blue,green"
+
+		var instance2 = new SubType();
+		alert(instance1.colors)//"red,black,blue"
+
+		传递参数
+
+		function SuperType(name){
+			this.name = name;
+		}
+
+		function SubType(){
+			//继承SuperType,同时还传递了参数
+			SuperType.call(this,"Jimmy");
+
+			//实例属性
+			this.age="27";
+		}
+
+		var instance = new Subtype();
+		alert(instance.name);//"Jimmy"
+		alert(instance.age);//27
+	3.组合继承
+		function SuperType(name){
+			this.name = name;
+			this.colors = ["red","black","blue"];
+		}
+
+		SuperType.prototype.sayName = function(){
+			alert(this.name)
+		}
+
+		function SubType(name,age){
+			//继承属性
+			SuperType.call(this,name);
+
+			this.age = age;
+		}
+
+		//继承方法
+		SubType.prototype = new SuperType();
+		SubType.prototype.constructor = SubType;
+		SubType.prototype.sayAge = function(){
+			alert(this.age)
+		}
+
+		var instance1 = new SubType("Jimmy"，29)；
+		instance1.colors.push("green");
+		alert(instance1.colors);//"red,black,blue,green"
+		instance1.sayName();//"Jimmy"
+		instance1.sayAge()//29
+
+		var instance2 = new SubType("Jason"，29)；
+		alert(instance2.colors);//"red,black,blue"
+		instance2.sayName();//"Jason"
+		instance2.sayAge()//29
+	4.原型式继承
+
+		function object(o){
+			function F(){};
+			F.prototype = o;
+			return new F();
+		}
+
+		var person = {
+			name : "Jimmy",
+			friend : ["Shelby","Sam","Van"]
+		}
+
+		var anotherPerson = object(person);
+		anotherPerson.name = "Gerg";
+		anotherPerson.friends.push("Rob");
+
+		var yetPerson = object(person);
+		yetPerson.name = "Linda";
+		yetPerson.friends.push("Barbie");
+
+		alert(person.friends);//"Shelby,Sam,Van,Rob,Barbie"
+
+		Object.create()
+		var person = {
+			name : "Jimmy",
+			friend : ["Shelby","Sam","Van"]
+		}
+
+		var anotherPerson = Object.create(person,{
+			name:{
+				value:"Greg"
+			}
+		})
+
+		alert(anotherPerson.name);//"Greg"
+	6.寄生组合式继承(best)
+		function inheritPrototype(subType,superType){
+			var prototype = object(superType.prototype);//创建对象
+			prototype.constructor = subType;//增强对象
+			subType.prototype = prototype;//指定对象
+		}
+
+		function SuperType(name){
+			this.name = name;
+			this.colors = ["red","black","blue"];
+		}
+
+		SuperType.prototype.sayName = function(){
+			alert(this.name)
+		}
+
+		function SubType(name,age){
+			//继承属性
+			SuperType.call(this,name);
+
+			this.age = age;
+		}
+
+		inheritPrototype(SubType,SuperType);
+
+		SubType.prototype.sayAge = function(){
+			alert(this.age)
+		}
+```
+
+- new过程
+
+```
+	对于 var o = new Foo();
+
+	//JavaScript 实际上执行的是：
+		var o = new Object();
+		o.[[Prototype]] = Foo.prototype;
+		Foo.call(o);
+		在JS中,绝大多数的函数都是既可以调用也可以实例化的.我们既可以直接执行函数得到函数的返回值.也可以通过new操作符得到一个对象.
+		在javascript中, 通过new可以产生原对象的一个实例对象，而这个实例对象继承了原对象的属性和方法。因此，new存在的意义在于它实现了javascript中		  的继承，而不仅仅是实例化了一个对象！
+	new不new的区别：
+		如果函数返回值为常规意义上的值类型（Number、String、Boolean）时，new函数将会返回一个该函数的实例对象，而如果函数返回一个引用类型					（Object、Array、Function），则new函数与直接调用函数产生的结果等同。
+```
+
+4.内置对象
+
+- Array
+
+- Function
 
 ##WEB API
 
