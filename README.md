@@ -1066,7 +1066,10 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
 			console.log(sum3(2,3));//5
 ```
 
-5.ES6
+5.正则
+
+6.ES6
+
 
 ##WEB API
 
