@@ -663,6 +663,23 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
 	person instanceof Object //person是Object的吗？
 ```
 
+- isPrototypeOf(用来判断要检查其原型链的对象是否存在于指定对象实例中)
+
+```
+	var myFunc=function(){
+		this.foo='value';	 
+	};
+	myFunc.prototype.ok='ok';
+	thefunc=new myFunc();
+	console.log(
+		thefunc instanceof myFunc,//true
+		myFunc instanceof Function,//true
+		myFunc.prototype.isPrototypeOf(thefunc),//true
+		Function.prototype.isPrototypeOf(myFunc),//true	 
+		typeof thefunc,//object
+	);
+```
+
 
 2.函数
 
@@ -672,46 +689,46 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
 	我的理解：无论通过何种手段将内部函数传递到所在的词法作用域以外，它都会持有对原始定义作用域的引
 	用，无论在何处执行这个函数都会使用闭包。
 	一、什么是闭包
-	简而言之，就是能够读取其他函数内部变量的函数。
-	由于JS变量作用域的特性，外部不能访问内部变量，内部可以外部变量。
+		简而言之，就是能够读取其他函数内部变量的函数。
+		由于JS变量作用域的特性，外部不能访问内部变量，内部可以外部变量。
 	二、使用场景
-	1. 实现私有成员。
-	2. 保护命名空间，避免污染全局变量。
-	3. 缓存变量。
+		1. 实现私有成员。
+		2. 保护命名空间，避免污染全局变量。
+		3. 缓存变量。
 	三、注意事项
-	1. 内存泄漏
-	由于闭包会使得函数中的变量都被保存在内存中，内存消耗很大，所以不能滥用闭包，否则会造成网页的性能问题。
-	2. 变量命名
-	如果内部函数的变量和外部函数的变量名相同时，那么内部函数再也无法指向外部函数那个同名的变量。
+		1. 内存泄漏
+			由于闭包会使得函数中的变量都被保存在内存中，内存消耗很大，所以不能滥用闭包，否则会造成网页的性能问题。
+		2. 变量命名
+			如果内部函数的变量和外部函数的变量名相同时，那么内部函数再也无法指向外部函数那个同名的变量。
 	
 	下面我们来看一段代码，清晰地展示了闭包：
-	function foo() {
-	var a = 2;
-	function bar() {
-	console.log( a );
-	}
-	return bar;
-	}
-	var baz = foo();
-	baz(); // 2 ———— 朋友，这就是闭包的效果。
-	函数bar()的词法作用域能够访问foo()的内部作用域。然后我们将bar()函数本身当作一个值类型
-	进行传递。在这个例子中，我们将bar所引用的函数对象本身当作返回值。
-	在foo()执行后，其返回值（也就是内部的bar()函数）赋值给变量baz并调用baz()，实际上只是通过
-	不同的标识符引用调用了内部的函数bar()。
-	bar()显然可以被正常执行。但是在这个例子中，它在自己定义的词法作用域以外的地方执行。
-	在foo()执行后，通常会期待foo()的整个内部作用域都被销毁，因为我们知道引擎有垃圾回收器用
-	来释放不再使用的内存空间。由于看上去foo()的内容不会再被使用，所以很自然地会考虑对其进
-	行回收。
-	而闭包的“神奇”之处正是可以阻止这件事情的发生。事实上内部作用域依然存在，因此没有被回
-	收。谁在使用这个内部作用域？原来是bar()本身在使用。
-	拜bar()所声明的位置所赐，它拥有涵盖foo()内部作用域的闭包，使得该作用域能够一直存活，以
-	供bar()在之后任何时间进行引用。
-	bar()依然持有对该作用域的引用，而这个引用就叫作闭包。
-	因此，在几微秒之后变量baz被实际调用（调用内部函数bar），不出意料它可以访问定义时的词法
-	作用域，因此它也可以如预期般访问变量a。
-	这个函数在定义时的词法作用域以外的地方被调用。闭包使得函数可以继续访问定义时的词法作
-	用域。
-	当然，无论使用何种方式对函数类型的值进行传递，当函数在别处被调用时都可以观察到闭包。
+		function foo() {
+		var a = 2;
+		function bar() {
+		console.log( a );
+		}
+		return bar;
+		}
+		var baz = foo();
+		baz(); // 2 ———— 朋友，这就是闭包的效果。
+		函数bar()的词法作用域能够访问foo()的内部作用域。然后我们将bar()函数本身当作一个值类型
+		进行传递。在这个例子中，我们将bar所引用的函数对象本身当作返回值。
+		在foo()执行后，其返回值（也就是内部的bar()函数）赋值给变量baz并调用baz()，实际上只是通过
+		不同的标识符引用调用了内部的函数bar()。
+		bar()显然可以被正常执行。但是在这个例子中，它在自己定义的词法作用域以外的地方执行。
+		在foo()执行后，通常会期待foo()的整个内部作用域都被销毁，因为我们知道引擎有垃圾回收器用
+		来释放不再使用的内存空间。由于看上去foo()的内容不会再被使用，所以很自然地会考虑对其进
+		行回收。
+		而闭包的“神奇”之处正是可以阻止这件事情的发生。事实上内部作用域依然存在，因此没有被回
+		收。谁在使用这个内部作用域？原来是bar()本身在使用。
+		拜bar()所声明的位置所赐，它拥有涵盖foo()内部作用域的闭包，使得该作用域能够一直存活，以
+		供bar()在之后任何时间进行引用。
+		bar()依然持有对该作用域的引用，而这个引用就叫作闭包。
+		因此，在几微秒之后变量baz被实际调用（调用内部函数bar），不出意料它可以访问定义时的词法
+		作用域，因此它也可以如预期般访问变量a。
+		这个函数在定义时的词法作用域以外的地方被调用。闭包使得函数可以继续访问定义时的词法作
+		用域。
+		当然，无论使用何种方式对函数类型的值进行传递，当函数在别处被调用时都可以观察到闭包。
 
 ```
 
@@ -730,8 +747,8 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
 			with:避免使用	
 			catch:当try代码块中发生错误时，执行过程会跳转到catch语句，然后把异常对象推入一个可变对象并置于作用域的头部。在catch代码块内部，函数的			所有局部变量将会被放在第二个作用域链对象中。
 	4. 查找、声明
+		自下而上，沿作用链向上查找
 		无所在哪声明，都等同于在函数顶部声明
-		自下而上，沿作用链向上查找	
 
 ```
 
@@ -740,20 +757,20 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
 ```
 	1.在一般函数方法中使用 this 指代全局对象
 	2.作为对象方法调用，this 指代上级对象
-	3.作为构造函数调用，this 指代new 出的对象
+	3.作为构造函数调用，this 指代new出的对象
 	4.apply 调用 ，apply方法作用是改变函数的调用对象，此方法的第一个参数为改变后调用这个函数的对象，this指代第一个参数
 ```
 
 - call/apply
 
 ```
-	call 和 apply 都是为了改变某个函数运行时的 context 即上下文而存在的，换句话说，就是为了改变函数体内部 this 的指向。因为 JavaScript 的函		     数存在「定义时上下文」和「运行时上下文」以及「上下文是可以改变的」这样的概念。
+	call 和 apply 都是为了改变某个函数运行时的 context 即上下文而存在的，换句话说，就是为了改变函数体内部 this 的指向。因为 JavaScript 的函		数存在「定义时上下文」和「运行时上下文」以及「上下文是可以改变的」这样的概念。
 
 	二者的作用完全一样，只是接受参数的方式不太一样。例如，有一个函数 func1 定义如下：
 	var func1 = function(arg1, arg2) {};
-	就可以通过 func1.call(this, arg1, arg2); 或者 func1.apply(this, [arg1, arg2]); 来调用。其中 this 是你想指定的上下文，他可以任何一个 	      JavaScript 对象(JavaScript 中一切皆对象)，call 需要把参数按顺序传递进去，而 apply 则是把参数放在数组里。
+	就可以通过 func1.call(this, arg1, arg2); 或者 func1.apply(this, [arg1, arg2]); 来调用。其中 this 是你想指定的上下文，他可以任何一个 	  JavaScript 对象(JavaScript 中一切皆对象)，call 需要把参数按顺序传递进去，而 apply 则是把参数放在数组里。
 
-	JavaScript 中，某个函数的参数数量是不固定的，因此要说适用条件的话，当你的参数是明确知道数量时，用 call，而不确定的时候，用 apply，然后把参         数 push 进数组传递进去。当参数数量不确定时，函数内部也可以通过 arguments 这个数组来便利所有的参数。
+	JavaScript 中，某个函数的参数数量是不固定的，因此要说适用条件的话，当你的参数是明确知道数量时，用 call，而不确定的时候，用 apply，然后把参       数 push 进数组传递进去。当参数数量不确定时，函数内部也可以通过 arguments 这个数组来便利所有的参数。
 	
 	_____________________________________
 	
@@ -770,7 +787,7 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
 
 	var blackCat = new cat;
 	blackCat.say();
-	但是如果我们有一个对象whiteDog = {food:"bone"},我们不想对它重新定义say方法，那么我们可以通过call或apply用blackCat的say方法：					blackCat.say.call(whiteDog);
+	但是如果我们有一个对象whiteDog = {food:"bone"},我们不想对它重新定义say方法，那么我们可以通过call或apply用blackCat的say方法：				blackCat.say.call(whiteDog);
 	所以，可以看出call和apply是为了动态改变this而出现的，当一个object没有某个方法，但是其他的有，我们可以借助call或apply用其它对象的方法来操作。
 	用的比较多的，通过document.getElementsByTagName选择的dom 节点是一种类似array的array。它不能应用Array下的push,pop等方法。我们可以通过：
 	var domNodes = Array.prototype.slice.call(document.getElementsByTagName("*"));
@@ -881,11 +898,11 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
 
 ![图](https://sfault-image.b0.upaiyun.com/755/273/755273249-57a2e38acba17_articlex "title")
 ```
-	万物初生时，一个null对象，凭空而生，接着Object、Function学着null的模样塑造了自己，并且它们彼此之间喜结连理，提供了prototype和constructor，一	   个给子孙提供了基因，一个则制造万千子子孙孙。
-    在JavaScript中，null也是作为一个对象存在，基于它继承的子子孙孙，当属对象。乍一看，null像是上帝,而Object和Function犹如JavaScript世界中的亚当     与夏娃。
+	万物初生时，一个null对象，凭空而生，接着Object、Function学着null的模样塑造了自己，并且它们彼此之间喜结连理，提供了prototype和				constructor，一个给子孙提供了基因，一个则制造万千子子孙孙。
+    在JavaScript中，null也是作为一个对象存在，基于它继承的子子孙孙，当属对象。乍一看，null像是上帝,而Object和Function犹如JavaScript世界中的亚	  当与夏娃。
 
 	原型指针 __proto__
-		在JavaScript中，每个对象都拥有一个原型对象，而指向该原型对象的内部指针则是__proto__,通过它可以从中继承原型对象的属性，原型是JavaScript中			的基因链接，有了这个，才能知道这个对象的祖祖辈辈。从对象中的__proto__可以访问到他所继承的原型对象。
+		在JavaScript中，每个对象都拥有一个原型对象，而指向该原型对象的内部指针则是__proto__,通过它可以从中继承原型对象的属性，原型是JavaScript		  中的基因链接，有了这个，才能知道这个对象的祖祖辈辈。从对象中的__proto__可以访问到他所继承的原型对象。
 
 		var a = new Array();
 		a.__proto__ === Array.prototype // true
@@ -899,7 +916,7 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
 		a.__proto__.__proto__.__proto__ === null  // true
 		// 等同于 Object.prototype.__proto__ === null
 		所以说，JavaScript中的对象，追根溯源都是来自一个null对象。
-		除了使用.__proto__方式访问对象的原型，还可以通过Object.getPrototypeOf方法来获取对象的原型，以及通过Object.setPrototypeOf方法来重写对象		 的原型。
+		除了使用.__proto__方式访问对象的原型，还可以通过Object.getPrototypeOf方法来获取对象的原型，以及通过Object.setPrototypeOf方法来重写		   对象的原型。
 	原型对象 prototype
 		函数作为JavaScript中的一等公民，它既是函数又是对象，函数的原型指向的是Function.prototype
 		
@@ -917,7 +934,7 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
 		Foo.prototype.constructor === Foo; // true
 		a.constructor === Foo; // true
 		a.constructor === Foo.prototype.constructor; // true
-		PS: a.constructor属性并不属于a（a.hasOwnProperty("constructor") === false），而是读取的a.__proto__.constructor，所以上图用虚线表示		  a.constructor，方便理解。
+		PS: a.constructor属性并不属于a（a.hasOwnProperty("constructor") === false），而是读取的a.__proto__.constructor，所以上图用虚		   线表示a.constructor，方便理解。
 	原型链
 		概念：
 
@@ -926,8 +943,8 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
 
 		那么，假如我们让原型对象等于另一个类型的实例，此时的原型对象将包含一个指向另一个原型的指针，相应地，另一个原型中也包含着一个指向另一个构造函	      数的指针。假如另一个原型又是另一个类型的实例，那么上述关系依然成立。如此层层递进，就构造了实例与原型的链条，这就是原型链的基本概念。
 
-		意义：“原型链”的作用在于，当读取对象的某个属性时，JavaScript引擎先寻找对象本身的属性，如果找不到，就到它的原型去找，如果还是找不到，就到原		   型的原型去找。以此类推，如果直到最顶层的Object.prototype还是找不到，则返回undefine。
-	亲子鉴定
+		意义：“原型链”的作用在于，当读取对象的某个属性时，JavaScript引擎先寻找对象本身的属性，如果找不到，就到它的原型去找，如果还是找不到，就到原		    型的原型去找。以此类推，如果直到最顶层的Object.prototype还是找不到，则返回undefine。
+		亲子鉴定
 		在JavaScript中，也存在鉴定亲子之间DNA关系的方法：
 
 		instanceof 运算符返回一个布尔值，表示一个对象是否由某个构造函数创建。
@@ -1108,9 +1125,9 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
 		o.[[Prototype]] = Foo.prototype;
 		Foo.call(o);
 		在JS中,绝大多数的函数都是既可以调用也可以实例化的.我们既可以直接执行函数得到函数的返回值.也可以通过new操作符得到一个对象.
-		在javascript中, 通过new可以产生原对象的一个实例对象，而这个实例对象继承了原对象的属性和方法。因此，new存在的意义在于它实现了javascript中		  的继承，而不仅仅是实例化了一个对象！
+		在javascript中, 通过new可以产生原对象的一个实例对象，而这个实例对象继承了原对象的属性和方法。因此，new存在的意义在于它实现了javascript		 中的继承，而不仅仅是实例化了一个对象！
 	new不new的区别：
-		如果函数返回值为常规意义上的值类型（Number、String、Boolean）时，new函数将会返回一个该函数的实例对象，而如果函数返回一个引用类型					（Object、Array、Function），则new函数与直接调用函数产生的结果等同。
+		如果函数返回值为常规意义上的值类型（Number、String、Boolean）时，new函数将会返回一个该函数的实例对象，而如果函数返回一个引用类型				（Object、Array、Function），则new函数与直接调用函数产生的结果等同。
 ```
 
 4.内置对象
@@ -1129,20 +1146,76 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
     	}
 	Array 对象方法
 		是否改变现有数组	方法	描述
-		否 	concat()	连接两个或更多的数组，并返回结果。  
+		否  concat()	连接两个或更多的数组，并返回结果。  
 		否  join()	把数组的所有元素放入一个字符串。元素通过指定的分隔符进行分隔。
 		是  pop()	删除并返回数组的最后一个元素
-		是	push()	向数组的末尾添加一个或更多元素，并返回新的长度。
-		是	reverse()	颠倒数组中元素的顺序。
+		是  push()	向数组的末尾添加一个或更多元素，并返回新的长度。
+		是  reverse()	颠倒数组中元素的顺序。
 		是	shift()	删除并返回数组的第一个元素
 		否	slice()	从某个已有的数组返回选定的元素
 		是	sort()	对数组的元素进行排序
-		是	splice()	删除元素，并向数组添加新元素。
+		是   splice()	删除元素，并向数组添加新元素。
 			toSource()	返回该对象的源代码。
 			toString()	把数组转换为字符串，并返回结果。
 			toLocaleString()	把数组转换为本地数组，并返回结果。 
 		是	unshift()	向数组的开头添加一个或更多元素，并返回新的长度。
 			valueOf()	返回数组对象的原始值
+```
+
+- String
+
+```
+	方法	描述
+	anchor()	创建 HTML 锚。
+	big()	用大号字体显示字符串。
+	blink()	显示闪动字符串。
+	bold()	使用粗体显示字符串。
+	charAt()	返回在指定位置的字符。
+	charCodeAt()	返回在指定的位置的字符的 Unicode 编码。
+	concat()	连接字符串。
+	fixed()	以打字机文本显示字符串。
+	fontcolor()	使用指定的颜色来显示字符串。
+	fontsize()	使用指定的尺寸来显示字符串。
+	fromCharCode()	从字符编码创建一个字符串。
+	indexOf()	检索字符串。
+	italics()	使用斜体显示字符串。
+	lastIndexOf()	从后向前搜索字符串。
+	link()	将字符串显示为链接。
+	localeCompare()	用本地特定的顺序来比较两个字符串。
+	match()	找到一个或多个正则表达式的匹配。
+	replace()	替换与正则表达式匹配的子串。
+	search()	检索与正则表达式相匹配的值。
+	slice()	提取字符串的片断，并在新的字符串中返回被提取的部分。
+	small()	使用小字号来显示字符串。
+	split()	把字符串分割为字符串数组。
+	strike()	使用删除线来显示字符串。
+	sub()	把字符串显示为下标。
+	substr()	从起始索引号提取字符串中指定数目的字符。
+	substring()	提取字符串中两个指定的索引号之间的字符。
+	sup()	把字符串显示为上标。
+	toLocaleLowerCase()	把字符串转换为小写。
+	toLocaleUpperCase()	把字符串转换为大写。
+	toLowerCase()	把字符串转换为小写。
+	toUpperCase()	把字符串转换为大写。
+	toSource()	代表对象的源代码。
+	toString()	返回字符串。
+	valueOf()	返回某个字符串对象的原始值。
+```
+
+- Date
+
+```
+	var cur = new Date();
+	ES5 新增了Date.now()可以获取当前时间的毫秒数
+	常用方法 
+	getFullYear() 取得4位数年份
+	getMonth() 返回月份 从0开始
+	getDate() 返回日期月份中的天数（1到31）
+	getDay() 返回星期几（0是周日，6是周六）
+	getHours() 小时（0-23）
+	getMinutes() 分钟（0-59）
+	getSeconds() 秒（0-59）
+
 ```
 
 - Function
@@ -1231,9 +1304,9 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
 			console.log(sum3(2,3));//5
 ```
 
-5.正则
+5.正则(https://github.com/wenkangzhou/RegularExpression)
 
-6.ES6
+6.ES6(http://es6.ruanyifeng.com/)
 
 
 ##WEB API
@@ -1251,9 +1324,9 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
 
 ```
     定义和用法
-    insertBefore() 方法在您指定的已有子节点之前插入新的子节点。
+    	insertBefore() 方法在您指定的已有子节点之前插入新的子节点。
     语法
-    node.insertBefore(newnode,existingnode)
+    	node.insertBefore(newnode,existingnode)
     参数	类型	描述
     newnode	Node 对象	必需。需要插入的节点对象。
     existingnode	Node object	可选。在其之前插入新节点的子节点。如果未规定，则 insertBefore 方法会在结尾插入 newnode。
@@ -1275,7 +1348,8 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
 
 ```
     定义和用法
-    appendChild() 方法向节点添加最后一个子节点。
+    	appendChild() 方法向节点添加最后一个子节点。
+	PS:效率不如innerHTML
 ```
 
 - childNodes/parentNode
@@ -1334,7 +1408,8 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
         * 如果仅仅想要停止事件冒泡到祖辈元素上，而让这个元素上的其它事件处理函数继续执行，我们可以使用 event.stopPropagation() 来代替。
         * 相当于e.stopPropagation() and return fasle
         */
-        e.stopImmediatePropagation();
+        e.stopImmediatePropagation();
+		扩展：event.preventDefault()方法是用于取消事件的默认行为，例如，当点击提交按钮时阻止对表单的提交
     (2) addEventListener/removeEventListener/attachEvent/detachEvent
         var addMyEvent = function (el,ev,fn){
             if(el.addEventListener){
@@ -1410,7 +1485,7 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
     alert(box.getBoundingClientRect().bottom);      // 元素下边距离页面上边的距离
     alert(box.getBoundingClientRect().left);        // 元素左边距离页面左边的距离
 
-    注意：IE、Firefox3+、Opera9.5、Chrome、Safari支持，在IE中，默认坐标从(2,2)开始计算，导致最终距离比其他浏览器多出两个像素，我们需要做个兼容。
+    注意：IE、Firefox3+、Opera9.5、Chrome、Safari支持，在IE中，默认坐标从(2,2)开始计算，导致最终距离比其他浏览器多出两个像素，我们需要做个兼		容。
     document.documentElement.clientTop;  // 非IE为0，IE为2
     document.documentElement.clientLeft; // 非IE为0，IE为2
     functiongGetRect (element) {
@@ -1440,7 +1515,7 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
     height : (number)
     }
     getClientRects和getBoundingClientRect差异
-        getClientRects返回的其实是个数组，数组中有很多个类似getBoundingClientRect返回的对象。getBoundingClientRect返回的永远是最外框框的那个矩         形区域相关的坐标偏移对象；而getClientRects是多行文字区域的坐标偏移集合，在非IE浏览器下，只对inline的标签有反应。
+        getClientRects返回的其实是个数组，数组中有很多个类似getBoundingClientRect返回的对象。getBoundingClientRect返回的永远是最外框框的那		个矩形区域相关的坐标偏移对象；而getClientRects是多行文字区域的坐标偏移集合，在非IE浏览器下，只对inline的标签有反应。
         一般getBoundingClientRect方法用的多一点。我们可以很容易获取某个元素的偏移值。甚至高宽都能很轻松的计算出来。所以，下载你想用js获取元素的高        宽尺寸，就可以试试getBoundingClientRect方法了。
         对getClientRects和getBoundingClientRect可以得到一个更好的说明.
         getClientRects 返回一个TextRectangle集合，就是TextRectangleList对象。
@@ -1494,7 +1569,7 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
 	screenTop
 	screenX
 	screenY
-	只读整数。声明了窗口的左上角在屏幕上的的 x 坐标和 y 坐标。IE、Safari 和 Opera 支持 screenLeft 和 screenTop，而 Firefox 和 Safari 支持 screenX 和 screenY。
+	只读整数。声明了窗口的左上角在屏幕上的的 x 坐标和 y 坐标。IE、Safari 和 Opera 支持 screenLeft 和 screenTop，而 Firefox 和 Safari 支持 	  screenX 和 screenY。
 	Window 对象方法
 	方法	描述
 	alert()	显示带有一段消息和一个确认按钮的警告框。
@@ -1593,8 +1668,8 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
 
 ```
     1XX：信息状态码
-        100 Continue：客户端应当继续发送请求。这个临时相应是用来通知客户端它的部分请求已经被服务器接收，且仍未被拒绝。客户端应当继续发送请求的剩余部         分，或者如果请求已经完成，忽略这个响应。服务器必须在请求万仇向客户端发送一个最终响应
-        101 Switching Protocols：服务器已经理解力客户端的请求，并将通过Upgrade消息头通知客户端采用不同的协议来完成这个请求。在发送完这个响应最后的         空行后，服务器将会切换到Upgrade消息头中定义的那些协议。
+        100 Continue：客户端应当继续发送请求。这个临时相应是用来通知客户端它的部分请求已经被服务器接收，且仍未被拒绝。客户端应当继续发送请求的剩余			部分，或者如果请求已经完成，忽略这个响应。服务器必须在请求万仇向客户端发送一个最终响应
+        101 Switching Protocols：服务器已经理解力客户端的请求，并将通过Upgrade消息头通知客户端采用不同的协议来完成这个请求。在发送完这个响应最		  后的空行后，服务器将会切换到Upgrade消息头中定义的那些协议。
     2XX：成功状态码
         200 OK：请求成功，请求所希望的响应头或数据体将随此响应返回
         201 Created：
@@ -1649,7 +1724,7 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
         Connection: keep-alive
         Cache-Control: max-age=0
         Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8
-        User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/35.0.1916.153 Safari/537.36
+        User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/35.0.1916.153 				Safari/537.36
         Referer: https://www.google.com.hk/
         Accept-Encoding: gzip,deflate,sdch
         Accept-Language: zh-CN,zh;q=0.8,en;q=0.6
@@ -1700,24 +1775,24 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
         10、Content-Length： WEB 服务器告诉浏览器自己响应的对象的长度。例如：Content-Length: 26012
         11、Content-Range： WEB 服务器表明该响应包含的部分对象为整个对象的哪个部分。例如：Content-Range: bytes 21010-47021/47022
         12、Content-Type： WEB 服务器告诉浏览器自己响应的对象的类型。例如：Content-Type：application/xml
-        13、 ETag：就是一个对象（比如URL）的标志值，就一个对象而言，比如一个 html 文件，如果被修改了，其 Etag 也会别修改，所以ETag 的作用跟 			Last-Modified 的作用差不多，主要供 WEB 服务器判断一个对象是否改变了。比如前一次请求某个 html 文件时，获得了其 ETag，当这次又请求这个文件			时，浏览器就会把先前获得的 ETag 值发送给WEB 服务器，然后 WEB 服务器会把这个 ETag 跟该文件的当前 ETag 进行对比，然后就知道这个文件有没有改		  变了。
-        14、 Expired：WEB服务器表明该实体将在什么时候过期，对于过期了的对象，只有在跟WEB服务器验证了其有效性后，才能用来响应客户请求。是 HTTP/1.0         的头部。例如：Expires：Sat, 23 May 2009 10:02:12 GMT
+        13、 ETag：就是一个对象（比如URL）的标志值，就一个对象而言，比如一个 html 文件，如果被修改了，其 Etag 也会别修改，所以ETag 的作用跟 		Last-Modified 的作用差不多，主要供 WEB 服务器判断一个对象是否改变了。比如前一次请求某个 html 文件时，获得了其 ETag，当这次又请求这			个文件时，浏览器就会把先前获得的 ETag 值发送给WEB 服务器，然后 WEB 服务器会把这个 ETag 跟该文件的当前 ETag 进行对比，然后就知道这个文件		 有没有改变了。
+        14、 Expired：WEB服务器表明该实体将在什么时候过期，对于过期了的对象，只有在跟WEB服务器验证了其有效性后，才能用来响应客户请求。是 				HTTP/1.0的头部。例如：Expires：Sat, 23 May 2009 10:02:12 GMT
         15、 Host：客户端指定自己想访问的WEB服务器的域名/IP 地址和端口号。例如：Host：rss.sina.com.cn
         16、 If-Match：如果对象的 ETag 没有改变，其实也就意味著对象没有改变，才执行请求的动作。
         17、If-None-Match：如果对象的 ETag 改变了，其实也就意味著对象也改变了，才执行请求的动作。
         18、 If-Modified-Since：如果请求的对象在该头部指定的时间之后修改了，才执行请求的动作（比如返回对象），否则返回代码304，告诉浏览器该对象没         有修改。例如：If-Modified-Since：Thu, 10 Apr 2008 09:14:42 GMT
         19、If-Unmodified-Since：如果请求的对象在该头部指定的时间之后没修改过，才执行请求的动作（比如返回对象）。
         20、 If-Range：浏览器告诉 WEB 服务器，如果我请求的对象没有改变，就把我缺少的部分给我，如果对象改变了，就把整个对象给我。浏览器通过发送请求         对象的 ETag 或者 自己所知道的最后修改时间给 WEB 服务器，让其判断对象是否改变了。总是跟 Range 头部一起使用。
-        21、 Last-Modified：WEB 服务器认为对象的最后修改时间，比如文件的最后修改时间，动态页面的最后产生时间等等。例如：Last-Modified：Tue, 06           May 2008 02:42:43 GMT
-        22、 Location：WEB 服务器告诉浏览器，试图访问的对象已经被移到别的位置了，到该头部指定的位置去取。例如：Location：                               http://i0.sinaimg.cn/dy/deco/2008/0528/sinahome_0803_ws_005_text_0.gif
+        21、 Last-Modified：WEB 服务器认为对象的最后修改时间，比如文件的最后修改时间，动态页面的最后产生时间等等。例如：Last-Modified：Tue, 		 06May 2008 02:42:43 GMT
+        22、 Location：WEB 服务器告诉浏览器，试图访问的对象已经被移到别的位置了，到该头部指定的位置去取。例如：Location：                           http://i0.sinaimg.cn/dy/deco/2008/0528/sinahome_0803_ws_005_text_0.gif
         23、 Pramga：主要使用 Pramga: no-cache，相当于 Cache-Control： no-cache。例如：Pragma：no-cache
-        24、 Proxy-Authenticate： 代理服务器响应浏览器，要求其提供代理身份验证信息。Proxy-Authorization：浏览器响应代理服务器的身份验证请求，提		供自己的身份信息。
+        24、 Proxy-Authenticate： 代理服务器响应浏览器，要求其提供代理身份验证信息。Proxy-Authorization：浏览器响应代理服务器的身份验证请求，		   提供自己的身份信息。
         25、 Range：浏览器（比如 Flashget 多线程下载时）告诉 WEB 服务器自己想取对象的哪部分。例如：Range: bytes=1173546-
         26、 Referer：浏览器向 WEB 服务器表明自己是从哪个 网页/URL 获得/点击 当前请求中的网址/URL。例如：Referer：http://www.sina.com/
         27、 Server: WEB 服务器表明自己是什么软件及版本等信息。例如：Server：Apache/2.0.61 (Unix)
-        28、 User-Agent: 浏览器表明自己的身份（是哪种浏览器）。例如：User-Agent：Mozilla/5.0 (Windows; U; Windows NT 5.1; zh-CN;                     rv:1.8.1.14) Gecko/20080404 Firefox/2、0、0、14
-        29、 Transfer-Encoding: WEB 服务器表明自己对本响应消息体（不是消息体里面的对象）作了怎样的编码，比如是否分块（chunked）。例如：Transfer-         Encoding: chunked
-        30、 Vary: WEB服务器用该头部的内容告诉 Cache 服务器，在什么条件下才能用本响应所返回的对象响应后续的请求。假如源WEB服务器在接到第一个请求消         息时，其响应消息的头部为：Content-Encoding: gzip; Vary: Content-Encoding那么 Cache 服务器会分析后续请求消息的头部，检查其 Accept-             Encoding，是否跟先前响应的 Vary 头部值一致，即是否使用相同的内容编码方法，这样就可以防止 Cache 服务器用自己 Cache 里面压缩后的实体响应给			不具备解压能力的浏览器。例如：Vary：Accept-Encoding
+        28、 User-Agent: 浏览器表明自己的身份（是哪种浏览器）。例如：User-Agent：Mozilla/5.0 (Windows; U; Windows NT 5.1; zh-CN;             rv:1.8.1.14) Gecko/20080404 Firefox/2、0、0、14
+        29、 Transfer-Encoding: WEB 服务器表明自己对本响应消息体（不是消息体里面的对象）作了怎样的编码，比如是否分块（chunked）。例如：			Transfer-Encoding: chunked
+        30、 Vary: WEB服务器用该头部的内容告诉 Cache 服务器，在什么条件下才能用本响应所返回的对象响应后续的请求。假如源WEB服务器在接到第一个请求			消息时，其响应消息的头部为：Content-Encoding: gzip; Vary: Content-Encoding那么 Cache 服务器会分析后续请求消息的头部，检查其 			Accept-Encoding，是否跟先前响应的 Vary 头部值一致，即是否使用相同的内容编码方法，这样就可以防止 Cache 服务器用自己 Cache 里面压缩后的		实体响应给不具备解压能力的浏览器。例如：Vary：Accept-Encoding
         31、 Via： 列出从客户端到 OCS 或者相反方向的响应经过了哪些代理服务器，他们用什么协议（和版本）发送的请求。当客户端请求到达第一个代理服务器         时，该服务器会在自己发出的请求里面添加 Via 头部，并填上自己的相关信息，当下一个代理服务器收到第一个代理服务器的请求时，会在自己发出的请求里         面复制前一个代理服务器的请求的Via 头部，并把自己的相关信息加到后面，以此类推，当 OCS 收到最后一个代理服务器的请求时，检查 Via 头部，就知道         该请求所经过的路由。例如：Via：1.0 236.D0707195.sina.com.cn:80 (squid/2.6.STABLE13)
 ```
 
