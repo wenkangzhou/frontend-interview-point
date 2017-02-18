@@ -1661,6 +1661,21 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
 	back()	加载 history 列表中的前一个 URL。
 	forward()	加载 history 列表中的下一个 URL。
 	go()	加载 history 列表中的某个具体页面。
+	HTML5加入history.pushState
+		history.state
+			当前URL下对应的状态信息。如果当前URL不是通过pushState或者replaceState产生的，那么history.state是null。
+		history.pushState(state, title, url)
+			将当前URL和history.state加入到history中，并用新的state和URL替换当前。不会造成页面刷新。
+			state：与要跳转到的URL对应的状态信息。
+			title：不知道干啥用，传空字符串就行了。
+			url：要跳转到的URL地址，不能跨域。
+		history.replaceState
+			用新的state和URL替换当前。不会造成页面刷新。
+			state：与要跳转到的URL对应的状态信息。
+			title：不知道干啥用，传空字符串就行了。
+			url：要跳转到的URL地址，不能跨域。
+		window.onpopstate
+			history.go和history.back（包括用户按浏览器历史前进后退按钮）触发，并且页面无刷的时候（由于使用pushState修改了history）会触发				popstate事件，事件发生时浏览器会从history中取出URL和对应的state对象替换当前的URL和history.state。通过event.state也可以获取				history.state。
 ```
 
 ##HTTP
@@ -1830,4 +1845,5 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
 2.二叉堆
 ##常见面试题
 1.从浏览器地址栏输入url到显示页面的步骤(以HTTP为例)？
+2.Ajax实现过程
 ##坑
