@@ -33,7 +33,7 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
     static 默认
     relative 相对定位
     absolute 绝对定位 飘出文档流
-    如果一个元素绝对定位后，其参照物是以离自身最近元素是否设置了相对定位，如果有设置将以离自己最近元素定位，如果没有将往其祖先元素寻找相对定位元素，     一直找到html为止。
+    	如果一个元素绝对定位后，其参照物是以离自身最近元素是否设置了相对定位，如果有设置将以离自己最近元素定位，如果没有将往其祖先元素寻找相对定位元		  素，一直找到html为止。
     fixed 固定 属于绝对定位
     inherit 规定应该从父元素继承 position 属性的值
 ```
@@ -45,6 +45,90 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
     block 此元素将显示为块级元素，此元素前后会带有换行符。
     inline-block 行内块元素。
     flex（早期版本叫box） 将对象作为弹性伸缩盒显示。（http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html）
+	
+	总体概念
+		block和inline这两个概念是简略的说法，完整确切的说应该是 block-level elements (块级元素) 和 inline elements (内联元素)。block元素		  通常被现实为独立的一块，会单独换一行；inline元素则前后不会产生换行，一系列inline元素都在一行内显示，直到该行排满。
+		大体来说HTML元素各有其自身的布局级别（block元素还是inline元素）：
+		常见的块级元素有 DIV, FORM, TABLE, P, PRE, H1~H6, DL, OL, UL 等。
+		常见的内联元素有 SPAN, A, STRONG, EM, LABEL, INPUT, SELECT, TEXTAREA, IMG, BR 等。
+		block元素可以包含block元素和inline元素；但inline元素只能包含inline元素。要注意的是这个是个大概的说法，每个特定的元素能包含的元素也是特		 定的，所以具体到个别元素上，这条规律是不适用的。比如 P 元素，只能包含inline元素，而不能包含block元素。
+		一般来说，可以通过display:inline和display:block的设置，改变元素的布局级别。
+	block，inline和inlinke-block细节对比
+		display:block
+			block元素会独占一行，多个block元素会各自新起一行。默认情况下，block元素宽度自动填满其父元素宽度。
+			block元素可以设置width,height属性。块级元素即使设置了宽度,仍然是独占一行。
+			block元素可以设置margin和padding属性。
+		display:inline
+			inline元素不会独占一行，多个相邻的行内元素会排列在同一行里，直到一行排列不下，才会新换一行，其宽度随元素的内容而变化。
+			inline元素设置width,height属性无效。
+			inline元素的margin和padding属性，水平方向的padding-left, padding-right, margin-left, margin-right都产生边距效果；但竖直方			 向的padding-top, padding-bottom, margin-top, margin-bottom不会产生边距效果。
+		display:inline-block
+			简单来说就是将对象呈现为inline对象，但是对象的内容作为block对象呈现。之后的内联对象会被排列在同一行内。比如我们可以给一个link（a元				素）inline-block属性值，使其既具有block的宽度高度特性又具有inline的同行特性。
+	Flex
+		flex-direction 属性决定主轴的方向（即项目的排列	方向）
+			.box {
+			  flex-direction: row | row-reverse | column | column-reverse;
+			}
+		flex-wrap 属性定义，如果一条轴线排不下，如何换行
+			.box{
+			  flex-wrap: nowrap | wrap | wrap-reverse(换行，第一行在下方);
+			}
+		flex-flow 是flex-direction属性和flex-wrap属性的简写形式，默认值为row nowrap
+			.box {
+			  flex-flow: <flex-direction> || <flex-wrap>;
+			}
+		justify-content 属性定义了项目在主轴上的对齐方式
+			.box {
+			  justify-content: flex-start | flex-end | center | space-between | space-around;
+			}
+			flex-start（默认值）：左对齐
+			flex-end：右对齐
+			center： 居中
+			space-between：两端对齐，项目之间的间隔都相等。
+			space-around：每个项目两侧的间隔相等。所以，项目之间的间隔比项目与边框的间隔大一倍
+		align-items 属性定义项目在交叉轴上如何对齐
+			.box {
+			  align-items: flex-start | flex-end | center | baseline | stretch;
+			}
+			flex-start：交叉轴的起点对齐。
+			flex-end：交叉轴的终点对齐。
+			center：交叉轴的中点对齐。
+			baseline: 项目的第一行文字的基线对齐。
+			stretch（默认值）：如果项目未设置高度或设为auto，将占满整个容器的高度。
+		align-content 属性定义了多根轴线的对齐方式。如果项目只有一根轴线，该属性不起作用
+			box {
+			  align-content: flex-start | flex-end | center | space-between | space-around | stretch;
+			}
+			flex-start：与交叉轴的起点对齐。
+			flex-end：与交叉轴的终点对齐。
+			center：与交叉轴的中点对齐。
+			space-between：与交叉轴两端对齐，轴线之间的间隔平均分布。
+			space-around：每根轴线两侧的间隔都相等。所以，轴线之间的间隔比轴线与边框的间隔大一倍。
+			stretch（默认值）：轴线占满整个交叉轴。
+		order 属性定义项目的排列顺序。数值越小，排列越靠前，默认为0
+			.item {
+			  order: <integer>;
+			}
+		flex-grow 属性定义项目的放大比例，默认为0，即如果存在剩余空间，也不放大
+			.item {
+			  flex-grow: <number>; /* default 0 */
+			}
+		flex-shrink 属性定义了项目的缩小比例，默认为1，即如果空间不足，该项目将缩小
+			.item {
+			  flex-shrink: <number>; /* default 1 */
+			}
+		flex-basis 属性定义了在分配多余空间之前，项目占据的主轴空间（main size）
+			.item {
+			  flex-basis: <length> | auto; /* default auto */
+			}
+		flex 属性是flex-grow, flex-shrink 和 flex-basis的简写，默认值为0 1 auto
+			.item {
+			  flex: none | [ <'flex-grow'> <'flex-shrink'>? || <'flex-basis'> ]
+			}
+		align-self 属性允许单个项目有与其他项目不一样的对齐方式，可覆盖align-items属性
+			.item {
+			  align-self: auto | flex-start | flex-end | center | baseline | stretch;
+			}
 ```
 
 - float、clear
@@ -56,13 +140,14 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
     内联元素：有空隙就插入。
     
     <div style="clear:both"></div>
+	
     .clearfix:after {
         content: ".";
         display: block;
         height: 0;
         clear: both;
-        visibility: hidden;
-    }
+        visibility: hidden;//display:none不占用位置 visibility占用
+    }
  ```
  
 - 盒子模型
@@ -82,16 +167,16 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
  
 ```
     line-height（http://www.studyofnet.com/news/273.html）:
-        “行高“指一行文字的高度，具体来说是指两行文字间基线间的距离。在CSS，line-height被用来控制行与行之间的垂直距离。line-height 属性会影响行框	  的布局。在应用到一个块级元素时，它定义了该元素中基线之间的最小距离而不是最大距离。
-        从上到下四条线分别是顶线、中线、基线、底线，很像才学英语字母时的四线三格，我们知道vertical-align属性中有top、middle、baseline、bottom，	      就是和这四条线相关。
+        “行高“指一行文字的高度，具体来说是指两行文字间基线间的距离。在CSS，line-height被用来控制行与行之间的垂直距离。line-height 属性会影响行		 框的布局。在应用到一个块级元素时，它定义了该元素中基线之间的最小距离而不是最大距离。
+        从上到下四条线分别是顶线、中线、基线、底线，很像才学英语字母时的四线三格，我们知道vertical-align属性中有top、middle、baseline、				bottom，就是和这四条线相关。
         行高是指上下文本行的基线间的垂直距离，即图中两条红线间垂直距离。
         行距是指一行底线到下一行顶线的垂直距离，即第一行粉线和第二行绿线间的垂直距离。
         半行距是行距的一半，即区域3垂直距离/2，区域1，2，3，4的距离之和为行高，而区域1，2，4距离之和为字体size，所以半行距也可以这么算：（行高-字	    体size）/2
     vertical-align（http://www.zhangxinxu.com/wordpress/2010/05/%E6%88%91%E5%AF%B9css-vertical-align%E7%9A%84%E4%B8%80%E4%BA%9B%E7%90%86%E8%A7%A3%E4%B8%8E%E8%AE%A4%E8%AF%86%EF%BC%88%E4%B8%80%EF%BC%89/）
         定义和用法
-        vertical-align 属性设置元素的垂直对齐方式。
+        	vertical-align 属性设置元素的垂直对齐方式。
         说明
-        该属性定义行内元素的基线相对于该元素所在行的基线的垂直对齐。允许指定负长度值和百分比值。这会使元素降低而不是升高。在表单元格中，这个属性会设         置单元格框中的单元格内容的对齐方式。
+        	该属性定义行内元素的基线相对于该元素所在行的基线的垂直对齐。允许指定负长度值和百分比值。这会使元素降低而不是升高。在表单元格中，这个属性			会设置单元格框中的单元格内容的对齐方式。
         值	描述
         长度	通过距离升高（正值）或降低（负值）元素。'0cm'等同于'baseline'
         百分值 – %	通过距离（相对于1line-height1值的百分大小）升高（正值）或降低（负值）元素。'0%'等同于'baseline'
@@ -111,7 +196,7 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
 ```
     whitespace
         定义和用法
-        white-space 属性设置如何处理元素内的空白。
+        	white-space 属性设置如何处理元素内的空白。
         值	描述
         normal	默认。空白会被浏览器忽略。
         pre	空白会被浏览器保留。其行为方式类似 HTML 中的 <pre> 标签。
@@ -119,7 +204,7 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
         pre-wrap	保留空白符序列，但是正常地进行换行。
         pre-line	合并空白符序列，但是保留换行符。
         inherit	规定应该从父元素继承 white-space 属性的值。
-    wordbreak
+    word-break
         定义和用法
         word-break 属性规定自动换行的处理方法。
         值	描述
@@ -133,7 +218,7 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
         normal	只在允许的断字点换行（浏览器保持默认处理）。
         break-word	在长单词或 URL 地址内部进行换行。
     区别
-        word-wrap:break-word与word-break:break-all共同点是都能把长单词强行断句，不同点是word-wrap:break-word会首先起一个新行来放置长单词，新的         行还是放不下这个长单词则会对长单词进行强制断句；而word-break:break-all则不会把长单词放在一个新行里，当这一行放不下的时候就直接强制断句了。
+        word-wrap:break-word与word-break:break-all共同点是都能把长单词强行断句，不同点是word-wrap:break-word会首先起一个新行来放置长单		 词，新的行还是放不下这个长单词则会对长单词进行强制断句；而word-break:break-all则不会把长单词放在一个新行里，当这一行放不下的时候就直接强			制断句了。
 ```
  
 2.绘制
@@ -175,9 +260,9 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
  
 ```
     定义和用法
-    transform 属性向元素应用 2D 或 3D 转换。该属性允许我们对元素进行旋转、缩放、移动或倾斜。
+    	transform 属性向元素应用 2D 或 3D 转换。该属性允许我们对元素进行旋转、缩放、移动或倾斜。
     语法
-    transform: none|transform-functions;
+    t	ransform: none|transform-functions;
     值	描述	
     none	定义不进行转换。	
     matrix(n,n,n,n,n,n)	定义 2D 转换，使用六个值的矩阵。	
@@ -218,7 +303,7 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
  
 ```
     语法
-    transition: property duration timing-function delay;
+    	transition: property duration timing-function delay;
     值	描述
     transition-property	规定设置过渡效果的 CSS 属性的名称。
     transition-duration	规定完成过渡效果需要多少秒或毫秒。
@@ -233,7 +318,7 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
         ease-out	规定以慢速结束的过渡效果（等于 cubic-bezier(0,0,0.58,1)）。
         ease-in-out	规定以慢速开始和结束的过渡效果（等于 cubic-bezier(0.42,0,0.58,1)）。
         cubic-bezier(n,n,n,n)	在 cubic-bezier 函数中定义自己的值。可能的值是 0 至 1 之间的数值。
-    transition-delay	定义过渡效果何时开始。
+    	transition-delay	定义过渡效果何时开始。
     例子
         <style> 
         div
@@ -258,7 +343,7 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
  
  ```
     语法
-    animation: name duration timing-function delay iteration-count direction;
+    	animation: name duration timing-function delay iteration-count direction;
     值	描述
     animation-name	规定需要绑定到选择器的 keyframe 名称。。
     animation-duration	规定完成动画所花费的时间，以秒或毫秒计。
@@ -327,8 +412,8 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
 		  position: absolute;  
 		  top: 50%; left: 50%;  
 		  -webkit-transform: translate(-50%,-50%);  
-			  -ms-transform: translate(-50%,-50%);  
-				  transform: translate(-50%,-50%);  
+		  -ms-transform: translate(-50%,-50%);  
+		  transform: translate(-50%,-50%);  
 		}  
 	(4)表格单元格（Table-Cell）
 		<div class="Center-Container is-Table">  
@@ -354,6 +439,31 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
 		   justify-content: center;
 		   align-items: center;
 		}
+	(6)单行内容的居中
+		只要给容器设置 line-height 和 height，并使两值相等，再加上 over-flow: hidden 就可以了
+		.middle-demo-1{
+			height: 4em;
+			line-height: 4em;
+			overflow: hidden;
+		}
+	(7)常规		
+		<style>
+			html,body {
+				width: 100%;
+				height: 100%;
+				margin: 0;
+				padding: 0;
+			}
+			.content {
+				width: 300px;
+				height: 300px;
+				background: orange;
+				margin: 0 auto; /*水平居中*/
+				position: relative; 
+				top: 50%; /*偏移*/
+				margin-top: -150px; 
+			}
+		</style>
 ```
 
 - 水平居中
@@ -361,17 +471,17 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
 
 ```
 	(1)如果需要居中的元素为常规流中inline元素，为父元素设置text-align: center;即可实现
-	(2)如果需要居中的元素为常规流中block元素，
+	(2)如果需要居中的元素为常规流中block元素（margin: 0 auto）
 		1）为元素设置宽度，
 		2）设置左右margin为auto,
 		3）IE6下需在父元素上设置text-align: center;
-		4) 再给子元素	恢复需要的值
-	(3)如果需要居中的元素为浮动元素，
+		4) 再给子元素恢复需要的值
+	(3)如果需要居中的元素为浮动元素
 		1）为元素设置宽度，
 		2）position: relative，
 		3）浮动方向偏移量（left或者right）设置为50%，
 		4）浮动方向上的margin设置为元素宽度一半乘以-1
-	(4)如果需要居中的元素为绝对定位元素，
+	(4)如果需要居中的元素为绝对定位元素(with:200px left:50% position:releate margin-left:-100px)
 		1）为元素设置宽度，
 		2）偏移量设置为50%，
 		3）偏移方向外边距设置为元素宽度一半乘以-1
@@ -384,16 +494,70 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
 - 多列等高
 
 ```
-	(1)大的margin-bottom。这种技术的关键是给每个框设置大的底内边距，然后用数值相似的负外边距消除这个高度。这会导致每个列溢出容器元素。如果把容器的overflow属性设置	 为hidden,列就在最高点被裁切。		
+	(1)大的margin-bottom。这种技术的关键是给每个框设置大的底内边距，然后用数值相似的负外边距消除这个高度。这会导致每个列溢出容器元素。如果把容器的		overflow属性设为hidden,列就在最高点被裁切。	
+		<div id="wrap">
+			<div id="left">
+				<p>left</p>
+			</div>
+			<div id="center">
+				<p>center</p>
+			</div>
+			<div id="right">
+				<p>right</p>
+			</div>
+		</div>
+		{
+            margin: 0;
+            padding: 0;
+        }
+        #wrap
+        {
+            overflow: hidden;
+            width: 1000px;
+            margin: 0 auto;
+        }
+        #left, #center, #right
+        {
+            margin-bottom: -10000px;
+            padding-bottom: 10000px;
+        }
+        #left
+        {
+            float: left;
+            width: 250px;
+            background: #00FFFF;
+        }
+        #center
+        {
+            float: left;
+            width: 500px;
+            background: #FF0000;
+        }
+        #right
+        {
+            float: right;
+            width: 250px;
+            background: #00FF00;
+        }
 	(2)背景图片、背景色实现假等高
 	(3)css3 column-count
+		.newspaper
+		{
+		-moz-column-count:3; /* Firefox */
+		-webkit-column-count:3; /* Safari and Chrome */
+		column-count:3;
+		}
 ```
 
 - 自适应宽
 
 ```
-	(1)百分比
+   （1）百分比
    （2）@media screen 
+   		@media (max-width: 600px) {
+		  .facet_sidebar {
+			display: none;
+		}
    （3）flex
    （4）<meta name=”viewport” content=”width=device-width, initial-scale=1″ />
    （5）相对大小的字体em
@@ -444,7 +608,7 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
 ```
     BFC 定义
 　　    BFC布局规则：BFC(Block formatting context)直译为"块级格式化上下文"。
-		它是一个独立的渲染区域，只有Block-level box参与， 它规定了内部的Block-level Box如何布局，并且与这个区域外部毫不相干。
+	   它是一个独立的渲染区域，只有Block-level box参与， 它规定了内部的Block-level Box如何布局，并且与这个区域外部毫不相干。
     BFC布局规则：
         内部的Box会在垂直方向，一个接一个地放置。
         Box垂直方向的距离由margin决定。属于同一个BFC的两个相邻Box的margin会发生重叠
@@ -468,7 +632,7 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
 
 1.基本概念
 
-- 标识符：首字母字母、下划线、美元符号，其它多一个数字
+- 标识符：首字母可以是字母、下划线、美元符号，其它多一个数字
 
 - 基本数据类型：Undefined、Null、String、Number、Boolean
 
@@ -498,6 +662,7 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
 ```
 	person instanceof Object //person是Object的吗？
 ```
+
 
 2.函数
 
