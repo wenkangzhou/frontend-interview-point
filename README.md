@@ -2,7 +2,7 @@
 ##HTML
 1.viewport meta
 ```javascript
-    <meta name ="viewport" content ="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no"> 
+    <meta name ="viewport" content ="width=device-width,initial-scale=1,maximum-scale=1, minimum-scale=1, user-scalable=no"> 
     width  　　　　 viewport 宽度(数值/device-width)   
     height         viewport 高度(数值/device-height)   
     initial-scale  初始缩放比例   
@@ -1652,6 +1652,7 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
 ```
 
 - history对象
+
 ```
 	History 对象属性
 	属性	描述
@@ -1679,6 +1680,7 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
 ```
 
 ##HTTP
+
 1.状态码
 
 ```
@@ -1824,12 +1826,19 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
     DELETE请求服务器删除请求URL指定的资源
 ```
 ##常见框架
-1.vue 
-2.react 
+
+1.vue
+
+2.react
+
 3.angular
+
 ##模块化开发
+
 1.AMD（RequireJS）
+
 2.CMD（SeaJS）
+
 3.CommonJS
 
 ```
@@ -1872,9 +1881,13 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
 	3. AMD 的 API 默认是一个当多个用，CMD 的 API 严格区分，推崇职责单一。比如 AMD 里，require 分全局 require 和局部 require，都叫 			require。CMD 里，没有全局 require，而是根据模块系统的完备性，提供 seajs.use 来实现模块系统的加载启动。CMD 里，每个 API 都简单纯粹。
 ```
 ##构建工具
+
 1.Grunt
+
 2.Gulp
+
 3.Webpack
+
 4.区别
 
 ```
@@ -2117,8 +2130,38 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
 ##算法
 
 1.排序
-2.搜索   
-3.动态规划
+
+```
+http://blog.csdn.net/chenke__hxx/article/details/12500813堆排序
+
+```
+
+2.搜索
+
+```
+	1.二分搜索
+		function binarySearch(data, dest, start, end){  
+			var end = end || data.length - 1,  
+				start = start || 0,  
+				m = Math.floor((start + end) / 2);  
+			if(data[m] == dest){  
+				return m;  
+			}  
+			if(dest < data[m]){  
+				return binarySearch(data, dest, 0, m-1);  
+			}else{  
+				return binarySearch(data, dest, m+1, end);  
+			}  
+
+			return false;  
+		}  
+		var arr = [-34, 1, 3, 4, 5, 8, 34, 45, 65, 87];  
+		binarySearch(arr,4);  
+```
+
+3.动态规划（http://blog.jobbole.com/83949/）
+
+
 4.二叉树（http://blog.csdn.net/wbxx727124/article/details/52292832）
 
 ##数据结构
@@ -2142,9 +2185,13 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
 ```
 
 ##常见面试题
+
 1.从浏览器地址栏输入url到显示页面的步骤(以HTTP为例)？
+
 2.Ajax实现过程
+
 3.深浅复制
+
 4.跨域方式
 
 
