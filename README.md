@@ -1792,7 +1792,7 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
         10、Content-Length： WEB 服务器告诉浏览器自己响应的对象的长度。例如：Content-Length: 26012
         11、Content-Range： WEB 服务器表明该响应包含的部分对象为整个对象的哪个部分。例如：Content-Range: bytes 21010-47021/47022
         12、Content-Type： WEB 服务器告诉浏览器自己响应的对象的类型。例如：Content-Type：application/xml
-        13、 ETag：就是一个对象（比如URL）的标志值，就一个对象而言，比如一个 html 文件，如果被修改了，其 Etag 也会别修改，所以ETag 的作用跟 			Last-Modified 的作用差不多，主要供 WEB 服务器判断一个对象是否改变了。比如前一次请求某个 html 文件时，获得了其 ETag，当这次又请求这			个文件时，浏览器就会把先前获得的 ETag 值发送给WEB 服务器，然后 WEB 服务器会把这个 ETag 跟该文件的当前 ETag 进行对比，然后就知道这个文件		 有没有改变了。
+        13、 ETag：就是一个对象（比如URL）的标志值，就一个对象而言，比如一个 html 文件，如果被修改了，其 Etag 也会别修改，所以ETag 的作用跟 			Last-Modified 的作用差不多，主要供 WEB 服务器判断一个对象是否改变了。比如前一次请求某个 html 文件时，获得了其 ETag，当这次又请求这			个文件时，浏览器就会把先前获得的 ETag 值发送给WEB 服务器，然后 WEB 服务器会把这个 ETag 跟该文件的当前 ETag 进行对比，然后就知道这个			   文件有没有改变了。
         14、 Expired：WEB服务器表明该实体将在什么时候过期，对于过期了的对象，只有在跟WEB服务器验证了其有效性后，才能用来响应客户请求。是 				HTTP/1.0的头部。例如：Expires：Sat, 23 May 2009 10:02:12 GMT
         15、 Host：客户端指定自己想访问的WEB服务器的域名/IP 地址和端口号。例如：Host：rss.sina.com.cn
         16、 If-Match：如果对象的 ETag 没有改变，其实也就意味著对象没有改变，才执行请求的动作。
@@ -1809,7 +1809,7 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
         27、 Server: WEB 服务器表明自己是什么软件及版本等信息。例如：Server：Apache/2.0.61 (Unix)
         28、 User-Agent: 浏览器表明自己的身份（是哪种浏览器）。例如：User-Agent：Mozilla/5.0 (Windows; U; Windows NT 5.1; zh-CN;             		rv:1.8.1.14) Gecko/20080404 Firefox/2、0、0、14
         29、 Transfer-Encoding: WEB 服务器表明自己对本响应消息体（不是消息体里面的对象）作了怎样的编码，比如是否分块（chunked）。例如：				Transfer-Encoding: chunked
-        30、 Vary: WEB服务器用该头部的内容告诉 Cache 服务器，在什么条件下才能用本响应所返回的对象响应后续的请求。假如源WEB服务器在接到第一个请求			消息时，其响应消息的头部为：Content-Encoding: gzip; Vary: Content-Encoding那么 Cache 服务器会分析后续请求消息的头部，检查其 				Accept-Encoding，是否跟先前响应的 Vary 头部值一致，即是否使用相同的内容编码方法，这样就可以防止 Cache 服务器用自己 Cache 里面压缩后的		实体响应给不具备解压能力的浏览器。例如：Vary：Accept-Encoding
+        30、 Vary: WEB服务器用该头部的内容告诉 Cache 服务器，在什么条件下才能用本响应所返回的对象响应后续的请求。假如源WEB服务器在接到第一个请求			消息时，其响应消息的头部为：Content-Encoding: gzip; Vary: Content-Encoding那么 Cache 服务器会分析后续请求消息的头部，检查其 			Accept-Encoding，是否跟先前响应的 Vary 头部值一致，即是否使用相同的内容编码方法，这样就可以防止 Cache 服务器用自己 Cache 里面压缩后的		实体响应给不具备解压能力的浏览器。例如：Vary：Accept-Encoding
         31、 Via： 列出从客户端到 OCS 或者相反方向的响应经过了哪些代理服务器，他们用什么协议（和版本）发送的请求。当客户端请求到达第一个代理服务器         时，该服务器会在自己发出的请求里面添加 Via 头部，并填上自己的相关信息，当下一个代理服务器收到第一个代理服务器的请求时，会在自己发出的请求里         面复制前一个代理服务器的请求的Via 头部，并把自己的相关信息加到后面，以此类推，当 OCS 收到最后一个代理服务器的请求时，检查 Via 头部，就知道         该请求所经过的路由。例如：Via：1.0 236.D0707195.sina.com.cn:80 (squid/2.6.STABLE13)
 ```
 
@@ -1982,11 +1982,11 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
 			开启Gzip，Gzip的思想就是把文件先在服务器端进行压缩，且压缩率达到85%，然后再传输，传输完毕后浏览器会 重新对压缩过的内容进行解压缩，并执			 行。。好处在于Gzip的支持已经很好，且爬虫可识别，压缩率达到66%-85%显著减少了文件传输的大小。另外，gzip对pdf文件的压缩效果不大，而且会			浪费CPU。
 		2.3 合理使用静态资源域名
 			域名的要求是短小且独立。
-			短小可以减少头部开销，因为域名越短请求头起始行的 URI 就越短。之所以要求独立，因为独立域名不会共享主域的 Cookie，可以有效减小请求头大			小，这个策略一般称之为 Cookie-Free Domain；另外一个原因是浏览器对相同域名的并发连接数限制，一般允许同域名并发 6~8 个连接，域名不是			 	越多越好，每个域名的第一个连接都要经历 DNS 查询（DNS Lookup），导致会耗费一定的时间，控制域名使用在2-4个之间。另外注意：同一静态资源				在不同页面被散列到不同子域下，会导致无法利用 HTTP 缓存。
+			短小可以减少头部开销，因为域名越短请求头起始行的 URI 就越短。之所以要求独立，因为独立域名不会共享主域的 Cookie，可以有效减小请求头大			小，这个策略一般称之为 Cookie-Free Domain；另外一个原因是浏览器对相同域名的并发连接数限制，一般允许同域名并发 6~8 个连接，域名不是			 越多越好，每个域名的第一个连接都要经历 DNS 查询（DNS Lookup），导致会耗费一定的时间，控制域名使用在2-4个之间。另外注意：同一静态资源			在不同页面被散列到不同子域下，会导致无法利用 HTTP 缓存。
 		2.4 使用HTTP 2
 			HTTP 2 相比 HTTP 1.1 的更新大部分集中于：
 			多路复用：多路复用很好地解决如何让重要资源尽快加载这个问题。同域名下或者不同域但是同时满足同一个 IP以及使用同一个证书的这两个条件中的所			 有通信都在单个连接上完成，此连接上同时打开任意数量的双向数据流（ HTTP 1.1 有连接数限制）。使用多域名加上相同的 IP 和证书部署 Web 服务			 有特殊的意义：让支持 HTTP/2 的终端只建立一个连接，用上 HTTP/2 协议带来的各种好处；而只支持 HTTP/1.1 的终端则会建立多个连接，达到同				时更多并发请求的目的。
-			HEAD 压缩：HTTP/2 将请求和响应数据分割为更小的帧，并对它们采用二进制编码（ Binary Framing ）。在 HTTP/1 中，HTTP 请求和响应都是				由「状态行、请求 / 响应头部、消息主体」三部分组成，状态行和头部却没有经过任何压缩，直接以纯文本传输。在 HTTP/2 中，每个数据流都以消息			的形式发送，而消息又由一个或多个帧组成。多个帧之间可以乱序发送，因为根据帧首部的流标识可以重新组装。
+			HEAD 压缩：HTTP/2 将请求和响应数据分割为更小的帧，并对它们采用二进制编码（ Binary Framing ）。在 HTTP/1 中，HTTP 请求和响应都是			由「状态行、请求 / 响应头部、消息主体」三部分组成，状态行和头部却没有经过任何压缩，直接以纯文本传输。在 HTTP/2 中，每个数据流都以消息			的形式发送，而消息又由一个或多个帧组成。多个帧之间可以乱序发送，因为根据帧首部的流标识可以重新组装。
 			请求优先级：服务器可以根据流的优先级，控制资源分配(CPU、内存、带宽)，而在响应数据准备好之后，优先将最高优先级的帧发送给客户端。
 			服务器推送：启动Server Push，意味着服务端可以在发送页面HTML时主动推送其它资源，有自己独立的URL，可以被浏览器缓存；如果服务端推送的资				源已经被浏览器缓存过，浏览器可以通过发送 RST_STREAM 帧来拒收。
 	3.学会持家，让家变得简洁漂亮-客户端
@@ -2079,8 +2079,8 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
 		3.3.3 iframe 沙箱环境
 			利用iframe进行跨源：HTML5为iframe提供了安全属性 sandbox，iframe的能力将会被限制。
 		3.3.4 Secure和HttpOnly属性
-			Secure能确保cookie的内容只能通过SSL连接进行传输。Secure和HttpOnly属性告诉浏览器cookie的内容只能分别通过HTTP(S)协议进行访问，从而			 	避免了被轻易窃取，比如禁止从JavaScript中的document.cookie访问，因此cookie在浏览器document中不可见了。如果单独使用的话，无法全面				抵御跨站点脚本攻击，通常和其他技术组合使用。使用方法如下：
-				Set-Cookie: <name>=<value>[; <name>=<value>] [; expires=<date>][; domain=<domain_name>][; path=<some_path>][; 				 		secure][; HttpOnly]
+			Seure能确保cookie的内容只能通过SSL连接进行传输。Secure和HttpOnly属性告诉浏览器cookie的内容只能分别通过HTTP(S)协议进行访问，从而			避免了被轻易窃取，比如禁止从JavaScript中的document.cookie访问，因此cookie在浏览器document中不可见了。如果单独使用的话，无法全面				抵御跨站点脚本攻击，通常和其他技术组合使用。使用方法如下：
+			Set-Cookie: <name>=<value>[; <name>=<value>] [; expires=<date>][; domain=<domain_name>][; path=<some_path>][; 				 		secure][; HttpOnly]
 		3.3.5 其他安全相关的HTTP头
 			X-Content-Type-Options 告诉浏览器相信此服务器下发的资源的类型，防止类型嗅探攻击。
 			HPKP(Public Key Pinning) Public Key Pinning 是一个response 头，用来检测一个证书的公钥是否发生了改变，防止中间人攻击。
@@ -2111,7 +2111,7 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
 	1 语义化
 		标签语义化对搜索引擎友好，良好的结构和语义容易被搜索引擎抓取。
 		善用标题h1，h2，h3，h4，h5，h6，特别是h1和h2；H(x)标签中使用关键字，可提升排名。同时设置 rel=“nofollow”避免权重流失。
-		使用 HTML5 中的 Microdata 对 Web 页面上已经存在的数据提供附加的语义。Microdata 由名字 / 值（name/value）对组成，每一个词汇表定义一组		 	命名的属性。对 Microdata 的支持可以影响搜索结果的显示，使得显示结果更加丰富，虽然不能影响搜索结果的排名，但是网站的流量可能会有所增加。类似		的技术还有资源描述框架RDF、微格式Microformat 。
+		使用 HTML5 中的 Microdata 对 Web 页面上已经存在的数据提供附加的语义。Microdata 由名字 / 值（name/value）对组成，每一个词汇表定义一组		 命名的属性。对 Microdata 的支持可以影响搜索结果的显示，使得显示结果更加丰富，虽然不能影响搜索结果的排名，但是网站的流量可能会有所增加。类似		的技术还有资源描述框架RDF、微格式Microformat 。
 	2 衡量站点关键词优化
 		站点内容以及关键词的选择。
 		描述标签、关键词标签、代替属性。
@@ -2437,11 +2437,205 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
 
 1.从浏览器地址栏输入url到显示页面的步骤(以HTTP为例)？
 
-2.Ajax实现过程
+```
+	1.在浏览器地址栏输入URL
+	2.浏览器查看缓存，如果请求资源在缓存中并且新鲜，跳转到转码步骤
+		2.1如果资源未缓存，发起新请求
+		2.2如果已缓存，检验是否足够新鲜，足够新鲜直接提供给客户端，否则与服务器进行验证。
+		2.3检验新鲜通常有两个HTTP头进行控制Expires和Cache-Control：
+			HTTP1.0提供Expires，值为一个绝对时间表示缓存新鲜日期
+			HTTP1.1增加了Cache-Control: max-age=,值为以秒为单位的最大新鲜时间
+	3.浏览器解析URL获取协议，主机，端口，path
+	4.浏览器组装一个HTTP（GET）请求报文
+	5.浏览器获取主机ip地址，过程如下：
+		浏览器缓存
+		本机缓存
+		hosts文件
+		路由器缓存
+		ISP DNS缓存
+		DNS递归查询（可能存在负载均衡导致每次IP不一样）
+	6.打开一个socket与目标IP地址，端口建立TCP链接，三次握手如下：
+		客户端发送一个TCP的SYN=1，Seq=X的包到服务器端口
+		服务器发回SYN=1， ACK=X+1， Seq=Y的响应包
+		客户端发送ACK=Y+1， Seq=Z
+	7.TCP链接建立后发送HTTP请求
+	8.服务器接受请求并解析，将请求转发到服务程序，如虚拟主机使用HTTP Host头部判断请求的服务程序
+	9.服务器检查HTTP请求头是否包含缓存验证信息如果验证缓存新鲜，返回304等对应状态码
+	10.处理程序读取完整请求并准备HTTP响应，可能需要查询数据库等操作
+	11.服务器将响应报文通过TCP连接发送回浏览器
+	12.浏览器接收HTTP响应，然后根据情况选择关闭TCP连接或者保留重用，关闭TCP连接的四次握手如下：
+		主动方发送Fin=1， Ack=Z， Seq= X报文
+		被动方发送ACK=X+1， Seq=Z报文
+		被动方发送Fin=1， ACK=X， Seq=Y报文
+		主动方发送ACK=Y， Seq=X报文
+	13.浏览器检查响应状态吗：是否为1XX，3XX， 4XX， 5XX，这些情况处理与2XX不同
+	14.如果资源可缓存，进行缓存
+	15.对响应进行解码（例如gzip压缩）
+	16.根据资源类型决定如何处理（假设资源为HTML文档）
+	17.解析HTML文档，构件DOM树，下载资源，构造CSSOM树，执行js脚本，这些操作没有严格的先后顺序，以下分别解释
+	18.构建DOM树：
+		Tokenizing：根据HTML规范将字符流解析为标记
+		Lexing：词法分析将标记转换为对象并定义属性和规则
+		DOM construction：根据HTML标记关系将对象组成DOM树
+	19.解析过程中遇到图片、样式表、js文件，启动下载
+	20.构建CSSOM树：
+		Tokenizing：字符流转换为标记流
+		Node：根据标记创建节点
+		CSSOM：节点创建CSSOM树
+	21.根据DOM树和CSSOM树构建渲染树:
+		从DOM树的根节点遍历所有可见节点，不可见节点包括：1）script,meta这样本身不可见的标签。2)被css隐藏的节点，如display: none
+		对每一个可见节点，找到恰当的CSSOM规则并应用
+		发布可视节点的内容和计算样式
+	22.js解析如下：
+		浏览器创建Document对象并解析HTML，将解析到的元素和文本节点添加到文档中，此时document.readystate为loading
+		HTML解析器遇到没有async和defer的script时，将他们添加到文档中，然后执行行内或外部脚本。这些脚本会同步执行，并且在脚本下载和执行时解析器会		  暂停。这样就可以用document.write()把文本插入到输入流中。同步脚本经常简单定义函数和注册事件处理程序，他们可以遍历和操作script和他们之前的		 文档内容
+		当解析器遇到设置了async属性的script时，开始下载脚本并继续解析文档。脚本会在它下载完成后尽快执行，但是解析器不会停下来等它下载。异步脚本禁止		   使用document.write()，它们可以访问自己script和之前的文档元素
+		当文档完成解析，document.readState变成interactive
+		所有defer脚本会按照在文档出现的顺序执行，延迟脚本能访问完整文档树，禁止使用document.write()
+		浏览器在Document对象上触发DOMContentLoaded事件
+		此时文档完全解析完成，浏览器可能还在等待如图片等内容加载，等这些内容完成载入并且所有异步脚本完成载入和执行，document.readState变为				complete,window触发load事件
+	23.显示页面（HTML解析过程中会逐步显示页面）
+```
+
+2.原生AJAX
+
+```
+	
+	(() => {
+	  'use strict'
+
+	  // 创建一个新的 XMLHttpRequest。这是在无框架情况下使用 AJAX 的方法
+	  const xhr = new XMLHttpRequest()
+	  // 声明 HTTP 请求方法和地址
+	  xhr.open('GET', 'https://randomuser.me/api/?results=3')
+	  // in a GET request what you send doesn't matter GET 请求
+	  // in a POST request this is the request body
+	  xhr.send(null)//data:{name:1}
+
+	  // 等待 'readystatechange' 状态改变去触发 xhr 对象
+	  xhr.onreadystatechange = function () {
+		//等待 xhr 成功成功返回
+		if (xhr.readyState !== 4 ) { return }
+		// 非 200 状态时输出错误信息
+		if (xhr.status !== 200) { return console.log('Error: ' + xhr.status) }
+
+		// 一切正常！输出响应
+		console.log(xhr.responseText)
+	  }
+	})()
+	xhr.status
+    0：未初始化。尚未调用open()方法
+    1：启动。已经调用open()方法，但尚未调用send()方法
+    2：发送。已经调用send()方法，但尚未接收到响应
+    3：接收。已经接收到部分响应数据
+    4：完成。已经接收到全部响应数据，而且已经可以再客户端使用了
+```
 
 3.深浅复制
 
+```
+	浅复制：
+		function extend(parent,child){
+			var i;
+			child = child || {};
+			for (i in parent){
+				if(parent.hasOwnProperty(i)){
+					child[i] = parent[i];
+				}
+			}
+			return child;
+		}
+
+		var dad = {name:"Adam"};
+		var kid = extend(dad);
+		kid.name;//结果为"Adam"
+
+		浅复制，由于通过引用传递，对子属性改变会影响父对象
+
+		var dad = {
+			counts:[1,2,3],
+			reads:{paper:true}
+		}
+		var kid = extend(dad);
+		kid.counts.push(4);
+		dad.counts.toString();//1,2,3,4
+		dad.reads === kid.reads;//true
+
+	深复制：
+		function extendDeep(parent,child){
+			var i,
+				toStr = Object.prototype.toString,
+				astr = "[object Array]";
+			child = child || {}; 
+			for(i in parent){
+				if(parent.hasOwnProperty(i)){
+					console.log(parent[i] +"##"+i+"###"+child[i])
+					if(typeof parent[i] === "object"){
+						console.log("@@@"+parent[i] +"##"+i+"###"+child[i])
+						console.log(parent)
+						console.log("###############")
+						child[i] = (toStr.call(parent[i]) == astr)?[]:{};
+						extendDeep(parent[i],child[i]);
+					}else{
+						console.log("!!!"+parent[i] +"##"+i+"###"+child[i])
+						console.log(child)
+						console.log("###############")
+						console.log(parent)
+						console.log("###############")
+						child[i] = parent[i]
+					}   
+				}
+			}
+			return child;
+		}
+
+		var dad = {
+			counts:[1,2,3],
+			reads:{paper:true}
+		}
+		var kid = extendDeep(dad);
+		kid.counts.push(4);
+		kid.counts.toString();//1,2,3,4
+		dad.counts.toString();//1,2,3
+
+		dad.reads === kid.reads;//false
+		kid.reads.paper = false;
+
+		kid.reads.web =true;
+		dad.reads.paper//结果为true
+```
+
 4.跨域方式
+
+```
+	1.CORS(Cross-Origin Resource Sharing,跨源資源共享)
+        背后的基本思想，就是使用自定义的HTTP头部让浏览器与服务器进行沟通，从而决定请求或响应式应该成功还是失败
+        检测xhr是否支持CORS，就是检查是否存在withCredentials属性，再结合检测XDomainRequest对象是否存在，就可以兼顾所以浏览器。
+        "withCredentials" in xhr
+        typeof XDomainRequest != "undefined"
+		Access-Control-Allow-Origin:example.com //允许任意访问的用*
+    	Access-Control-Request-Method:GET,POST
+	2.图片Ping（广告跟踪浏览的主要方式）
+		图片Ping是于服务器进行简单、单向的跨域通信的一种方式。
+		var img = new Image();
+		img.onload = img.onerror = function(){
+			alert("Done!");
+		}
+		img.src = "http://xx.com/t?name=xx"
+		图片Ping有两个主要缺点，一是只能发送GET请求，而是无法访问服务器的响应文本。
+	3.JSONP(JSON with padding)
+		JSONP由两部分组成：回调函数和数据。回调函数式当响应到来时应该在页面中调用的函数。回调函数的名字一般在请求中指定的。而
+		数据就是传入回调函数中的JSON数据。下面是一个典型的JSONP
+		"http://xx.com/t/?callback=handleResponse"
+		JSONP是通过动态<script>元素来使用的，<script>和<img>都有能力不受限制的从其它域加载资源。
+		function handleResponse(){
+			alert(data)
+		}
+		var script = document.createElement("script");
+		script.src = "http://xx.com/t/?callback=handleResponse"
+		document.body.insertBefore(script,document.body.firstChild)
+		JSONP两个缺点，1是从其它域加载代码，其它域的安全要保证2是要确定JSONP请求是否失败并不容易
+```
 
 5.移动端1px细线解决方案总结(http://www.cnblogs.com/lunarorbitx/p/5287309.html)
 
