@@ -1515,8 +1515,8 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
     height : (number)
     }
     getClientRects和getBoundingClientRect差异
-        getClientRects返回的其实是个数组，数组中有很多个类似getBoundingClientRect返回的对象。getBoundingClientRect返回的永远是最外框框的那		个矩形区域相关的坐标偏移对象；而getClientRects是多行文字区域的坐标偏移集合，在非IE浏览器下，只对inline的标签有反应。
-        一般getBoundingClientRect方法用的多一点。我们可以很容易获取某个元素的偏移值。甚至高宽都能很轻松的计算出来。所以，下载你想用js获取元素的高        宽尺寸，就可以试试getBoundingClientRect方法了。
+        getClientRects返回的其实是个数组，数组中有很多个类似getBoundingClientRect返回的对象。getBoundingClientRect返回的永远是最外框框的那			个矩形区域相关的坐标偏移对象；而getClientRects是多行文字区域的坐标偏移集合，在非IE浏览器下，只对inline的标签有反应。
+        一般getBoundingClientRect方法用的多一点。我们可以很容易获取某个元素的偏移值。甚至高宽都能很轻松的计算出来。所以，下载你想用js获取元素的高         宽尺寸，就可以试试getBoundingClientRect方法了。
         对getClientRects和getBoundingClientRect可以得到一个更好的说明.
         getClientRects 返回一个TextRectangle集合，就是TextRectangleList对象。
         getBoundingClientRect 返回 一个TextRectangle对象。
@@ -1569,7 +1569,7 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
 	screenTop
 	screenX
 	screenY
-	只读整数。声明了窗口的左上角在屏幕上的的 x 坐标和 y 坐标。IE、Safari 和 Opera 支持 screenLeft 和 screenTop，而 Firefox 和 Safari 支持 	  screenX 和 screenY。
+	只读整数。声明了窗口的左上角在屏幕上的的 x 坐标和 y 坐标。IE、Safari 和 Opera 支持 screenLeft 和 screenTop，而 Firefox 和 Safari 支持 	  	  screenX 和 screenY。
 	Window 对象方法
 	方法	描述
 	alert()	显示带有一段消息和一个确认按钮的警告框。
@@ -1698,7 +1698,7 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
     3XX：重定向
         300 Multiple Choices：
         301 Moved Permanently：
-        302 Found：
+        302 Found：暂时的重定向
         303 See Other：
         304 Not Modified：
         305 Use Proxy：
@@ -1741,7 +1741,7 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
         Connection: keep-alive
         Cache-Control: max-age=0
         Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8
-        User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/35.0.1916.153 				Safari/537.36
+        User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/35.0.1916.153Safari/537.36
         Referer: https://www.google.com.hk/
         Accept-Encoding: gzip,deflate,sdch
         Accept-Language: zh-CN,zh;q=0.8,en;q=0.6
@@ -1792,7 +1792,7 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
         10、Content-Length： WEB 服务器告诉浏览器自己响应的对象的长度。例如：Content-Length: 26012
         11、Content-Range： WEB 服务器表明该响应包含的部分对象为整个对象的哪个部分。例如：Content-Range: bytes 21010-47021/47022
         12、Content-Type： WEB 服务器告诉浏览器自己响应的对象的类型。例如：Content-Type：application/xml
-        13、 ETag：就是一个对象（比如URL）的标志值，就一个对象而言，比如一个 html 文件，如果被修改了，其 Etag 也会别修改，所以ETag 的作用跟 		Last-Modified 的作用差不多，主要供 WEB 服务器判断一个对象是否改变了。比如前一次请求某个 html 文件时，获得了其 ETag，当这次又请求这			个文件时，浏览器就会把先前获得的 ETag 值发送给WEB 服务器，然后 WEB 服务器会把这个 ETag 跟该文件的当前 ETag 进行对比，然后就知道这个文件		 有没有改变了。
+        13、 ETag：就是一个对象（比如URL）的标志值，就一个对象而言，比如一个 html 文件，如果被修改了，其 Etag 也会别修改，所以ETag 的作用跟 			Last-Modified 的作用差不多，主要供 WEB 服务器判断一个对象是否改变了。比如前一次请求某个 html 文件时，获得了其 ETag，当这次又请求这			个文件时，浏览器就会把先前获得的 ETag 值发送给WEB 服务器，然后 WEB 服务器会把这个 ETag 跟该文件的当前 ETag 进行对比，然后就知道这个文件		 有没有改变了。
         14、 Expired：WEB服务器表明该实体将在什么时候过期，对于过期了的对象，只有在跟WEB服务器验证了其有效性后，才能用来响应客户请求。是 				HTTP/1.0的头部。例如：Expires：Sat, 23 May 2009 10:02:12 GMT
         15、 Host：客户端指定自己想访问的WEB服务器的域名/IP 地址和端口号。例如：Host：rss.sina.com.cn
         16、 If-Match：如果对象的 ETag 没有改变，其实也就意味著对象没有改变，才执行请求的动作。
@@ -1801,15 +1801,15 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
         19、If-Unmodified-Since：如果请求的对象在该头部指定的时间之后没修改过，才执行请求的动作（比如返回对象）。
         20、 If-Range：浏览器告诉 WEB 服务器，如果我请求的对象没有改变，就把我缺少的部分给我，如果对象改变了，就把整个对象给我。浏览器通过发送请求         对象的 ETag 或者 自己所知道的最后修改时间给 WEB 服务器，让其判断对象是否改变了。总是跟 Range 头部一起使用。
         21、 Last-Modified：WEB 服务器认为对象的最后修改时间，比如文件的最后修改时间，动态页面的最后产生时间等等。例如：Last-Modified：Tue, 		 06May 2008 02:42:43 GMT
-        22、 Location：WEB 服务器告诉浏览器，试图访问的对象已经被移到别的位置了，到该头部指定的位置去取。例如：Location：                           http://i0.sinaimg.cn/dy/deco/2008/0528/sinahome_0803_ws_005_text_0.gif
+        22、 Location：WEB 服务器告诉浏览器，试图访问的对象已经被移到别的位置了，到该头部指定的位置去取。例如：Location：                           	   http://i0.sinaimg.cn/dy/deco/2008/0528/sinahome_0803_ws_005_text_0.gif
         23、 Pramga：主要使用 Pramga: no-cache，相当于 Cache-Control： no-cache。例如：Pragma：no-cache
         24、 Proxy-Authenticate： 代理服务器响应浏览器，要求其提供代理身份验证信息。Proxy-Authorization：浏览器响应代理服务器的身份验证请求，		   提供自己的身份信息。
         25、 Range：浏览器（比如 Flashget 多线程下载时）告诉 WEB 服务器自己想取对象的哪部分。例如：Range: bytes=1173546-
         26、 Referer：浏览器向 WEB 服务器表明自己是从哪个 网页/URL 获得/点击 当前请求中的网址/URL。例如：Referer：http://www.sina.com/
         27、 Server: WEB 服务器表明自己是什么软件及版本等信息。例如：Server：Apache/2.0.61 (Unix)
-        28、 User-Agent: 浏览器表明自己的身份（是哪种浏览器）。例如：User-Agent：Mozilla/5.0 (Windows; U; Windows NT 5.1; zh-CN;             rv:1.8.1.14) Gecko/20080404 Firefox/2、0、0、14
-        29、 Transfer-Encoding: WEB 服务器表明自己对本响应消息体（不是消息体里面的对象）作了怎样的编码，比如是否分块（chunked）。例如：			Transfer-Encoding: chunked
-        30、 Vary: WEB服务器用该头部的内容告诉 Cache 服务器，在什么条件下才能用本响应所返回的对象响应后续的请求。假如源WEB服务器在接到第一个请求			消息时，其响应消息的头部为：Content-Encoding: gzip; Vary: Content-Encoding那么 Cache 服务器会分析后续请求消息的头部，检查其 			Accept-Encoding，是否跟先前响应的 Vary 头部值一致，即是否使用相同的内容编码方法，这样就可以防止 Cache 服务器用自己 Cache 里面压缩后的		实体响应给不具备解压能力的浏览器。例如：Vary：Accept-Encoding
+        28、 User-Agent: 浏览器表明自己的身份（是哪种浏览器）。例如：User-Agent：Mozilla/5.0 (Windows; U; Windows NT 5.1; zh-CN;             		rv:1.8.1.14) Gecko/20080404 Firefox/2、0、0、14
+        29、 Transfer-Encoding: WEB 服务器表明自己对本响应消息体（不是消息体里面的对象）作了怎样的编码，比如是否分块（chunked）。例如：				Transfer-Encoding: chunked
+        30、 Vary: WEB服务器用该头部的内容告诉 Cache 服务器，在什么条件下才能用本响应所返回的对象响应后续的请求。假如源WEB服务器在接到第一个请求			消息时，其响应消息的头部为：Content-Encoding: gzip; Vary: Content-Encoding那么 Cache 服务器会分析后续请求消息的头部，检查其 				Accept-Encoding，是否跟先前响应的 Vary 头部值一致，即是否使用相同的内容编码方法，这样就可以防止 Cache 服务器用自己 Cache 里面压缩后的		实体响应给不具备解压能力的浏览器。例如：Vary：Accept-Encoding
         31、 Via： 列出从客户端到 OCS 或者相反方向的响应经过了哪些代理服务器，他们用什么协议（和版本）发送的请求。当客户端请求到达第一个代理服务器         时，该服务器会在自己发出的请求里面添加 Via 头部，并填上自己的相关信息，当下一个代理服务器收到第一个代理服务器的请求时，会在自己发出的请求里         面复制前一个代理服务器的请求的Via 头部，并把自己的相关信息加到后面，以此类推，当 OCS 收到最后一个代理服务器的请求时，检查 Via 头部，就知道         该请求所经过的路由。例如：Via：1.0 236.D0707195.sina.com.cn:80 (squid/2.6.STABLE13)
 ```
 
@@ -1908,7 +1908,7 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
 
 1.雅虎
 
-![](https://img.aotu.io/wangcainuan/2016-03-16-optimization/%E9%9B%85%E8%99%8E35%E6%9D%A1%E5%86%9B%E8%A7%84.jpg)
+![](http://img.aotu.io/wangcainuan/2016-03-16-optimization/%E9%9B%85%E8%99%8E35%E6%9D%A1%E5%86%9B%E8%A7%84.jpg)
 
 ```
 		
@@ -1974,7 +1974,7 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
 				小图片合并雪碧图；
 				JS、CSS文件选择性合并；
 				避免重复的资源请求。
-			减少请求数对于速度优化来说最重要最有效的，特别是网络差的用户。一个完整的请求需要经过域名解析以及DNS寻址、与服务器建立连接、发送数据、等			 待服务器响应、接收数据的过程；每个请求都需要携带数据，因此每个请求都需要占用带宽；浏览器进行并发请求的请求数是有上限的。请求多了的情况，			 明显增加了网页的响应时间。一个页面由多个模块拼接而成，几个模块中请求了同样的资源时，就会导致资源的重复请求。
+			减少请求数对于速度优化来说最重要最有效的，特别是网络差的用户。一个完整的请求需要经过域名解析以及DNS寻址、与服务器建立连接、发送数据、等			 待服务器响应、接收数据的过程；每个请求都需要携带数据，因此每个请求都需要占用带宽；浏览器进行并发请求的请求数是有上限的。请求多了的情				况,明显增加了网页的响应时间。一个页面由多个模块拼接而成，几个模块中请求了同样的资源时，就会导致资源的重复请求。
 		2.2 减少文件大小（减少请求带宽）
 			压缩CSS、JS、图片；
 			尽可能控制DOM节点数；
@@ -1982,11 +1982,11 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
 			开启Gzip，Gzip的思想就是把文件先在服务器端进行压缩，且压缩率达到85%，然后再传输，传输完毕后浏览器会 重新对压缩过的内容进行解压缩，并执			 行。。好处在于Gzip的支持已经很好，且爬虫可识别，压缩率达到66%-85%显著减少了文件传输的大小。另外，gzip对pdf文件的压缩效果不大，而且会			浪费CPU。
 		2.3 合理使用静态资源域名
 			域名的要求是短小且独立。
-			短小可以减少头部开销，因为域名越短请求头起始行的 URI 就越短。之所以要求独立，因为独立域名不会共享主域的 Cookie，可以有效减小请求头大			小，这个策略一般称之为 Cookie-Free Domain；另外一个原因是浏览器对相同域名的并发连接数限制，一般允许同域名并发 6~8 个连接，域名不是			 越多越好，每个域名的第一个连接都要经历 DNS 查询（DNS Lookup），导致会耗费一定的时间，控制域名使用在2-4个之间。另外注意：同一静态资源			在不同页面被散列到不同子域下，会导致无法利用 HTTP 缓存。
+			短小可以减少头部开销，因为域名越短请求头起始行的 URI 就越短。之所以要求独立，因为独立域名不会共享主域的 Cookie，可以有效减小请求头大			小，这个策略一般称之为 Cookie-Free Domain；另外一个原因是浏览器对相同域名的并发连接数限制，一般允许同域名并发 6~8 个连接，域名不是			 	越多越好，每个域名的第一个连接都要经历 DNS 查询（DNS Lookup），导致会耗费一定的时间，控制域名使用在2-4个之间。另外注意：同一静态资源				在不同页面被散列到不同子域下，会导致无法利用 HTTP 缓存。
 		2.4 使用HTTP 2
 			HTTP 2 相比 HTTP 1.1 的更新大部分集中于：
 			多路复用：多路复用很好地解决如何让重要资源尽快加载这个问题。同域名下或者不同域但是同时满足同一个 IP以及使用同一个证书的这两个条件中的所			 有通信都在单个连接上完成，此连接上同时打开任意数量的双向数据流（ HTTP 1.1 有连接数限制）。使用多域名加上相同的 IP 和证书部署 Web 服务			 有特殊的意义：让支持 HTTP/2 的终端只建立一个连接，用上 HTTP/2 协议带来的各种好处；而只支持 HTTP/1.1 的终端则会建立多个连接，达到同				时更多并发请求的目的。
-			HEAD 压缩：HTTP/2 将请求和响应数据分割为更小的帧，并对它们采用二进制编码（ Binary Framing ）。在 HTTP/1 中，HTTP 请求和响应都是			由「状态行、请求 / 响应头部、消息主体」三部分组成，状态行和头部却没有经过任何压缩，直接以纯文本传输。在 HTTP/2 中，每个数据流都以消息			的形式发送，而消息又由一个或多个帧组成。多个帧之间可以乱序发送，因为根据帧首部的流标识可以重新组装。
+			HEAD 压缩：HTTP/2 将请求和响应数据分割为更小的帧，并对它们采用二进制编码（ Binary Framing ）。在 HTTP/1 中，HTTP 请求和响应都是				由「状态行、请求 / 响应头部、消息主体」三部分组成，状态行和头部却没有经过任何压缩，直接以纯文本传输。在 HTTP/2 中，每个数据流都以消息			的形式发送，而消息又由一个或多个帧组成。多个帧之间可以乱序发送，因为根据帧首部的流标识可以重新组装。
 			请求优先级：服务器可以根据流的优先级，控制资源分配(CPU、内存、带宽)，而在响应数据准备好之后，优先将最高优先级的帧发送给客户端。
 			服务器推送：启动Server Push，意味着服务端可以在发送页面HTML时主动推送其它资源，有自己独立的URL，可以被浏览器缓存；如果服务端推送的资				源已经被浏览器缓存过，浏览器可以通过发送 RST_STREAM 帧来拒收。
 	3.学会持家，让家变得简洁漂亮-客户端
@@ -2007,13 +2007,13 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
 			减少Repaint（重绘）和Reflow（重排）最好通过批量更新元素减少重排次数，如设置类class统一更新样式，在添加多个li
 			元素将会触发多次页面重排的情况下使用 DOM fargment 在内存中创建完整的 DOM 节点，然后再一次性添加到 DOM 中。
 		3.5 图片格式的选择：
-			颜色较为丰富的图片而且文件比较大的（40KB - 200KB）或者有内容的图片优先考虑 jpg；图标等颜色比较简单、文件体积不大、起修饰作用的图片，			  优先考虑使用 PNG8 格式；图像颜色丰富而且图片文件不太大的（40KB 以下）或有半透明效果的优先考虑 PNG24 格式。
+			颜色较为丰富的图片而且文件比较大的（40KB - 200KB）或者有内容的图片优先考虑 jpg；图标等颜色比较简单、文件体积不大、起修饰作用的图片，			    优先考虑使用 PNG8 格式；图像颜色丰富而且图片文件不太大的（40KB 以下）或有半透明效果的优先考虑 PNG24 格式。
 			条件允许的，使用新格式WEBP和BPG。
 			用SVG和ICONFONT代替简单的图标。
-			颜色较为丰富的图片而且文件比较大的（40KB - 200KB）或者有内容的图片优先考虑 jpg；图标等颜色比较简单、文件体积不大、起修饰作用的图片，			  优先考虑使用 PNG8 格式；图像颜色丰富而且图片文件不太大的（40KB 以下）或有半透明效果的优先考虑 PNG24 格式。			
+			颜色较为丰富的图片而且文件比较大的（40KB - 200KB）或者有内容的图片优先考虑 jpg；图标等颜色比较简单、文件体积不大、起修饰作用的图片，			    优先考虑使用 PNG8 格式；图像颜色丰富而且图片文件不太大的（40KB 以下）或有半透明效果的优先考虑 PNG24 格式。			
 			用「字蛛」来代替艺术字体切图，它可剔除没有使用的字符，从而解决中文字体过大的问题，并编码成跨平台兼容的格式。
 		3.6 合理分配资源加载时间，按需加载，包括CSS、JS文件以及图片、业务模块等。
-			根据我们网页最初加载需要的最小内容集推断其他内容延迟加载；无条件提前加载公共内容或根据用户行为推断提前加载某些内容，如根据搜索框输入的文			字来判断加载的内容。加载机制如下：
+			根据我们网页最初加载需要的最小内容集推断其他内容延迟加载；无条件提前加载公共内容或根据用户行为推断提前加载某些内容，如根据搜索框输入的				文字来判断加载的内容。加载机制如下：
 				预加载
 				Dom Ready后加载
 				onLoad后加载
@@ -2060,7 +2060,7 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
 				Access-Control-Allow-Origin: allowed origins
 			如果对Access–Control-Allow-Origin设置为*其实是比较危险的，如果没有携带会话认证意味着信息被公开在全网，建议设置具体的域名，而且跨域			   的时候记得带上session id；严格审查请求信息，比如请求参数，还有http头信息，因为 http头可以伪造。
 		3.3.2 CSP(Content Security Policy)
-			CSP指定网站上所有脚本和图片等资源的源站点，也能阻止所有内联（inline）的脚本和样式。即使有人在页面评论或者留言中嵌入了脚本标签，这些脚本			代码也不会被执行。可通过两种方式设置，如果 HTTP 头与 Meta 定义同时存在，则优先采用 HTTP 头中的定义：
+			CSP指定网站上所有脚本和图片等资源的源站点，也能阻止所有内联（inline）的脚本和样式。即使有人在页面评论或者留言中嵌入了脚本标签，这些脚				本代码也不会被执行。可通过两种方式设置，如果 HTTP 头与 Meta 定义同时存在，则优先采用 HTTP 头中的定义：
 				通过 HTTP 头，比如只允许脚本从本源加载：Content-Security-Policy: script-src ‘self’，其中script-src ‘self’是策略。
 				通过HTML的Meta标签，比如只允许脚本从本源加载：
 				<meta http-equiv="Content-Security-Policy" content="script-src 'self'">
@@ -2079,8 +2079,8 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
 		3.3.3 iframe 沙箱环境
 			利用iframe进行跨源：HTML5为iframe提供了安全属性 sandbox，iframe的能力将会被限制。
 		3.3.4 Secure和HttpOnly属性
-			Secure能确保cookie的内容只能通过SSL连接进行传输。Secure和HttpOnly属性告诉浏览器cookie的内容只能分别通过HTTP(S)协议进行访问，从而			 避免了被轻易窃取，比如禁止从JavaScript中的document.cookie访问，因此cookie在浏览器document中不可见了。如果单独使用的话，无法全面			抵御跨站点脚本攻击，通常和其他技术组合使用。使用方法如下：
-				Set-Cookie: <name>=<value>[; <name>=<value>] [; expires=<date>][; domain=<domain_name>][; path=<some_path>][; 				  secure][; HttpOnly]
+			Secure能确保cookie的内容只能通过SSL连接进行传输。Secure和HttpOnly属性告诉浏览器cookie的内容只能分别通过HTTP(S)协议进行访问，从而			 	避免了被轻易窃取，比如禁止从JavaScript中的document.cookie访问，因此cookie在浏览器document中不可见了。如果单独使用的话，无法全面				抵御跨站点脚本攻击，通常和其他技术组合使用。使用方法如下：
+				Set-Cookie: <name>=<value>[; <name>=<value>] [; expires=<date>][; domain=<domain_name>][; path=<some_path>][; 				 		secure][; HttpOnly]
 		3.3.5 其他安全相关的HTTP头
 			X-Content-Type-Options 告诉浏览器相信此服务器下发的资源的类型，防止类型嗅探攻击。
 			HPKP(Public Key Pinning) Public Key Pinning 是一个response 头，用来检测一个证书的公钥是否发生了改变，防止中间人攻击。
@@ -2089,7 +2089,7 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
 		html5有很多新的特性能力，然而能力越大，被攻破后的危险就越大。
 		HTML5 对xss的影响主要体现在:
 			攻击面更大，html5带来更多的标签和更多的属性如<video>,<audio>,<canvas>等；
-			危害更大，HTML5更多的资源可以被xss利用。黑客可以利用浏览器的一切权限，比如本地存储、GEO、服务器推送机制WebSocket，js多线程执行				Webworker等。
+			危害更大，HTML5更多的资源可以被xss利用。黑客可以利用浏览器的一切权限，比如本地存储、GEO、服务器推送机制WebSocket，js多线程执行					Webworker等。
 			比如localstorage只能通过js设置和获取，导致的结果是不能像cookie一样设置httponly等属性，所以localstorage中不能存放敏感信息，最好能			够在服务端进行加密，可以配合CORS来获取网站的localstorage的信息。
 ```
 
@@ -2111,7 +2111,7 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
 	1 语义化
 		标签语义化对搜索引擎友好，良好的结构和语义容易被搜索引擎抓取。
 		善用标题h1，h2，h3，h4，h5，h6，特别是h1和h2；H(x)标签中使用关键字，可提升排名。同时设置 rel=“nofollow”避免权重流失。
-		使用 HTML5 中的 Microdata 对 Web 页面上已经存在的数据提供附加的语义。Microdata 由名字 / 值（name/value）对组成，每一个词汇表定义一组		 命名的属性。对 Microdata 的支持可以影响搜索结果的显示，使得显示结果更加丰富，虽然不能影响搜索结果的排名，但是网站的流量可能会有所增加。类似		的技术还有资源描述框架RDF、微格式Microformat 。
+		使用 HTML5 中的 Microdata 对 Web 页面上已经存在的数据提供附加的语义。Microdata 由名字 / 值（name/value）对组成，每一个词汇表定义一组		 	命名的属性。对 Microdata 的支持可以影响搜索结果的显示，使得显示结果更加丰富，虽然不能影响搜索结果的排名，但是网站的流量可能会有所增加。类似		的技术还有资源描述框架RDF、微格式Microformat 。
 	2 衡量站点关键词优化
 		站点内容以及关键词的选择。
 		描述标签、关键词标签、代替属性。
@@ -2122,18 +2122,267 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
 	3 链接
 		优化文件目录结构和URL。URL应该有语义性，简短易懂。
 		通过推广暴露自己的链接，增加信任度。链接分为外向链接和内向（反向）链接，外向链接就是从本站点到其他站点，内向链接就是从其他站点到我的站点，可		  以尝试使用反向链接生成器。或者通过写软文、发布分类信息、发布博客文章来推广自己的网站。
-		锚文本 ：把关键词做一个链接，指向别的网页，这种形式的链接就叫作锚文本。搜索引擎可以根据指向某一个网页的链接的锚文本描述来判断该网页的内容属			性。
+		锚文本 ：把关键词做一个链接，指向别的网页，这种形式的链接就叫作锚文本。搜索引擎可以根据指向某一个网页的链接的锚文本描述来判断该网页的内容属		  性。
 	4 良好的网站导航和sitemap
 		网站需要有一个良好的导航，控制根目录和各子目录的关键，通过sitemap可以帮助网站主了解网站结构，也方便搜索引擎收录整个站点。
 ```
 
 ##算法
 
-1.排序
+1.排序（http://www.jianshu.com/p/7e6589306a27）
 
 ```
-http://blog.csdn.net/chenke__hxx/article/details/12500813堆排序
+	1.插入排序
+		// 插入排序 从下标1开始每增1项排序一次，越往后遍历次数越多
+		function sort1(array) {
+		  var len = array.length,
+			  i, j, tmp, result;
 
+		  // 设置数组副本
+		  result = array.slice(0);
+		  for(i=1; i < len; i++){
+			tmp = result[i];
+			j = i - 1;
+			while(j>=0 && tmp < result[j]){
+			  result[j+1] = result[j];
+			  j--;
+			}
+			result[j+1] = tmp;
+		  }
+		  return result;
+		}
+	2.二分插入排序
+		// 先在有序区通过二分查找的方法找到移动元素的起始位置，
+		// 然后通过这个起始位置将后面所有的元素后移
+		function sort2(array) {
+		  var len = array.length,
+			  i, j, tmp, low, high, mid, result;
+		  // 赋予数组副本
+		  result = array.slice(0);
+		  for(i = 1; i < len; i++){
+			tmp = result[i];
+			low = 0;
+			high = i - 1;
+			while(low <= high){
+			  mid = parseInt((low + high)/2, 10);
+			  if(tmp < result[mid]) high = mid - 1;
+			  else low = mid + 1;
+			}
+			for(j = i - 1; j >= high+1; j--){
+			  result[j+1] = result[j];            
+			}
+			result[j+1] = tmp;
+		  }
+		  return result;
+		}
+	3.希尔排序
+		// 希尔排序：先将整个待排序记录序列分割成若干个子序列
+		// 在序列内分别进行直接插入排序，待整个序列基本有序时，
+		// 再对全体记录进行一次直接插入排序
+		function sort3(array){
+		  var len = array.length, gap = parseInt(len/2), 
+			  i, j, tmp, result;
+		  // 复制数组
+		  result = array.slice(0);
+		  while(gap > 0){
+			for(i = gap; i < len; i++){
+			  tmp = result[i];
+			  j = i - gap;
+			  while(j>=0 && tmp < result[j]){
+				result[j + gap] = result[j];
+				j = j - gap;
+			  }
+			  result[j + gap] = tmp;
+			}
+			gap = parseInt(gap/2);
+		  }
+		  return result;
+		}
+	4.冒泡排序
+		// 冒泡排序 每次将最小元素推至最前
+		function sort4(array) {
+		  var len = array.length,
+		  i, j, tmp, result;
+		  result = array.slice(0);
+		  for (i = 0; i < len; i++) {
+			for (j = len - 1; j > i; j--) {
+			  if (result[j] < result[j - 1]) {
+				tmp = result[j - 1];
+				result[j - 1] = result[j];
+				result[j] = tmp;
+			  }
+			}
+		  }
+		  return result;
+		}
+	5.改进冒泡排序
+		// 如果在某次的排序中没有出现交换的情况，
+		// 那么说明在无序的元素现在已经是有序了，就可以直接返回了。
+		function sort5(array) {
+		  var len = array.length,
+		  i, j, tmp, exchange, result;
+
+		  result = array.slice(0);
+		  for (i = 0; i < len; i++) {
+			exchange = 0;
+			for (j = len - 1; j > i; j--) {
+			  if (result[j] < result[j - 1]) {
+				tmp = result[j];
+				result[j] = result[j - 1];
+				result[j - 1] = tmp;
+				exchange = 1;
+			  }
+			}
+			if (!exchange) return result;
+		  }
+		  return result;
+		}
+	6.快速排序
+		//（1）在数据集之中，选择一个元素作为"基准"（pivot）。
+		//（2）所有小于"基准"的元素，都移到"基准"的左边；所有大于"基准"的元素，都移到"基准"的右边。
+		//（3）对"基准"左边和右边的两个子集，不断重复第一步和第二步，直到所有子集只剩下一个元素为止。
+		function sort6(array) {
+		  var tmp_array = array.slice(0), result,
+		  quickSort = function(arr) {
+		  if (arr.length <= 1) { return arr; }
+		  var pivotIndex = Math.floor(arr.length / 2);
+		  var pivot = arr.splice(pivotIndex, 1)[0];
+		  var left = [];
+		  var right = [];
+		  for (var i = 0; i < arr.length; i++){
+			if (arr[i] < pivot) {
+			  left.push(arr[i]);
+			} else {
+			  right.push(arr[i]);
+			}
+		  }
+		  return quickSort(left).concat([pivot], quickSort(right));
+		  };
+		  result = quickSort(tmp_array);
+		  return result;
+		}
+	7.选择排序
+		// 在无序区中选出最小的元素，然后将它和无序区的第一个元素交换位置。
+		// 原理跟冒泡排序一样，算是冒泡的衍生版本
+		function sort7(array) {
+		  var len = array.length,
+		  i, j, k, tmp, result;
+
+		  result = array.slice(0);
+		  for (i = 0; i < len; i++) {
+			k = i;
+			for (j = i + 1; j < len; j++) {
+			  if (result[j] < result[k]) k = j;
+			}
+			if (k != i) {
+			  tmp = result[k];
+			  result[k] = result[i];
+			  result[i] = tmp;
+			}
+		  }
+		  return result;
+		}
+	8.堆排序
+		// 1) 初始堆：将原始数组调整成大根堆的方法——筛选算法:子节点都比父节点小
+		// 2) 堆排序： 每次将堆顶元素与数组最后面的且没有被置换的元素互换。
+		// 参考代码： http://bubkoo.com/2014/01/14/sort-algorithm/heap-sort/
+		function sort8(array) {
+		  var result = array.slice(0);
+
+		  function swap(array, i, j) {
+			var temp = array[i];
+			array[i] = array[j];
+			array[j] = temp;
+		  }
+
+		  function maxHeapify(array, index, heapSize) {
+			var iMax, iLeft, iRight;
+			while (true) {
+			  iMax = index;
+			  iLeft = 2 * index + 1;
+			  iRight = 2 * (index + 1);
+
+			  if (iLeft < heapSize && array[index] < array[iLeft]) {
+				iMax = iLeft;
+			  }
+
+			  if (iRight < heapSize && array[iMax] < array[iRight]) {
+				iMax = iRight;
+			  }
+
+			  if (iMax != index) {
+				swap(array, iMax, index);
+				index = iMax;
+			  } else {
+				break;
+			  }
+			}
+		  }
+
+		  function buildMaxHeap(array) {
+			var i, iParent = Math.floor(array.length / 2) - 1;
+
+			for (i = iParent; i >= 0; i--) {
+			  maxHeapify(array, i, array.length);
+			}
+		  }
+
+		  function sort(array) {
+			buildMaxHeap(array);
+
+			for (var i = array.length - 1; i > 0; i--) {
+			  swap(array, 0, i);
+			  maxHeapify(array, 0, i);
+			}
+			return array;
+		  }
+
+		  return sort(result);
+		}
+	9.归并排序
+		// 合并排序：将无序的数组 拆成N部分进行有序处理，然后合并；
+		// 参考代码： https://gist.github.com/paullewis/1982121
+		function sort9(array) {
+		  var result = array.slice(0);
+
+		  // 递归调用合并函数
+		  function sort(array) {
+			var length = array.length,
+			mid = Math.floor(length * 0.5),
+			left = array.slice(0, mid),
+			right = array.slice(mid, length);
+
+			if (length === 1) {
+			  return array;
+			}
+			return merge(sort(left), sort(right));
+		  }
+
+		  // 合并 两有序的数组
+		  function merge(left, right) {
+			var result = [];
+
+			while (left.length || right.length) {
+
+			  if (left.length && right.length) {
+
+				if (left[0] < right[0]) {
+				  result.push(left.shift());
+				} else {
+				  result.push(right.shift());
+				}
+
+			  } else if (left.length) {
+				result.push(left.shift());
+			  } else {
+				result.push(right.shift());
+			  }
+			}
+			return result;
+		  }
+
+		  return sort(result);
+		}
 ```
 
 2.搜索
@@ -2181,7 +2430,7 @@ http://blog.csdn.net/chenke__hxx/article/details/12500813堆排序
 2.二叉堆
 
 ```
-	二叉堆是一种特殊的堆，二叉堆是完全二元树（二叉树）或者是近似完全二元树（二叉树）。二叉堆有两种：最大堆和最小堆。最大堆：父结点的键值总是大于或等于	 任何一个子节点的键值；最小堆：父结点的键值总是小于或等于任何一个子节点的键值。
+	二叉堆是一种特殊的堆，二叉堆是完全二元树（二叉树）或者是近似完全二元树（二叉树）。二叉堆有两种：最大堆和最小堆。最大堆：父结点的键值总是大于或等	于任何一个子节点的键值；最小堆：父结点的键值总是小于或等于任何一个子节点的键值。
 ```
 
 ##常见面试题
@@ -2193,6 +2442,8 @@ http://blog.csdn.net/chenke__hxx/article/details/12500813堆排序
 3.深浅复制
 
 4.跨域方式
+
+5.移动端1px细线解决方案总结(http://www.cnblogs.com/lunarorbitx/p/5287309.html)
 
 
 ##移动端常见问题
@@ -2228,7 +2479,7 @@ http://blog.csdn.net/chenke__hxx/article/details/12500813堆排序
 
 ```
 	遇到的都知道在ios的safari里面不支持position:fixed;(呵呵了),其实也不算是不支持，只是在软键盘弹出来的时候使用fixed的元素就开始各种抽风了。
-	解决方法：在键盘弹出来之前按照正常的定位，使用fixed，弹出来的时候将footer这部分position:static;然后这样footer就会跑向页面的最下面了，然后再	  将页面主动滚动到底部。当blur的时候再把footer设置回去.或者ISCROLL.js	
+	解决方法：在键盘弹出来之前按照正常的定位，使用fixed，弹出来的时候将footer这部分position:static;然后这样footer就会跑向页面的最下面了，然后再	  	  将页面主动滚动到底部。当blur的时候再把footer设置回去.或者ISCROLL.js	
 ```
 
 4.0.1+0.2 != 0.3
