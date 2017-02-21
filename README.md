@@ -2692,6 +2692,163 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
 			}
 ```
 
+6.请编写一个JavaScript函数 parseQueryString，它的用途是把URL参数解析为一个对象
+
+```
+	function getQueryStringArgs() {
+        var qs = (location.search.length > 0 ? location.search.substring(1) : ""),
+            args = {},
+            items =qs.length ? qs.split("&") : [],
+            item = null,
+            name = null,
+            value = null,
+            i = 0,
+            len = items.length;
+
+        for (i = 0; i < len; i++){
+            item = items[i].split("=");
+            name = decodeURIComponent(item[0]);
+            value = decodeURIComponent(item[1]);
+            if(name.length){
+                args[name] = value;
+            }
+        }
+        return args;
+    }
+```
+7.说说get和post请求的区别
+
+```
+ 三个误解：
+ 	GET和POST与数据如何传递没有关系
+	HTTP协议对GET和POST都没有对长度的限制
+	安全不安全和GET、POST没有关系
+	所以我对于GET和POST的理解，是纯粹地来源于HTTP协议。GET和POST本质上就是TCP链接，并无差别。
+	他们只有一点根本区别，简单点儿说，语义上一个用于获取数据，一个用于修改数据。
+```
+8.什么是 "use strict"? 使用它的好处和坏处分别是什么？
+
+```
+	（http://www.ruanyifeng.com/blog/2013/01/javascript_strict_mode.html）
+	ECMAscript 5添加了第二种运行模式："严格模式"（strict mode）。顾名思义，这种模式使得Javascript在更严格的条件下运行。
+	设立"严格模式"的目的，主要有以下几个：
+	1. 消除Javascript语法的一些不合理、不严谨之处，减少一些怪异行为;
+	2. 消除代码运行的一些不安全之处，保证代码运行的安全；
+	3. 提高编译器效率，增加运行速度；
+	4. 为未来新版本的Javascript做好铺垫。
+	注：经过测试 IE6,7,8,9 均不支持严格模式。
+	缺点：
+	现在网站的 JS 都会进行压缩，一些文件用了严格模式，而另一些没有。
+	这时这些本来是严格模式的文件，被 merge 后，这个串就到了文件的中间，不仅没有指示严格模式，反而在压缩后浪费了字节。
+```
+
+9.有一个长度为100的数组，请以优雅的方式求出该数组的前10个元素之和
+
+```
+	 var a = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15],
+		sum = 0;  
+	 sum = a.slice(0, 10).reduce(function(pre, current) {
+		return pre + current;
+	 });
+	 console.log(sum); //55
+```
+
+10.不使用loop循环，创建一个长度为100的数组，并且每个元素的值等于它的下标。
+
+```
+	var a = Array(100).join(",").split(",").map(function(item, index) {
+	  return index;
+	});
+```
+
+11.实现对数组进行乱序
+
+```
+	var a = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+    sign = 1; 
+	a.sort(function(a, b) {
+		//因为Math.random产生的数在0-1之间
+		//所以0.5两边的概率是相等的
+		//大于0.5时为升序，小于0.5时为降序
+		sign = (Math.random() > 0.5) ? 1 : -1;
+		return (a - b) * sign;
+	});
+
+```
+
+12.xss和csrf分别是什么？
+
+```
+	XSS (Cross Site Script) ，跨站脚本攻击
+		XSS是你访问正常网站的时候，你浏览器执行了攻击者的代码
+	CSRF(Cross Site Request Forgery)，跨站点伪造请求
+		CSRF是你点击了攻击者提供的链接的时候（正常网站或其它有攻击者代码的网站）
+```
+
+13.说说前端如何解决异步回调地狱？
+
+```
+	使用Promise来解决回调地狱问题
+```
+
+14.淘宝那里的商品项，如图片，滚动到了才加载，你知道怎么实现么(图片可视区域加载)
+
+```
+	https://www.talkingcoder.com/article/6370149516108046040
+	<script type="text/javascript">
+		var aImages = document.getElementById("SB").getElementsByTagName('img'); //获取id为SB的文档内所有的图片
+		loadImg(aImages);
+		window.onscroll = function() { //滚动条滚动触发
+			loadImg(aImages);
+		};
+		//getBoundingClientRect  是图片懒加载的核心
+		function loadImg(arr) {
+			for(var i = 0, len = arr.length; i < len; i++) {
+				if(arr[i].getBoundingClientRect().top < document.documentElement.clientHeight && !arr[i].isLoad) {
+					arr[i].isLoad = true; //图片显示标志位
+					//arr[i].style.cssText = "opacity: 0;";  
+					(function(i) {
+						setTimeout(function() {
+							if(arr[i].dataset) { //兼容不支持data的浏览器
+								aftLoadImg(arr[i], arr[i].dataset.imgurl);
+							} else {
+								aftLoadImg(arr[i], arr[i].getAttribute("data-imgurl"));
+							}
+							arr[i].style.cssText = "transition: 1s; opacity: 1;" //相当于fadein
+						}, 500)
+					})(i);
+				}
+			}
+		}
+
+		function aftLoadImg(obj, url) {
+			var oImg = new Image();
+			oImg.onload = function() {
+				obj.src = oImg.src; //下载完成后将该图片赋给目标obj目标对象
+			}
+			oImg.src = url; //oImg对象先下载该图像
+		}
+	</script>
+```
+
+15.到底该不该用 CSS reset？
+
+```
+	https://www.zhihu.com/question/23554164
+```
+
+16.前端link和import的区别
+
+```
+	link是HTML方式， @import是CSS方式
+	link最大限度支持并行下载，@import过多嵌套导致串行下载，出现FOUC
+	link可以通过rel="alternate stylesheet"指定候选样式
+	浏览器对link支持早于@import，可以使用@import对老浏览器隐藏样式
+	@import必须在样式规则之前，可以在css文件中引用其他文件
+	总体来说：link优于@import
+```
+
+
 ##移动端常见问题
 
 1.移动端click屏幕产生200-300 ms的延迟响应
