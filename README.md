@@ -33,7 +33,7 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
     static 默认
     relative 相对定位
     absolute 绝对定位 飘出文档流
-    	如果一个元素绝对定位后，其参照物是以离自身最近元素是否设置了相对定位，如果有设置将以离自己最近元素定位，如果没有将往其祖先元素寻找相对定位元		  素，一直找到html为止。
+    	如果一个元素绝对定位后，其参照物是以离自身最近元素是否设置了相对定位，如果有设置将以离自己最近元素定位，如果没有将往其祖先元素寻找相对定位元素，一直找到html为止。
     fixed 固定 属于绝对定位
     inherit 规定应该从父元素继承 position 属性的值
 ```
@@ -47,11 +47,11 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
     flex（早期版本叫box） 将对象作为弹性伸缩盒显示。（http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html）
 	
 	总体概念
-		block和inline这两个概念是简略的说法，完整确切的说应该是 block-level elements (块级元素) 和 inline elements (内联元素)。block元素		  通常被现实为独立的一块，会单独换一行；inline元素则前后不会产生换行，一系列inline元素都在一行内显示，直到该行排满。
+		block和inline这两个概念是简略的说法，完整确切的说应该是 block-level elements (块级元素) 和 inline elements (内联元素)。block元素通常被现实为独立的一块，会单独换一行；inline元素则前后不会产生换行，一系列inline元素都在一行内显示，直到该行排满。
 		大体来说HTML元素各有其自身的布局级别（block元素还是inline元素）：
 		常见的块级元素有 DIV, FORM, TABLE, P, PRE, H1~H6, DL, OL, UL 等。
 		常见的内联元素有 SPAN, A, STRONG, EM, LABEL, INPUT, SELECT, TEXTAREA, IMG, BR 等。
-		block元素可以包含block元素和inline元素；但inline元素只能包含inline元素。要注意的是这个是个大概的说法，每个特定的元素能包含的元素也是特		 定的，所以具体到个别元素上，这条规律是不适用的。比如 P 元素，只能包含inline元素，而不能包含block元素。
+		block元素可以包含block元素和inline元素；但inline元素只能包含inline元素。要注意的是这个是个大概的说法，每个特定的元素能包含的元素也是特定的，所以具体到个别元素上，这条规律是不适用的。比如 P 元素，只能包含inline元素，而不能包含block元素。
 		一般来说，可以通过display:inline和display:block的设置，改变元素的布局级别。
 	block，inline和inlinke-block细节对比
 		display:block
@@ -61,9 +61,9 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
 		display:inline
 			inline元素不会独占一行，多个相邻的行内元素会排列在同一行里，直到一行排列不下，才会新换一行，其宽度随元素的内容而变化。
 			inline元素设置width,height属性无效。
-			inline元素的margin和padding属性，水平方向的padding-left, padding-right, margin-left, margin-right都产生边距效果；但竖直方			 向的padding-top, padding-bottom, margin-top, margin-bottom不会产生边距效果。
+			inline元素的margin和padding属性，水平方向的padding-left, padding-right, margin-left, margin-right都产生边距效果；但竖直方向的padding-top, padding-bottom, margin-top, margin-bottom不会产生边距效果。
 		display:inline-block
-			简单来说就是将对象呈现为inline对象，但是对象的内容作为block对象呈现。之后的内联对象会被排列在同一行内。比如我们可以给一个link（a元				素）inline-block属性值，使其既具有block的宽度高度特性又具有inline的同行特性。
+			简单来说就是将对象呈现为inline对象，但是对象的内容作为block对象呈现。之后的内联对象会被排列在同一行内。比如我们可以给一个link（a元素）inline-block属性值，使其既具有block的宽度高度特性又具有inline的同行特性。
 	Flex
 		flex-direction 属性决定主轴的方向（即项目的排列	方向）
 			.box {
@@ -167,16 +167,16 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
  
 ```
     line-height（http://www.studyofnet.com/news/273.html）:
-        “行高“指一行文字的高度，具体来说是指两行文字间基线间的距离。在CSS，line-height被用来控制行与行之间的垂直距离。line-height 属性会影响行		 框的布局。在应用到一个块级元素时，它定义了该元素中基线之间的最小距离而不是最大距离。
-        从上到下四条线分别是顶线、中线、基线、底线，很像才学英语字母时的四线三格，我们知道vertical-align属性中有top、middle、baseline、				bottom，就是和这四条线相关。
+        “行高“指一行文字的高度，具体来说是指两行文字间基线间的距离。在CSS，line-height被用来控制行与行之间的垂直距离。line-height 属性会影响行框的布局。在应用到一个块级元素时，它定义了该元素中基线之间的最小距离而不是最大距离。
+        从上到下四条线分别是顶线、中线、基线、底线，很像才学英语字母时的四线三格，我们知道vertical-align属性中有top、middle、baseline、bottom，就是和这四条线相关。
         行高是指上下文本行的基线间的垂直距离，即图中两条红线间垂直距离。
         行距是指一行底线到下一行顶线的垂直距离，即第一行粉线和第二行绿线间的垂直距离。
-        半行距是行距的一半，即区域3垂直距离/2，区域1，2，3，4的距离之和为行高，而区域1，2，4距离之和为字体size，所以半行距也可以这么算：（行高-字	    体size）/2
+        半行距是行距的一半，即区域3垂直距离/2，区域1，2，3，4的距离之和为行高，而区域1，2，4距离之和为字体size，所以半行距也可以这么算：（行高-字体size）/2
     vertical-align（http://www.zhangxinxu.com/wordpress/2010/05/%E6%88%91%E5%AF%B9css-vertical-align%E7%9A%84%E4%B8%80%E4%BA%9B%E7%90%86%E8%A7%A3%E4%B8%8E%E8%AE%A4%E8%AF%86%EF%BC%88%E4%B8%80%EF%BC%89/）
         定义和用法
         	vertical-align 属性设置元素的垂直对齐方式。
         说明
-        	该属性定义行内元素的基线相对于该元素所在行的基线的垂直对齐。允许指定负长度值和百分比值。这会使元素降低而不是升高。在表单元格中，这个属性			会设置单元格框中的单元格内容的对齐方式。
+        	该属性定义行内元素的基线相对于该元素所在行的基线的垂直对齐。允许指定负长度值和百分比值。这会使元素降低而不是升高。在表单元格中，这个属性会设置单元格框中的单元格内容的对齐方式。
         值	描述
         长度	通过距离升高（正值）或降低（负值）元素。'0cm'等同于'baseline'
         百分值 – %	通过距离（相对于1line-height1值的百分大小）升高（正值）或降低（负值）元素。'0%'等同于'baseline'
@@ -218,7 +218,7 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
         normal	只在允许的断字点换行（浏览器保持默认处理）。
         break-word	在长单词或 URL 地址内部进行换行。
     区别
-        word-wrap:break-word与word-break:break-all共同点是都能把长单词强行断句，不同点是word-wrap:break-word会首先起一个新行来放置长单		 词，新的行还是放不下这个长单词则会对长单词进行强制断句；而word-break:break-all则不会把长单词放在一个新行里，当这一行放不下的时候就直接强			制断句了。
+        word-wrap:break-word与word-break:break-all共同点是都能把长单词强行断句，不同点是word-wrap:break-word会首先起一个新行来放置长单词，新的行还是放不下这个长单词则会对长单词进行强制断句；而word-break:break-all则不会把长单词放在一个新行里，当这一行放不下的时候就直接强制断句了。
 ```
  
 2.绘制
@@ -494,7 +494,7 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
 - 多列等高
 
 ```
-	(1)大的margin-bottom。这种技术的关键是给每个框设置大的底内边距，然后用数值相似的负外边距消除这个高度。这会导致每个列溢出容器元素。如果把容器的		overflow属性设为hidden,列就在最高点被裁切。	
+	(1)大的margin-bottom。这种技术的关键是给每个框设置大的底内边距，然后用数值相似的负外边距消除这个高度。这会导致每个列溢出容器元素。如果把容器的	overflow属性设为hidden,列就在最高点被裁切。	
 		<div id="wrap">
 			<div id="left">
 				<p>left</p>
@@ -593,7 +593,7 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
             3.  Class 类选择器的权值为 10
             4.  HTML 标签选择器的权值为 1
     (3)层叠性
-        层叠就是在html文件中对于同一个元素可以有多个css样式存在，当有相同权重的样式存在时，会根据这些css样式的前后顺序来决定，处于最后面的css样式会         被应用。
+        层叠就是在html文件中对于同一个元素可以有多个css样式存在，当有相同权重的样式存在时，会根据这些css样式的前后顺序来决定，处于最后面的css样式会被应用。
     (4)重要性
         CSS 优先级法则：
             A  选择器都有一个权值，权值越大越优先；
@@ -745,7 +745,7 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
 		(1)改变作用域链
 			eval:避免使用			
 			with:避免使用	
-			catch:当try代码块中发生错误时，执行过程会跳转到catch语句，然后把异常对象推入一个可变对象并置于作用域的头部。在catch代码块内部，函数的			所有局部变量将会被放在第二个作用域链对象中。
+			catch:当try代码块中发生错误时，执行过程会跳转到catch语句，然后把异常对象推入一个可变对象并置于作用域的头部。在catch代码块内部，函数的所有局部变量将会被放在第二个作用域链对象中。
 	4. 查找、声明
 		自下而上，沿作用链向上查找
 		无所在哪声明，都等同于在函数顶部声明
@@ -764,13 +764,13 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
 - call/apply
 
 ```
-	call 和 apply 都是为了改变某个函数运行时的 context 即上下文而存在的，换句话说，就是为了改变函数体内部 this 的指向。因为 JavaScript 的函		数存在「定义时上下文」和「运行时上下文」以及「上下文是可以改变的」这样的概念。
+	call 和 apply 都是为了改变某个函数运行时的 context 即上下文而存在的，换句话说，就是为了改变函数体内部 this 的指向。因为 JavaScript 的函数存在「定义时上下文」和「运行时上下文」以及「上下文是可以改变的」这样的概念。
 
 	二者的作用完全一样，只是接受参数的方式不太一样。例如，有一个函数 func1 定义如下：
 	var func1 = function(arg1, arg2) {};
-	就可以通过 func1.call(this, arg1, arg2); 或者 func1.apply(this, [arg1, arg2]); 来调用。其中 this 是你想指定的上下文，他可以任何一个 	  JavaScript 对象(JavaScript 中一切皆对象)，call 需要把参数按顺序传递进去，而 apply 则是把参数放在数组里。
+	就可以通过 func1.call(this, arg1, arg2); 或者 func1.apply(this, [arg1, arg2]); 来调用。其中 this 是你想指定的上下文，他可以任何一个JavaScript 对象(JavaScript 中一切皆对象)，call 需要把参数按顺序传递进去，而 apply 则是把参数放在数组里。
 
-	JavaScript 中，某个函数的参数数量是不固定的，因此要说适用条件的话，当你的参数是明确知道数量时，用 call，而不确定的时候，用 apply，然后把参       数 push 进数组传递进去。当参数数量不确定时，函数内部也可以通过 arguments 这个数组来便利所有的参数。
+	JavaScript 中，某个函数的参数数量是不固定的，因此要说适用条件的话，当你的参数是明确知道数量时，用 call，而不确定的时候，用 apply，然后把参数 push 进数组传递进去。当参数数量不确定时，函数内部也可以通过 arguments 这个数组来便利所有的参数。
 	
 	_____________________________________
 	
@@ -787,7 +787,7 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
 
 	var blackCat = new cat;
 	blackCat.say();
-	但是如果我们有一个对象whiteDog = {food:"bone"},我们不想对它重新定义say方法，那么我们可以通过call或apply用blackCat的say方法：				blackCat.say.call(whiteDog);
+	但是如果我们有一个对象whiteDog = {food:"bone"},我们不想对它重新定义say方法，那么我们可以通过call或apply用blackCat的say方法：blackCat.say.call(whiteDog);
 	所以，可以看出call和apply是为了动态改变this而出现的，当一个object没有某个方法，但是其他的有，我们可以借助call或apply用其它对象的方法来操作。
 	用的比较多的，通过document.getElementsByTagName选择的dom 节点是一种类似array的array。它不能应用Array下的push,pop等方法。我们可以通过：
 	var domNodes = Array.prototype.slice.call(document.getElementsByTagName("*"));
@@ -798,7 +798,7 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
 
 ```
 	(1) 标记清除：进入环境、离开环境标记，然后统一销毁带标记的	
-	(2) 引用计数：当声明一个变量并将引用类型值复制该值，引用次数为1，同个值又被赋给另一个变量，加1，相反，这个值引用的变量又得了另一个值，减1，为0			则回收	
+	(2) 引用计数：当声明一个变量并将引用类型值复制该值，引用次数为1，同个值又被赋给另一个变量，加1，相反，这个值引用的变量又得了另一个值，减1，为0则回收	
 ```
 
 3.对象
@@ -898,11 +898,11 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
 
 ![图](https://sfault-image.b0.upaiyun.com/755/273/755273249-57a2e38acba17_articlex "title")
 ```
-	万物初生时，一个null对象，凭空而生，接着Object、Function学着null的模样塑造了自己，并且它们彼此之间喜结连理，提供了prototype和				constructor，一个给子孙提供了基因，一个则制造万千子子孙孙。
-    在JavaScript中，null也是作为一个对象存在，基于它继承的子子孙孙，当属对象。乍一看，null像是上帝,而Object和Function犹如JavaScript世界中的亚	  当与夏娃。
+	万物初生时，一个null对象，凭空而生，接着Object、Function学着null的模样塑造了自己，并且它们彼此之间喜结连理，提供了prototype和constructor，一个给子孙提供了基因，一个则制造万千子子孙孙。
+    在JavaScript中，null也是作为一个对象存在，基于它继承的子子孙孙，当属对象。乍一看，null像是上帝,而Object和Function犹如JavaScript世界中的亚当与夏娃。
 
 	原型指针 __proto__
-		在JavaScript中，每个对象都拥有一个原型对象，而指向该原型对象的内部指针则是__proto__,通过它可以从中继承原型对象的属性，原型是JavaScript		  中的基因链接，有了这个，才能知道这个对象的祖祖辈辈。从对象中的__proto__可以访问到他所继承的原型对象。
+		在JavaScript中，每个对象都拥有一个原型对象，而指向该原型对象的内部指针则是__proto__,通过它可以从中继承原型对象的属性，原型是JavaScript中的基因链接，有了这个，才能知道这个对象的祖祖辈辈。从对象中的__proto__可以访问到他所继承的原型对象。
 
 		var a = new Array();
 		a.__proto__ === Array.prototype // true
@@ -916,7 +916,7 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
 		a.__proto__.__proto__.__proto__ === null  // true
 		// 等同于 Object.prototype.__proto__ === null
 		所以说，JavaScript中的对象，追根溯源都是来自一个null对象。
-		除了使用.__proto__方式访问对象的原型，还可以通过Object.getPrototypeOf方法来获取对象的原型，以及通过Object.setPrototypeOf方法来重写		   对象的原型。
+		除了使用.__proto__方式访问对象的原型，还可以通过Object.getPrototypeOf方法来获取对象的原型，以及通过Object.setPrototypeOf方法来重写对象的原型。
 	原型对象 prototype
 		函数作为JavaScript中的一等公民，它既是函数又是对象，函数的原型指向的是Function.prototype
 		
@@ -934,16 +934,16 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
 		Foo.prototype.constructor === Foo; // true
 		a.constructor === Foo; // true
 		a.constructor === Foo.prototype.constructor; // true
-		PS: a.constructor属性并不属于a（a.hasOwnProperty("constructor") === false），而是读取的a.__proto__.constructor，所以上图用虚		   线表示a.constructor，方便理解。
+		PS: a.constructor属性并不属于a（a.hasOwnProperty("constructor") === false），而是读取的a.__proto__.constructor，所以上图用虚线表示a.constructor，方便理解。
 	原型链
 		概念：
 
 		原型链作为实现继承的主要方法，其基本思想是利用原型让一个引用类型继承另一个引用类型的属性和方法。
-		每个构造函数都有一个原型对象(prototype)，原型对象都包含一个指向构造函数的指针(constructor)，而实例都包含一个指向原型对象的内部指针				(__proto__)。
+		每个构造函数都有一个原型对象(prototype)，原型对象都包含一个指向构造函数的指针(constructor)，而实例都包含一个指向原型对象的内部指针(__proto__)。
 
-		那么，假如我们让原型对象等于另一个类型的实例，此时的原型对象将包含一个指向另一个原型的指针，相应地，另一个原型中也包含着一个指向另一个构造函	      数的指针。假如另一个原型又是另一个类型的实例，那么上述关系依然成立。如此层层递进，就构造了实例与原型的链条，这就是原型链的基本概念。
+		那么，假如我们让原型对象等于另一个类型的实例，此时的原型对象将包含一个指向另一个原型的指针，相应地，另一个原型中也包含着一个指向另一个构造函数的指针。假如另一个原型又是另一个类型的实例，那么上述关系依然成立。如此层层递进，就构造了实例与原型的链条，这就是原型链的基本概念。
 
-		意义：“原型链”的作用在于，当读取对象的某个属性时，JavaScript引擎先寻找对象本身的属性，如果找不到，就到它的原型去找，如果还是找不到，就到原		    型的原型去找。以此类推，如果直到最顶层的Object.prototype还是找不到，则返回undefine。
+		意义：“原型链”的作用在于，当读取对象的某个属性时，JavaScript引擎先寻找对象本身的属性，如果找不到，就到它的原型去找，如果还是找不到，就到原型的原型去找。以此类推，如果直到最顶层的Object.prototype还是找不到，则返回undefine。
 		亲子鉴定
 		在JavaScript中，也存在鉴定亲子之间DNA关系的方法：
 
@@ -1125,9 +1125,9 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
 		o.[[Prototype]] = Foo.prototype;
 		Foo.call(o);
 		在JS中,绝大多数的函数都是既可以调用也可以实例化的.我们既可以直接执行函数得到函数的返回值.也可以通过new操作符得到一个对象.
-		在javascript中, 通过new可以产生原对象的一个实例对象，而这个实例对象继承了原对象的属性和方法。因此，new存在的意义在于它实现了javascript		 中的继承，而不仅仅是实例化了一个对象！
+		在javascript中, 通过new可以产生原对象的一个实例对象，而这个实例对象继承了原对象的属性和方法。因此，new存在的意义在于它实现了javascript中的继承，而不仅仅是实例化了一个对象！
 	new不new的区别：
-		如果函数返回值为常规意义上的值类型（Number、String、Boolean）时，new函数将会返回一个该函数的实例对象，而如果函数返回一个引用类型				（Object、Array、Function），则new函数与直接调用函数产生的结果等同。
+		如果函数返回值为常规意义上的值类型（Number、String、Boolean）时，new函数将会返回一个该函数的实例对象，而如果函数返回一个引用类型	（Object、Array、Function），则new函数与直接调用函数产生的结果等同。
 ```
 
 4.内置对象
@@ -1485,7 +1485,7 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
     alert(box.getBoundingClientRect().bottom);      // 元素下边距离页面上边的距离
     alert(box.getBoundingClientRect().left);        // 元素左边距离页面左边的距离
 
-    注意：IE、Firefox3+、Opera9.5、Chrome、Safari支持，在IE中，默认坐标从(2,2)开始计算，导致最终距离比其他浏览器多出两个像素，我们需要做个兼		容。
+    注意：IE、Firefox3+、Opera9.5、Chrome、Safari支持，在IE中，默认坐标从(2,2)开始计算，导致最终距离比其他浏览器多出两个像素，我们需要做个兼容。
     document.documentElement.clientTop;  // 非IE为0，IE为2
     document.documentElement.clientLeft; // 非IE为0，IE为2
     functiongGetRect (element) {
@@ -1515,8 +1515,8 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
     height : (number)
     }
     getClientRects和getBoundingClientRect差异
-        getClientRects返回的其实是个数组，数组中有很多个类似getBoundingClientRect返回的对象。getBoundingClientRect返回的永远是最外框框的那			个矩形区域相关的坐标偏移对象；而getClientRects是多行文字区域的坐标偏移集合，在非IE浏览器下，只对inline的标签有反应。
-        一般getBoundingClientRect方法用的多一点。我们可以很容易获取某个元素的偏移值。甚至高宽都能很轻松的计算出来。所以，下载你想用js获取元素的高         宽尺寸，就可以试试getBoundingClientRect方法了。
+        getClientRects返回的其实是个数组，数组中有很多个类似getBoundingClientRect返回的对象。getBoundingClientRect返回的永远是最外框框的那个矩形区域相关的坐标偏移对象；而getClientRects是多行文字区域的坐标偏移集合，在非IE浏览器下，只对inline的标签有反应。
+        一般getBoundingClientRect方法用的多一点。我们可以很容易获取某个元素的偏移值。甚至高宽都能很轻松的计算出来。所以，下载你想用js获取元素的高宽尺寸，就可以试试getBoundingClientRect方法了。
         对getClientRects和getBoundingClientRect可以得到一个更好的说明.
         getClientRects 返回一个TextRectangle集合，就是TextRectangleList对象。
         getBoundingClientRect 返回 一个TextRectangle对象。
@@ -1569,7 +1569,7 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
 	screenTop
 	screenX
 	screenY
-	只读整数。声明了窗口的左上角在屏幕上的的 x 坐标和 y 坐标。IE、Safari 和 Opera 支持 screenLeft 和 screenTop，而 Firefox 和 Safari 支持 	  	  screenX 和 screenY。
+	只读整数。声明了窗口的左上角在屏幕上的的 x 坐标和 y 坐标。IE、Safari 和 Opera 支持 screenLeft 和 screenTop，而 Firefox 和 Safari 支持screenX 和 screenY。
 	Window 对象方法
 	方法	描述
 	alert()	显示带有一段消息和一个确认按钮的警告框。
@@ -1676,7 +1676,7 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
 			title：不知道干啥用，传空字符串就行了。
 			url：要跳转到的URL地址，不能跨域。
 		window.onpopstate
-			history.go和history.back（包括用户按浏览器历史前进后退按钮）触发，并且页面无刷的时候（由于使用pushState修改了history）会触发				popstate事件，事件发生时浏览器会从history中取出URL和对应的state对象替换当前的URL和history.state。通过event.state也可以获取				history.state。
+			history.go和history.back（包括用户按浏览器历史前进后退按钮）触发，并且页面无刷的时候（由于使用pushState修改了history）会触发popstate事件，事件发生时浏览器会从history中取出URL和对应的state对象替换当前的URL和history.state。通过event.state也可以获取				history.state。
 ```
 
 ##HTTP
@@ -1685,8 +1685,8 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
 
 ```
     1XX：信息状态码
-        100 Continue：客户端应当继续发送请求。这个临时相应是用来通知客户端它的部分请求已经被服务器接收，且仍未被拒绝。客户端应当继续发送请求的剩余			部分，或者如果请求已经完成，忽略这个响应。服务器必须在请求万仇向客户端发送一个最终响应
-        101 Switching Protocols：服务器已经理解力客户端的请求，并将通过Upgrade消息头通知客户端采用不同的协议来完成这个请求。在发送完这个响应最		  后的空行后，服务器将会切换到Upgrade消息头中定义的那些协议。
+        100 Continue：客户端应当继续发送请求。这个临时相应是用来通知客户端它的部分请求已经被服务器接收，且仍未被拒绝。客户端应当继续发送请求的剩余部分，或者如果请求已经完成，忽略这个响应。服务器必须在请求万仇向客户端发送一个最终响应
+        101 Switching Protocols：服务器已经理解力客户端的请求，并将通过Upgrade消息头通知客户端采用不同的协议来完成这个请求。在发送完这个响应最后的空行后，服务器将会切换到Upgrade消息头中定义的那些协议。
     2XX：成功状态码
         200 OK：请求成功，请求所希望的响应头或数据体将随此响应返回
         201 Created：
@@ -1792,25 +1792,25 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
         10、Content-Length： WEB 服务器告诉浏览器自己响应的对象的长度。例如：Content-Length: 26012
         11、Content-Range： WEB 服务器表明该响应包含的部分对象为整个对象的哪个部分。例如：Content-Range: bytes 21010-47021/47022
         12、Content-Type： WEB 服务器告诉浏览器自己响应的对象的类型。例如：Content-Type：application/xml
-        13、 ETag：就是一个对象（比如URL）的标志值，就一个对象而言，比如一个 html 文件，如果被修改了，其 Etag 也会别修改，所以ETag 的作用跟 			Last-Modified 的作用差不多，主要供 WEB 服务器判断一个对象是否改变了。比如前一次请求某个 html 文件时，获得了其 ETag，当这次又请求这			个文件时，浏览器就会把先前获得的 ETag 值发送给WEB 服务器，然后 WEB 服务器会把这个 ETag 跟该文件的当前 ETag 进行对比，然后就知道这个			   文件有没有改变了。
-        14、 Expired：WEB服务器表明该实体将在什么时候过期，对于过期了的对象，只有在跟WEB服务器验证了其有效性后，才能用来响应客户请求。是 				HTTP/1.0的头部。例如：Expires：Sat, 23 May 2009 10:02:12 GMT
+        13、 ETag：就是一个对象（比如URL）的标志值，就一个对象而言，比如一个 html 文件，如果被修改了，其 Etag 也会别修改，所以ETag 的作用跟Last-Modified 的作用差不多，主要供 WEB 服务器判断一个对象是否改变了。比如前一次请求某个 html 文件时，获得了其 ETag，当这次又请求这个文件时，浏览器就会把先前获得的 ETag 值发送给WEB 服务器，然后 WEB 服务器会把这个 ETag 跟该文件的当前 ETag 进行对比，然后就知道这个文件有没有改变了。
+        14、 Expired：WEB服务器表明该实体将在什么时候过期，对于过期了的对象，只有在跟WEB服务器验证了其有效性后，才能用来响应客户请求。是HTTP/1.0的头部。例如：Expires：Sat, 23 May 2009 10:02:12 GMT
         15、 Host：客户端指定自己想访问的WEB服务器的域名/IP 地址和端口号。例如：Host：rss.sina.com.cn
         16、 If-Match：如果对象的 ETag 没有改变，其实也就意味著对象没有改变，才执行请求的动作。
         17、If-None-Match：如果对象的 ETag 改变了，其实也就意味著对象也改变了，才执行请求的动作。
-        18、 If-Modified-Since：如果请求的对象在该头部指定的时间之后修改了，才执行请求的动作（比如返回对象），否则返回代码304，告诉浏览器该对象没         有修改。例如：If-Modified-Since：Thu, 10 Apr 2008 09:14:42 GMT
+        18、 If-Modified-Since：如果请求的对象在该头部指定的时间之后修改了，才执行请求的动作（比如返回对象），否则返回代码304，告诉浏览器该对象没有修改。例如：If-Modified-Since：Thu, 10 Apr 2008 09:14:42 GMT
         19、If-Unmodified-Since：如果请求的对象在该头部指定的时间之后没修改过，才执行请求的动作（比如返回对象）。
-        20、 If-Range：浏览器告诉 WEB 服务器，如果我请求的对象没有改变，就把我缺少的部分给我，如果对象改变了，就把整个对象给我。浏览器通过发送请求         对象的 ETag 或者 自己所知道的最后修改时间给 WEB 服务器，让其判断对象是否改变了。总是跟 Range 头部一起使用。
-        21、 Last-Modified：WEB 服务器认为对象的最后修改时间，比如文件的最后修改时间，动态页面的最后产生时间等等。例如：Last-Modified：Tue, 		 06May 2008 02:42:43 GMT
-        22、 Location：WEB 服务器告诉浏览器，试图访问的对象已经被移到别的位置了，到该头部指定的位置去取。例如：Location：                           	   http://i0.sinaimg.cn/dy/deco/2008/0528/sinahome_0803_ws_005_text_0.gif
+        20、 If-Range：浏览器告诉 WEB 服务器，如果我请求的对象没有改变，就把我缺少的部分给我，如果对象改变了，就把整个对象给我。浏览器通过发送请求对象的 ETag 或者 自己所知道的最后修改时间给 WEB 服务器，让其判断对象是否改变了。总是跟 Range 头部一起使用。
+        21、 Last-Modified：WEB 服务器认为对象的最后修改时间，比如文件的最后修改时间，动态页面的最后产生时间等等。例如：Last-Modified：Tue,06May 2008 02:42:43 GMT
+        22、 Location：WEB 服务器告诉浏览器，试图访问的对象已经被移到别的位置了，到该头部指定的位置去取。例如：Location： http://i0.sinaimg.cn/dy/deco/2008/0528/sinahome_0803_ws_005_text_0.gif
         23、 Pramga：主要使用 Pramga: no-cache，相当于 Cache-Control： no-cache。例如：Pragma：no-cache
-        24、 Proxy-Authenticate： 代理服务器响应浏览器，要求其提供代理身份验证信息。Proxy-Authorization：浏览器响应代理服务器的身份验证请求，		   提供自己的身份信息。
+        24、 Proxy-Authenticate： 代理服务器响应浏览器，要求其提供代理身份验证信息。Proxy-Authorization：浏览器响应代理服务器的身份验证请求，提供自己的身份信息。
         25、 Range：浏览器（比如 Flashget 多线程下载时）告诉 WEB 服务器自己想取对象的哪部分。例如：Range: bytes=1173546-
         26、 Referer：浏览器向 WEB 服务器表明自己是从哪个 网页/URL 获得/点击 当前请求中的网址/URL。例如：Referer：http://www.sina.com/
         27、 Server: WEB 服务器表明自己是什么软件及版本等信息。例如：Server：Apache/2.0.61 (Unix)
-        28、 User-Agent: 浏览器表明自己的身份（是哪种浏览器）。例如：User-Agent：Mozilla/5.0 (Windows; U; Windows NT 5.1; zh-CN;             		rv:1.8.1.14) Gecko/20080404 Firefox/2、0、0、14
-        29、 Transfer-Encoding: WEB 服务器表明自己对本响应消息体（不是消息体里面的对象）作了怎样的编码，比如是否分块（chunked）。例如：				Transfer-Encoding: chunked
-        30、 Vary: WEB服务器用该头部的内容告诉 Cache 服务器，在什么条件下才能用本响应所返回的对象响应后续的请求。假如源WEB服务器在接到第一个请求			消息时，其响应消息的头部为：Content-Encoding: gzip; Vary: Content-Encoding那么 Cache 服务器会分析后续请求消息的头部，检查其 			Accept-Encoding，是否跟先前响应的 Vary 头部值一致，即是否使用相同的内容编码方法，这样就可以防止 Cache 服务器用自己 Cache 里面压缩后的		实体响应给不具备解压能力的浏览器。例如：Vary：Accept-Encoding
-        31、 Via： 列出从客户端到 OCS 或者相反方向的响应经过了哪些代理服务器，他们用什么协议（和版本）发送的请求。当客户端请求到达第一个代理服务器         时，该服务器会在自己发出的请求里面添加 Via 头部，并填上自己的相关信息，当下一个代理服务器收到第一个代理服务器的请求时，会在自己发出的请求里         面复制前一个代理服务器的请求的Via 头部，并把自己的相关信息加到后面，以此类推，当 OCS 收到最后一个代理服务器的请求时，检查 Via 头部，就知道         该请求所经过的路由。例如：Via：1.0 236.D0707195.sina.com.cn:80 (squid/2.6.STABLE13)
+        28、 User-Agent: 浏览器表明自己的身份（是哪种浏览器）。例如：User-Agent：Mozilla/5.0 (Windows; U; Windows NT 5.1; zh-CN;rv:1.8.1.14) Gecko/20080404 Firefox/2、0、0、14
+        29、 Transfer-Encoding: WEB 服务器表明自己对本响应消息体（不是消息体里面的对象）作了怎样的编码，比如是否分块（chunked）。例如：Transfer-Encoding: chunked
+        30、 Vary: WEB服务器用该头部的内容告诉 Cache 服务器，在什么条件下才能用本响应所返回的对象响应后续的请求。假如源WEB服务器在接到第一个请求消息时，其响应消息的头部为：Content-Encoding: gzip; Vary: Content-Encoding那么 Cache 服务器会分析后续请求消息的头部，检查其Accept-Encoding，是否跟先前响应的 Vary 头部值一致，即是否使用相同的内容编码方法，这样就可以防止 Cache 服务器用自己 Cache 里面压缩后的实体响应给不具备解压能力的浏览器。例如：Vary：Accept-Encoding
+        31、 Via： 列出从客户端到 OCS 或者相反方向的响应经过了哪些代理服务器，他们用什么协议（和版本）发送的请求。当客户端请求到达第一个代理服务器时，该服务器会在自己发出的请求里面添加 Via 头部，并填上自己的相关信息，当下一个代理服务器收到第一个代理服务器的请求时，会在自己发出的请求里面复制前一个代理服务器的请求的Via 头部，并把自己的相关信息加到后面，以此类推，当 OCS 收到最后一个代理服务器的请求时，检查 Via 头部，就知道该请求所经过的路由。例如：Via：1.0 236.D0707195.sina.com.cn:80 (squid/2.6.STABLE13)
 ```
 
 3.方法
@@ -1821,7 +1821,7 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
     HEAD与GET类似，但服务器在响应中值返回首部，不返回实体的主体部分
     PUT让服务器用请求的主体部分来创建一个由所请求的URL命名的新文档，或者，如果那个URL已经存在的话，就用干这个主体替代它
     POST起初是用来向服务器输入数据的。实际上，通常会用它来支持HTML的表单。表单中填好的数据通常会被送给服务器，然后由服务器将其发送到要去的地方。
-    TRACE会在目的服务器端发起一个环回诊断，最后一站的服务器会弹回一个TRACE响应并在响应主体中携带它收到的原始请求报文。TRACE方法主要用于诊断，用于验     证请求是否如愿穿过了请求/响应链。
+    TRACE会在目的服务器端发起一个环回诊断，最后一站的服务器会弹回一个TRACE响应并在响应主体中携带它收到的原始请求报文。TRACE方法主要用于诊断，用于验证请求是否如愿穿过了请求/响应链。
     OPTIONS方法请求web服务器告知其支持的各种功能。可以查询服务器支持哪些方法或者对某些特殊资源支持哪些方法。
     DELETE请求服务器删除请求URL指定的资源
 ```
@@ -1842,11 +1842,11 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
 3.CommonJS
 
 ```
-	CommonJS就是为JS的表现来制定规范，NodeJS是这种规范的实现，webpack 也是以CommonJS的形式来书写。因为js没有模块的功能所以CommonJS应运			而生，它希望js可以在任何地方运行，不只是浏览器中。它的终极目标是提供一个类似Python，Ruby和Java标准库。
+	CommonJS就是为JS的表现来制定规范，NodeJS是这种规范的实现，webpack 也是以CommonJS的形式来书写。因为js没有模块的功能所以CommonJS应运而生，它希望js可以在任何地方运行，不只是浏览器中。它的终极目标是提供一个类似Python，Ruby和Java标准库。
 	CommonJS定义的模块分为:{模块引用(require)} {模块定义(exports)} {模块标识(module)}
 	require()用来引入外部模块；exports对象用于导出当前模块的方法或变量，唯一的导出口；module对象就代表模块本身。
 	虽说Node遵循CommonJS的规范，但是相比也是做了一些取舍，填了一些新东西的。
-	不过，说了CommonJS也说了Node，那么我觉得也得先了解下NPM了。NPM作为Node的包管理器，不是为了帮助Node解决依赖包的安装问题嘛，那它肯定也要遵循		CommonJS规范啦，它遵循包规范（还是理论）的。
+	不过，说了CommonJS也说了Node，那么我觉得也得先了解下NPM了。NPM作为Node的包管理器，不是为了帮助Node解决依赖包的安装问题嘛，那它肯定也要遵循CommonJS规范啦，它遵循包规范（还是理论）的。
 	CommonJS WIKI讲了它的历史，还介绍了modules和packages等。
 ```
 
@@ -1876,9 +1876,9 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
 	...
 	}) 
 
-	虽然 AMD 也支持 CMD 的写法，同时还支持将 require 作为依赖项传递，但 RequireJS 的作者默认是最喜欢上面的写法，也是官方文档里默认的模块定义写	法。
+	虽然 AMD 也支持 CMD 的写法，同时还支持将 require 作为依赖项传递，但 RequireJS 的作者默认是最喜欢上面的写法，也是官方文档里默认的模块定义写法。
 
-	3. AMD 的 API 默认是一个当多个用，CMD 的 API 严格区分，推崇职责单一。比如 AMD 里，require 分全局 require 和局部 require，都叫 			require。CMD 里，没有全局 require，而是根据模块系统的完备性，提供 seajs.use 来实现模块系统的加载启动。CMD 里，每个 API 都简单纯粹。
+	3. AMD 的 API 默认是一个当多个用，CMD 的 API 严格区分，推崇职责单一。比如 AMD 里，require 分全局 require 和局部 require，都叫require。CMD 里，没有全局 require，而是根据模块系统的完备性，提供 seajs.use 来实现模块系统的加载启动。CMD 里，每个 API 都简单纯粹。
 ```
 ##构建工具
 
@@ -1891,13 +1891,13 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
 4.区别
 
 ```
-	Gulp应该和Grunt比较，他们的区别我就不说了，说说用处吧。Gulp / Grunt 是一种工具，能够优化前端工作流程。比如自动刷新页面、combo、压缩css、		js、编译less等等。简单来说，就是使用Gulp/Grunt，然后配置你需要的插件，就可以把以前需要手工做的事情让它帮你做了。
+	Gulp应该和Grunt比较，他们的区别我就不说了，说说用处吧。Gulp / Grunt 是一种工具，能够优化前端工作流程。比如自动刷新页面、combo、压缩css、js、编译less等等。简单来说，就是使用Gulp/Grunt，然后配置你需要的插件，就可以把以前需要手工做的事情让它帮你做了。
 
-	说到 browserify / webpack ，那还要说到 seajs / requirejs 。这四个都是JS模块化的方案。其中seajs / require 是一种类型，browserify / 	 webpack 是另一种类型。
+	说到 browserify / webpack ，那还要说到 seajs / requirejs 。这四个都是JS模块化的方案。其中seajs / require 是一种类型，browserify / webpack 是另一种类型。
 
-	seajs / require : 是一种在线"编译" 模块的方案，相当于在页面上加载一个 CMD/AMD 解释器。这样浏览器就认识了 define、exports、module 这些东	 西。也就实现了模块化。
+	seajs / require : 是一种在线"编译" 模块的方案，相当于在页面上加载一个 CMD/AMD 解释器。这样浏览器就认识了 define、exports、module 这些东西。也就实现了模块化。
 
-	browserify / webpack : 是一个预编译模块的方案，相比于上面 ，这个方案更加智能。没用过browserify，这里以webpack为例。首先，它是预编译的，不	 需要在浏览器中加载解释器。另外，你在本地直接写JS，不管是 AMD / CMD / ES6 风格的模块化，它都能认识，并且编译成浏览器认识的JS。这样就知道，Gulp	是一个工具，而webpack等等是模块化方案。Gulp也可以配置seajs、requirejs甚至webpack的插件。
+	browserify / webpack : 是一个预编译模块的方案，相比于上面 ，这个方案更加智能。没用过browserify，这里以webpack为例。首先，它是预编译的，不需要在浏览器中加载解释器。另外，你在本地直接写JS，不管是 AMD / CMD / ES6 风格的模块化，它都能认识，并且编译成浏览器认识的JS。这样就知道，Gulp是一个工具，而webpack等等是模块化方案。Gulp也可以配置seajs、requirejs甚至webpack的插件。
 ```
 
 
@@ -1961,11 +1961,11 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
 ```
 	1.没事少烦我-服务端
 		1.1 使用内容分发网络（Content Delivery Network，CDN）
-			通过在现有的Internet中增加一层新的网络架构，将网站的内容发布到最接近用户的 cache服务器内，通过DNS负载均衡的技术，判断用户来源就近访问			   cache服务器取得所需的内容。深圳用户访问遥远的美国服务器，当然不理想了。把静态内容分布到CDN可以减少用户响应时间20%或更多。
+			通过在现有的Internet中增加一层新的网络架构，将网站的内容发布到最接近用户的 cache服务器内，通过DNS负载均衡的技术，判断用户来源就近访问cache服务器取得所需的内容。深圳用户访问遥远的美国服务器，当然不理想了。把静态内容分布到CDN可以减少用户响应时间20%或更多。
 		1.2 静态资源缓存，移动端离线缓存
 			缓存利用可包括：添加 Expires 头，配置 ETag，使 Ajax 可缓存等。其实，恰当的缓存设置可以大大的减少 HTTP请求，也可以节省带宽 。
-			1.21 配置 ETag：即If-None-Match: 上次 ETag 的内容。浏览器会发出请求询问服务端，资源是否过期；服务端发现,没有过期，直接返回一个状态			 码为304、正文为空的响应，告知浏览器使用本地缓存；如果资源有更新，服务端返回状态码 200、Etag 和正文。这个过程被称之为 HTTP 的协商缓				存，通常也叫做弱缓存。
-			1.2.2 添加 Expires 头：服务端通过响应头告诉浏览器，在什么时间之前（Expires）或在多长时间之内（Cache-Control: Max-age=xxx），不			   要再请求服务器了。这个机制我们通常称之为 HTTP 的强缓存。一般会对 CSS、JS、图片等资源使用强缓存，而入口文件（HTML）一般使用协商缓存或			 不缓存。
+			1.21 配置 ETag：即If-None-Match: 上次 ETag 的内容。浏览器会发出请求询问服务端，资源是否过期；服务端发现,没有过期，直接返回一个状态码为304、正文为空的响应，告知浏览器使用本地缓存；如果资源有更新，服务端返回状态码 200、Etag 和正文。这个过程被称之为 HTTP 的协商缓存，通常也叫做弱缓存。
+			1.2.2 添加 Expires 头：服务端通过响应头告诉浏览器，在什么时间之前（Expires）或在多长时间之内（Cache-Control: Max-age=xxx），不要再请求服务器了。这个机制我们通常称之为 HTTP 的强缓存。一般会对 CSS、JS、图片等资源使用强缓存，而入口文件（HTML）一般使用协商缓存或不缓存。
 			1.2.3 AppCache：AppCache主要利用manifest 文本文件，告知浏览器被缓存的内容以及不缓存的内容。
 			1.2.4 LocalStorage：用于持久化的本地存储，除非主动删除数据，否则数据是永远不会过期的。
 	2.省着点用-网络
@@ -1974,21 +1974,21 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
 				小图片合并雪碧图；
 				JS、CSS文件选择性合并；
 				避免重复的资源请求。
-			减少请求数对于速度优化来说最重要最有效的，特别是网络差的用户。一个完整的请求需要经过域名解析以及DNS寻址、与服务器建立连接、发送数据、等			 待服务器响应、接收数据的过程；每个请求都需要携带数据，因此每个请求都需要占用带宽；浏览器进行并发请求的请求数是有上限的。请求多了的情				况,明显增加了网页的响应时间。一个页面由多个模块拼接而成，几个模块中请求了同样的资源时，就会导致资源的重复请求。
+			减少请求数对于速度优化来说最重要最有效的，特别是网络差的用户。一个完整的请求需要经过域名解析以及DNS寻址、与服务器建立连接、发送数据、等待服务器响应、接收数据的过程；每个请求都需要携带数据，因此每个请求都需要占用带宽；浏览器进行并发请求的请求数是有上限的。请求多了的情况,明显增加了网页的响应时间。一个页面由多个模块拼接而成，几个模块中请求了同样的资源时，就会导致资源的重复请求。
 		2.2 减少文件大小（减少请求带宽）
 			压缩CSS、JS、图片；
 			尽可能控制DOM节点数；
 			精简css、 JavaScript，移除注释、空格、重复css和脚本。
-			开启Gzip，Gzip的思想就是把文件先在服务器端进行压缩，且压缩率达到85%，然后再传输，传输完毕后浏览器会 重新对压缩过的内容进行解压缩，并执			 行。。好处在于Gzip的支持已经很好，且爬虫可识别，压缩率达到66%-85%显著减少了文件传输的大小。另外，gzip对pdf文件的压缩效果不大，而且会			浪费CPU。
+			开启Gzip，Gzip的思想就是把文件先在服务器端进行压缩，且压缩率达到85%，然后再传输，传输完毕后浏览器会 重新对压缩过的内容进行解压缩，并执 行。。好处在于Gzip的支持已经很好，且爬虫可识别，压缩率达到66%-85%显著减少了文件传输的大小。另外，gzip对pdf文件的压缩效果不大，而且会浪费CPU。
 		2.3 合理使用静态资源域名
 			域名的要求是短小且独立。
-			短小可以减少头部开销，因为域名越短请求头起始行的 URI 就越短。之所以要求独立，因为独立域名不会共享主域的 Cookie，可以有效减小请求头大			小，这个策略一般称之为 Cookie-Free Domain；另外一个原因是浏览器对相同域名的并发连接数限制，一般允许同域名并发 6~8 个连接，域名不是			 越多越好，每个域名的第一个连接都要经历 DNS 查询（DNS Lookup），导致会耗费一定的时间，控制域名使用在2-4个之间。另外注意：同一静态资源			在不同页面被散列到不同子域下，会导致无法利用 HTTP 缓存。
+			短小可以减少头部开销，因为域名越短请求头起始行的 URI 就越短。之所以要求独立，因为独立域名不会共享主域的 Cookie，可以有效减小请求头大小，这个策略一般称之为 Cookie-Free Domain；另外一个原因是浏览器对相同域名的并发连接数限制，一般允许同域名并发 6~8 个连接，域名不是 越多越好，每个域名的第一个连接都要经历 DNS 查询（DNS Lookup），导致会耗费一定的时间，控制域名使用在2-4个之间。另外注意：同一静态资源在不同页面被散列到不同子域下，会导致无法利用 HTTP 缓存。
 		2.4 使用HTTP 2
 			HTTP 2 相比 HTTP 1.1 的更新大部分集中于：
-			多路复用：多路复用很好地解决如何让重要资源尽快加载这个问题。同域名下或者不同域但是同时满足同一个 IP以及使用同一个证书的这两个条件中的所			 有通信都在单个连接上完成，此连接上同时打开任意数量的双向数据流（ HTTP 1.1 有连接数限制）。使用多域名加上相同的 IP 和证书部署 Web 服务			 有特殊的意义：让支持 HTTP/2 的终端只建立一个连接，用上 HTTP/2 协议带来的各种好处；而只支持 HTTP/1.1 的终端则会建立多个连接，达到同				时更多并发请求的目的。
-			HEAD 压缩：HTTP/2 将请求和响应数据分割为更小的帧，并对它们采用二进制编码（ Binary Framing ）。在 HTTP/1 中，HTTP 请求和响应都是			由「状态行、请求 / 响应头部、消息主体」三部分组成，状态行和头部却没有经过任何压缩，直接以纯文本传输。在 HTTP/2 中，每个数据流都以消息			的形式发送，而消息又由一个或多个帧组成。多个帧之间可以乱序发送，因为根据帧首部的流标识可以重新组装。
+			多路复用：多路复用很好地解决如何让重要资源尽快加载这个问题。同域名下或者不同域但是同时满足同一个 IP以及使用同一个证书的这两个条件中的所有通信都在单个连接上完成，此连接上同时打开任意数量的双向数据流（ HTTP 1.1 有连接数限制）。使用多域名加上相同的 IP 和证书部署 Web 服务有特殊的意义：让支持 HTTP/2 的终端只建立一个连接，用上 HTTP/2 协议带来的各种好处；而只支持 HTTP/1.1 的终端则会建立多个连接，达到同时更多并发请求的目的。
+			HEAD 压缩：HTTP/2 将请求和响应数据分割为更小的帧，并对它们采用二进制编码（ Binary Framing ）。在 HTTP/1 中，HTTP 请求和响应都是由「状态行、请求 / 响应头部、消息主体」三部分组成，状态行和头部却没有经过任何压缩，直接以纯文本传输。在 HTTP/2 中，每个数据流都以消息的形式发送，而消息又由一个或多个帧组成。多个帧之间可以乱序发送，因为根据帧首部的流标识可以重新组装。
 			请求优先级：服务器可以根据流的优先级，控制资源分配(CPU、内存、带宽)，而在响应数据准备好之后，优先将最高优先级的帧发送给客户端。
-			服务器推送：启动Server Push，意味着服务端可以在发送页面HTML时主动推送其它资源，有自己独立的URL，可以被浏览器缓存；如果服务端推送的资				源已经被浏览器缓存过，浏览器可以通过发送 RST_STREAM 帧来拒收。
+			服务器推送：启动Server Push，意味着服务端可以在发送页面HTML时主动推送其它资源，有自己独立的URL，可以被浏览器缓存；如果服务端推送的资源已经被浏览器缓存过，浏览器可以通过发送 RST_STREAM 帧来拒收。
 	3.学会持家，让家变得简洁漂亮-客户端
 		3.1 使用外链CSS和JS，CSS放头，JS放尾，防止阻塞以减少对并发下载的影响，尽早刷新文档的输出。
 		3.2 html的代码优化，如：
@@ -2007,13 +2007,13 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
 			减少Repaint（重绘）和Reflow（重排）最好通过批量更新元素减少重排次数，如设置类class统一更新样式，在添加多个li
 			元素将会触发多次页面重排的情况下使用 DOM fargment 在内存中创建完整的 DOM 节点，然后再一次性添加到 DOM 中。
 		3.5 图片格式的选择：
-			颜色较为丰富的图片而且文件比较大的（40KB - 200KB）或者有内容的图片优先考虑 jpg；图标等颜色比较简单、文件体积不大、起修饰作用的图片，			    优先考虑使用 PNG8 格式；图像颜色丰富而且图片文件不太大的（40KB 以下）或有半透明效果的优先考虑 PNG24 格式。
+			颜色较为丰富的图片而且文件比较大的（40KB - 200KB）或者有内容的图片优先考虑 jpg；图标等颜色比较简单、文件体积不大、起修饰作用的图片，优先考虑使用 PNG8 格式；图像颜色丰富而且图片文件不太大的（40KB 以下）或有半透明效果的优先考虑 PNG24 格式。
 			条件允许的，使用新格式WEBP和BPG。
 			用SVG和ICONFONT代替简单的图标。
-			颜色较为丰富的图片而且文件比较大的（40KB - 200KB）或者有内容的图片优先考虑 jpg；图标等颜色比较简单、文件体积不大、起修饰作用的图片，			    优先考虑使用 PNG8 格式；图像颜色丰富而且图片文件不太大的（40KB 以下）或有半透明效果的优先考虑 PNG24 格式。			
+			颜色较为丰富的图片而且文件比较大的（40KB - 200KB）或者有内容的图片优先考虑 jpg；图标等颜色比较简单、文件体积不大、起修饰作用的图片，优先考虑使用 PNG8 格式；图像颜色丰富而且图片文件不太大的（40KB 以下）或有半透明效果的优先考虑 PNG24 格式。			
 			用「字蛛」来代替艺术字体切图，它可剔除没有使用的字符，从而解决中文字体过大的问题，并编码成跨平台兼容的格式。
 		3.6 合理分配资源加载时间，按需加载，包括CSS、JS文件以及图片、业务模块等。
-			根据我们网页最初加载需要的最小内容集推断其他内容延迟加载；无条件提前加载公共内容或根据用户行为推断提前加载某些内容，如根据搜索框输入的				文字来判断加载的内容。加载机制如下：
+			根据我们网页最初加载需要的最小内容集推断其他内容延迟加载；无条件提前加载公共内容或根据用户行为推断提前加载某些内容，如根据搜索框输入的文字来判断加载的内容。加载机制如下：
 				预加载
 				Dom Ready后加载
 				onLoad后加载
@@ -2027,14 +2027,14 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
 	其次讲究的是页面的可维护性，假如页面挂了，多久可以恢复过来，另外考虑页面挂的期间是否可以采取静态页面处理等方式。
 	页面的稳定性其实和前端安全挂钩，即使页面可以出来了，但是不能保证不会被黑掉，下文从前端安全的方面讲解。
 	3.1 常见攻击：
-		XSS (Cross Site Script) ，跨站脚本攻击，往Web页面里插入恶意html代码。特点是攻击者的代码必须能获取用户浏览器端的执行权限，要杜绝此				类攻击出现可以在入口和出口进行严格的过滤。
+		XSS (Cross Site Script) ，跨站脚本攻击，往Web页面里插入恶意html代码。特点是攻击者的代码必须能获取用户浏览器端的执行权限，要杜绝此类攻击出现可以在入口和出口进行严格的过滤。
 			三种类型：
 				（1） 反射型XSS：一次性；将包含注入脚本的恶意链接发送给受害者。
 				（2） 持久型XSS：用户输入的数据“存储”在服务器端，比如一条包含XSS代码的留言。
 				（3） DOM XSS：使用一些eval等有输出的语句意味着多了一份被XSS的风险。
 			应对策略：
-				当恶意代码值被作为某一标签的内容显示：在不需要html输入的地方对html 标签及一些特殊字符( ” < > & 等等 )做过滤，将其转化为不					被浏览器解释执行的字符。
-				当恶意代码被作为某一标签的属性显示，通过用 “将属性截断来开辟新的属性或恶意方法：属性本身存在的 单引号和双引号都需要进行转码；				对用户输入的html 标签及标签属性做白名单过滤，也可以对一些存在漏洞的标签和属性进行专门过滤。
+				当恶意代码值被作为某一标签的内容显示：在不需要html输入的地方对html 标签及一些特殊字符( ” < > & 等等 )做过滤，将其转化为不被浏览器解释执行的字符。
+				当恶意代码被作为某一标签的属性显示，通过用 “将属性截断来开辟新的属性或恶意方法：属性本身存在的 单引号和双引号都需要进行转码；对用户输入的html 标签及标签属性做白名单过滤，也可以对一些存在漏洞的标签和属性进行专门过滤。
 		CSRF(Cross Site Request Forgery)，跨站点伪造请求，
 			通过伪造连接请求在用户不知情的情况下，让用户以自己的身份来完成攻击者需要达到的一些目的。
 		XSS是你访问正常网站的时候，你浏览器执行了攻击者的代码。有XSS的网站可以直接伪造请求，比CSRF强多了。
@@ -2047,7 +2047,7 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
 			对于用户修改删除等操作最好都使用post 操作 。
 			避免全站通用的cookie，严格设置cookie的域。
 	3.2 数据通道安全
-		国内的众多网站都没有实现全站HTTPS。这是目前为止最重要的一步，所有的数据在发送之前就会被加密，攻击者无法查看或篡改数据包的内容。HTTPS可以理		  解为HTTP+SSL/TLS，通过数据加密、校验数据完整性和身份认证三种机制来保障安全。HTTPS的缺点是网站在加上TLS证书时，可能导致RTT往返时延增加，并		  且 HTTPS通信过程的非对称和对称加解密计算会产生更多的服务器性能和时间上的消耗，但是这是可以优化的，这里就不细说了。
+		国内的众多网站都没有实现全站HTTPS。这是目前为止最重要的一步，所有的数据在发送之前就会被加密，攻击者无法查看或篡改数据包的内容。HTTPS可以理解为HTTP+SSL/TLS，通过数据加密、校验数据完整性和身份认证三种机制来保障安全。HTTPS的缺点是网站在加上TLS证书时，可能导致RTT往返时延增加，并		  且 HTTPS通信过程的非对称和对称加解密计算会产生更多的服务器性能和时间上的消耗，但是这是可以优化的，这里就不细说了。
 	3.3 浏览器安全
 		3.3.1 同源策略
 			首先了解一下同源策略：
@@ -2055,12 +2055,12 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
 				同源策略以源为单位，把资源天然分隔，保护了用户的信息安全。
 				绕过同源策略让javascript访问其他源的资源的方法，如：JSONP、CORS、flash等。
 				同源策略不是绝对安全的，面对很多攻击是无能为力的，比如XSS，因为此时攻击者就在同源之内。
-			不建议使用JSONP，因为JSONP通常在脚本中写一个回调函数，然后把回调函数的名字写在请求的URL中，因此如果请求数据的服务器被黑了，那么黑客就			 能在返回的数据中植入恶意代码，从而窃取用户的隐私信息。
-			跨域资源共享CORS允许资源提供方在响应头中加入一个特殊的标记，使你能通过XHR来获取、解析并验证数据。这样就能避免恶意代码在你的应用中执行。			   在响应头中加入的标记如下：
+			不建议使用JSONP，因为JSONP通常在脚本中写一个回调函数，然后把回调函数的名字写在请求的URL中，因此如果请求数据的服务器被黑了，那么黑客就能在返回的数据中植入恶意代码，从而窃取用户的隐私信息。
+			跨域资源共享CORS允许资源提供方在响应头中加入一个特殊的标记，使你能通过XHR来获取、解析并验证数据。这样就能避免恶意代码在你的应用中执行。在响应头中加入的标记如下：
 				Access-Control-Allow-Origin: allowed origins
-			如果对Access–Control-Allow-Origin设置为*其实是比较危险的，如果没有携带会话认证意味着信息被公开在全网，建议设置具体的域名，而且跨域			   的时候记得带上session id；严格审查请求信息，比如请求参数，还有http头信息，因为 http头可以伪造。
+			如果对Access–Control-Allow-Origin设置为*其实是比较危险的，如果没有携带会话认证意味着信息被公开在全网，建议设置具体的域名，而且跨域的时候记得带上session id；严格审查请求信息，比如请求参数，还有http头信息，因为 http头可以伪造。
 		3.3.2 CSP(Content Security Policy)
-			CSP指定网站上所有脚本和图片等资源的源站点，也能阻止所有内联（inline）的脚本和样式。即使有人在页面评论或者留言中嵌入了脚本标签，这些脚				本代码也不会被执行。可通过两种方式设置，如果 HTTP 头与 Meta 定义同时存在，则优先采用 HTTP 头中的定义：
+			CSP指定网站上所有脚本和图片等资源的源站点，也能阻止所有内联（inline）的脚本和样式。即使有人在页面评论或者留言中嵌入了脚本标签，这些脚本代码也不会被执行。可通过两种方式设置，如果 HTTP 头与 Meta 定义同时存在，则优先采用 HTTP 头中的定义：
 				通过 HTTP 头，比如只允许脚本从本源加载：Content-Security-Policy: script-src ‘self’，其中script-src ‘self’是策略。
 				通过HTML的Meta标签，比如只允许脚本从本源加载：
 				<meta http-equiv="Content-Security-Policy" content="script-src 'self'">
@@ -2075,12 +2075,12 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
 				object-src – 设置可以接受的Flash和其它插件的源站点
 				缺点：
 				默认情况下，所有的内联JavaScript脚本都不会被执行，因为浏览器无法区分自己的内联脚本和黑客注入的脚本。
-				CSP还会默认阻止所有eval()风格的代码的执行，包括setInterval/setTimeout中的字符串和类似于new Function(‘return false’)之类				 的代码。
+				CSP还会默认阻止所有eval()风格的代码的执行，包括setInterval/setTimeout中的字符串和类似于new Function(‘return false’)之类的代码。
 		3.3.3 iframe 沙箱环境
 			利用iframe进行跨源：HTML5为iframe提供了安全属性 sandbox，iframe的能力将会被限制。
 		3.3.4 Secure和HttpOnly属性
-			Seure能确保cookie的内容只能通过SSL连接进行传输。Secure和HttpOnly属性告诉浏览器cookie的内容只能分别通过HTTP(S)协议进行访问，从而			避免了被轻易窃取，比如禁止从JavaScript中的document.cookie访问，因此cookie在浏览器document中不可见了。如果单独使用的话，无法全面				抵御跨站点脚本攻击，通常和其他技术组合使用。使用方法如下：
-			Set-Cookie: <name>=<value>[; <name>=<value>] [; expires=<date>][; domain=<domain_name>][; path=<some_path>][; 				 		secure][; HttpOnly]
+			Seure能确保cookie的内容只能通过SSL连接进行传输。Secure和HttpOnly属性告诉浏览器cookie的内容只能分别通过HTTP(S)协议进行访问，从而避免了被轻易窃取，比如禁止从JavaScript中的document.cookie访问，因此cookie在浏览器document中不可见了。如果单独使用的话，无法全面抵御跨站点脚本攻击，通常和其他技术组合使用。使用方法如下：
+			Set-Cookie: <name>=<value>[; <name>=<value>] [; expires=<date>][; domain=<domain_name>][; path=<some_path>][;secure][; HttpOnly]
 		3.3.5 其他安全相关的HTTP头
 			X-Content-Type-Options 告诉浏览器相信此服务器下发的资源的类型，防止类型嗅探攻击。
 			HPKP(Public Key Pinning) Public Key Pinning 是一个response 头，用来检测一个证书的公钥是否发生了改变，防止中间人攻击。
@@ -2089,8 +2089,8 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
 		html5有很多新的特性能力，然而能力越大，被攻破后的危险就越大。
 		HTML5 对xss的影响主要体现在:
 			攻击面更大，html5带来更多的标签和更多的属性如<video>,<audio>,<canvas>等；
-			危害更大，HTML5更多的资源可以被xss利用。黑客可以利用浏览器的一切权限，比如本地存储、GEO、服务器推送机制WebSocket，js多线程执行					Webworker等。
-			比如localstorage只能通过js设置和获取，导致的结果是不能像cookie一样设置httponly等属性，所以localstorage中不能存放敏感信息，最好能			够在服务端进行加密，可以配合CORS来获取网站的localstorage的信息。
+			危害更大，HTML5更多的资源可以被xss利用。黑客可以利用浏览器的一切权限，比如本地存储、GEO、服务器推送机制WebSocket，js多线程执行Webworker等。
+			比如localstorage只能通过js设置和获取，导致的结果是不能像cookie一样设置httponly等属性，所以localstorage中不能存放敏感信息，最好能够在服务端进行加密，可以配合CORS来获取网站的localstorage的信息。
 ```
 
 4.响应式
@@ -2111,18 +2111,18 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
 	1 语义化
 		标签语义化对搜索引擎友好，良好的结构和语义容易被搜索引擎抓取。
 		善用标题h1，h2，h3，h4，h5，h6，特别是h1和h2；H(x)标签中使用关键字，可提升排名。同时设置 rel=“nofollow”避免权重流失。
-		使用 HTML5 中的 Microdata 对 Web 页面上已经存在的数据提供附加的语义。Microdata 由名字 / 值（name/value）对组成，每一个词汇表定义一组		 命名的属性。对 Microdata 的支持可以影响搜索结果的显示，使得显示结果更加丰富，虽然不能影响搜索结果的排名，但是网站的流量可能会有所增加。类似		的技术还有资源描述框架RDF、微格式Microformat 。
+		使用 HTML5 中的 Microdata 对 Web 页面上已经存在的数据提供附加的语义。Microdata 由名字 / 值（name/value）对组成，每一个词汇表定义一组命名的属性。对 Microdata 的支持可以影响搜索结果的显示，使得显示结果更加丰富，虽然不能影响搜索结果的排名，但是网站的流量可能会有所增加。类似的技术还有资源描述框架RDF、微格式Microformat 。
 	2 衡量站点关键词优化
 		站点内容以及关键词的选择。
 		描述标签、关键词标签、代替属性。
-		长尾关键词：非目标关键词但也可以带来搜索流量的关键词；例如，目标关键词是服装，其长尾关键词可以是男士服装、冬装、户外运动装等。长尾关键词基本		  属性是：可延伸性，针对性强，范围广。
+		长尾关键词：非目标关键词但也可以带来搜索流量的关键词；例如，目标关键词是服装，其长尾关键词可以是男士服装、冬装、户外运动装等。长尾关键词基本属性是：可延伸性，针对性强，范围广。
 		关键词的分布情况。
-		关键词密度、看重：合理的关键字密度可获得较高的排名位置，密度过大会起到相反的效果。一般说来，在大多数的搜索引擎中，关键词密度在2%~8%是一个较		为适当的范围，有利于网站在搜索引擎中排名。
+		关键词密度、看重：合理的关键字密度可获得较高的排名位置，密度过大会起到相反的效果。一般说来，在大多数的搜索引擎中，关键词密度在2%~8%是一个较为适当的范围，有利于网站在搜索引擎中排名。
 		是否存在作弊行为。
 	3 链接
 		优化文件目录结构和URL。URL应该有语义性，简短易懂。
-		通过推广暴露自己的链接，增加信任度。链接分为外向链接和内向（反向）链接，外向链接就是从本站点到其他站点，内向链接就是从其他站点到我的站点，可		  以尝试使用反向链接生成器。或者通过写软文、发布分类信息、发布博客文章来推广自己的网站。
-		锚文本 ：把关键词做一个链接，指向别的网页，这种形式的链接就叫作锚文本。搜索引擎可以根据指向某一个网页的链接的锚文本描述来判断该网页的内容属		  性。
+		通过推广暴露自己的链接，增加信任度。链接分为外向链接和内向（反向）链接，外向链接就是从本站点到其他站点，内向链接就是从其他站点到我的站点，可以尝试使用反向链接生成器。或者通过写软文、发布分类信息、发布博客文章来推广自己的网站。
+		锚文本 ：把关键词做一个链接，指向别的网页，这种形式的链接就叫作锚文本。搜索引擎可以根据指向某一个网页的链接的锚文本描述来判断该网页的内容属性。
 	4 良好的网站导航和sitemap
 		网站需要有一个良好的导航，控制根目录和各子目录的关键，通过sitemap可以帮助网站主了解网站结构，也方便搜索引擎收录整个站点。
 ```
@@ -2430,7 +2430,7 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
 2.二叉堆
 
 ```
-	二叉堆是一种特殊的堆，二叉堆是完全二元树（二叉树）或者是近似完全二元树（二叉树）。二叉堆有两种：最大堆和最小堆。最大堆：父结点的键值总是大于或等	于任何一个子节点的键值；最小堆：父结点的键值总是小于或等于任何一个子节点的键值。
+	二叉堆是一种特殊的堆，二叉堆是完全二元树（二叉树）或者是近似完全二元树（二叉树）。二叉堆有两种：最大堆和最小堆。最大堆：父结点的键值总是大于或等于任何一个子节点的键值；最小堆：父结点的键值总是小于或等于任何一个子节点的键值。
 ```
 
 ##常见面试题
@@ -2488,8 +2488,8 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
 		发布可视节点的内容和计算样式
 	22.js解析如下：
 		浏览器创建Document对象并解析HTML，将解析到的元素和文本节点添加到文档中，此时document.readystate为loading
-		HTML解析器遇到没有async和defer的script时，将他们添加到文档中，然后执行行内或外部脚本。这些脚本会同步执行，并且在脚本下载和执行时解析器会		  暂停。这样就可以用document.write()把文本插入到输入流中。同步脚本经常简单定义函数和注册事件处理程序，他们可以遍历和操作script和他们之前的		 文档内容
-		当解析器遇到设置了async属性的script时，开始下载脚本并继续解析文档。脚本会在它下载完成后尽快执行，但是解析器不会停下来等它下载。异步脚本禁止		   使用document.write()，它们可以访问自己script和之前的文档元素
+		HTML解析器遇到没有async和defer的script时，将他们添加到文档中，然后执行行内或外部脚本。这些脚本会同步执行，并且在脚本下载和执行时解析器会暂停。这样就可以用document.write()把文本插入到输入流中。同步脚本经常简单定义函数和注册事件处理程序，他们可以遍历和操作script和他们之前的文档内容
+		当解析器遇到设置了async属性的script时，开始下载脚本并继续解析文档。脚本会在它下载完成后尽快执行，但是解析器不会停下来等它下载。异步脚本禁止使用document.write()，它们可以访问自己script和之前的文档元素
 		当文档完成解析，document.readState变成interactive
 		所有defer脚本会按照在文档出现的顺序执行，延迟脚本能访问完整文档树，禁止使用document.write()
 		浏览器在Document对象上触发DOMContentLoaded事件
@@ -2639,6 +2639,58 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
 
 5.移动端1px细线解决方案总结(http://www.cnblogs.com/lunarorbitx/p/5287309.html)
 
+```
+	css中的1px并不等于设备的1px,viewport的设置和屏幕物理分辨率是按比例而不是相同的
+	1px解决方案:
+		1.用小数来写px值
+			IOS8下已经支持带小数的px值, media query对应devicePixelRatio有个查询值-webkit-min-device-pixel-ratio, css可以写成这样
+				.border { border: 1px solid #999 }
+				@media screen and (-webkit-min-device-pixel-ratio: 2) {
+					.border { border: 0.5px solid #999 }
+				}
+				@media screen and (-webkit-min-device-pixel-ratio: 3) {
+					.border { border: 0.333333px solid #999 }
+				}
+		2.border-image
+			这样的1张6X6的图片, 9宫格等分填充border-image, 这样元素的4个边框宽度都只有1px
+				@media screen and (-webkit-min-device-pixel-ratio: 2){ 
+					.border{ 
+						border: 1px solid transparent;
+						border-image: url(border.gif) 2 repeat;
+					}
+				}
+			图片可以用gif, png, base64多种格式, 以上是上下左右四条边框的写法, 需要单一边框只要定义单一边框的border, 代码比较直观.
+		3. background渐变
+			背景渐变, 渐变在透明色和边框色中间分割, frozenUI用的就是这种方法, 借用它的上边框写法:
+				@media screen and (-webkit-min-device-pixel-ratio: 2){
+					.ui-border-t {
+						background-position: left top;
+						background-image: -webkit-gradient(linear,left bottom,left top,color-stop(0.5,transparent),color-stop(0.5,#e0e0e0),to(#e0e0e0));
+					}
+				}
+		4.flexible.js
+			这是淘宝移动端采取的方案, github的地址:https://github.com/amfe/lib-flexible. 前面已经说过1px变粗的原因就在于一刀切的设置viewport宽度, 如果能把viewport宽度设置为实际的设备物理宽度, css里的1px不就等于实际1px长了么. flexible.js就是这样干的.
+
+			<meta name=”viewport”>里面的scale值指的是对ideal viewport的缩放, flexible.js检测到IOS机型, 会算出scale = 1/devicePixelRatio, 然后设置viewport
+
+			metaEl = doc.createElement('meta');
+			metaEl.setAttribute('name', 'viewport');
+			metaEl.setAttribute('content', 'initial-scale=' + scale + ', maximum-scale=' + scale + ', minimum-scale=' + scale + ', user-scalable=no');
+			devicePixelRatio=2时输出meta如下, 这样viewport与ideal viewport的比是0.5, 也就与设备物理像素一致
+
+			<meta name="viewport" content="initial-scale=0.5, maximum-scale=0.5, minimum-scale=0.5, user-scalable=no">
+			另外html元素上的font-size会被设置为屏幕宽的1/10, 这样css可以以rem为基础长度单位进行改写, 比如rem是28px, 原先的7px就是0.25rem. border的宽度能直接写1px.
+
+			function refreshRem() {
+				var width = docEl.getBoundingClientRect().width;
+				if (width / dpr > 540) { //大于540px可以不认为是手机屏
+					width = 540 * dpr;
+				}
+				var rem = width / 10; 
+				docEl.style.fontSize = rem + 'px';
+				flexible.rem = win.rem = rem;
+			}
+```
 
 ##移动端常见问题
 
@@ -2694,8 +2746,8 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
 6.textarea的focus问题
 
 ```
-	这次有个需求是点击main的某个元素，需要textarea获取焦点并弹出软键盘。其实这些都不是关键。问题是在点击main的该元素的时候，还是需要跑个ajax判断下	 能否进行评论，这样一跑ajax就获取不了焦点了。
-	解决方法：其实为啥使用了oTextarea.focus()不管用，其实就是中间的这层ajax使用了异步了。这样浏览器以为这是两件事，处于安全性考虑它给禁止了，然后     将ajax改成同步的就OK了。
+	这次有个需求是点击main的某个元素，需要textarea获取焦点并弹出软键盘。其实这些都不是关键。问题是在点击main的该元素的时候，还是需要跑个ajax判断下能否进行评论，这样一跑ajax就获取不了焦点了。
+	解决方法：其实为啥使用了oTextarea.focus()不管用，其实就是中间的这层ajax使用了异步了。这样浏览器以为这是两件事，处于安全性考虑它给禁止了，然后将ajax改成同步的就OK了。
     同样在window.open()的时候也会遇到这个问题，解法相同。
 ```
 
@@ -2717,7 +2769,7 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
 		}
 		loop_height();
 	})();
-	其实就是一直获取页面的可视高度，在键盘弹出来的时候键盘的部分不算innerHeight;这样在键盘收起来的时候就能知道了，如果感觉时间比较长可以把			setTimeout的时间改小一点，默认在少于300ms的时候感觉不出页面的迟钝。
+	其实就是一直获取页面的可视高度，在键盘弹出来的时候键盘的部分不算innerHeight;这样在键盘收起来的时候就能知道了，如果感觉时间比较长可以把setTimeout的时间改小一点，默认在少于300ms的时候感觉不出页面的迟钝。
 ```
 
 8.微信
