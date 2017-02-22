@@ -2851,6 +2851,7 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
 
 ```
 	http://blog.csdn.net/soonfly/article/details/50953814
+	https://my.oschina.net/leejun2005/blog/369148
 	辨别条件请求
 		当客户端缓存了目标资源但不确定该缓存资源是否是最新版本的时候,就会发送一个条件请求.在Fiddler中,
 		你可以在Headers Inspector查找相关请求头,这样就可以辨别出一个请求是否是条件请求.
@@ -2890,6 +2891,37 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
 	-webkit-box-orient: vertical;
 	-webkit-line-clamp: 3;
 	overflow: hidden;
+```
+
+19.JavaScript函数节流和函数防抖之间的区别
+
+```
+	http://www.jianshu.com/p/b73c2acad696?utm_campaign=hugo&utm_medium=reader_share&utm_content=note
+	函数节流是指一定时间内js方法只跑一次。比如人的眨眼睛，就是一定时间内眨一次。这是函数节流最形象的解释。
+	函数防抖是指频繁触发的情况下，只有足够的空闲时间，才执行代码一次。比如生活中的坐公交，就是一定时间内，如果有人陆续刷卡上车，司机就不会开车。只有别人没刷卡了，司机才开车。
+	// 函数节流
+	var canRun = true;
+	document.getElementById("throttle").onscroll = function(){
+		if(!canRun){
+			// 判断是否已空闲，如果在执行中，则直接return
+			return;
+		}
+
+		canRun = false;
+		setTimeout(function(){
+			console.log("函数节流");
+			canRun = true;
+		}, 300);
+	};
+	// 函数防抖
+	var timer = false;
+	document.getElementById("debounce").onscroll = function(){
+		clearTimeout(timer); // 清除未执行的代码，重置回初始化状态
+
+		timer = setTimeout(function(){
+			console.log("函数防抖");
+		}, 300);
+	};
 ```
 
 ##移动端常见问题
