@@ -1163,6 +1163,59 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
 		而如果函数返回一个引用类型（Object、Array、Function），则new函数与直接调用函数产生的结果等同。
 ```
 
+- 对象的属性
+
+```
+	1.数据属性：4个特性[[Configurable]]、[[Enumerable]]、[[Writable]]、[[Value]] 
+		例子：
+		var person = {};
+		Object.defineProperty(person,"name",{
+			writable: false,
+			value:"Jimmy"
+		})
+		alert(person.name); //"Jimmy"
+		person.name = "Jason";
+		alert(person.name)//Jimmy
+
+		一旦配置了Configurable，就无法修改，尝试修改会在严格模式报错    
+		var person = {};
+		Object.defineProperty(person,"name",{
+			configurable: false,
+			value:"Jimmy"
+		})
+		//抛出错误
+		var person = {};
+		Object.defineProperty(person,"name",{
+			configurable: true,
+			value:"Jimmy"
+		})
+
+	2.访问器属性：4个特性[[Configurable]]、[[Enumerable]]、[[Get]]、[[Set]] 
+		var book = {
+			_year: 2014,
+			edition；1
+		};
+
+		Object.defineProperty(book,"year",{
+			get:function(){
+				return this._year;
+			},
+			set: function(newValue){
+				if(newValue > 2004){
+					this._year = newValue;
+					this.edition += newValue -2004;
+				}
+			}
+		});
+		book.year =2005;
+		alert(book.edition);//2
+
+	3.定义多属性：defineproperties
+
+	4.读取属性：getOwnPropertyDescriptor
+	
+```
+
 4.内置对象
 
 - Array
