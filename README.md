@@ -422,6 +422,7 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
 	(3)变形（Transforms）
 		.is-Transformed {   
 		  width: 50%;  
+		  height: 50%;
 		  margin: auto;  
 		  position: absolute;  
 		  top: 50%; left: 50%;  
@@ -576,7 +577,7 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
 		}
    （3）flex
    （4）<meta name=”viewport” content=”width=device-width, initial-scale=1″ />
-   （5）相对大小的字体em
+   （5）相对大小的字体em、rem、vw、vh
 ```
 
 5.其它
@@ -660,7 +661,7 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
 	"boolean" - 这个值是布尔值
 	"string" - 这个值是字符串	
 	"number" - 这个值是数值
-	"object" - 这个值是对象或null
+	"object" - 这个值是对象、数组或null
 	"function" - 这个值是函数	
 ```
 
