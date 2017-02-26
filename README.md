@@ -3134,9 +3134,8 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
 
 ```
 	解决方案：
-		确定小数点后位数范围的话，(a*10+b*10)/10
-		BigDecimal
-		字符串模拟		
+		确定小数点后位数范围的话，(a*10+b*10)/10 
+		三方库BigDecimal
 ```
 
 5.Chrome 中文界面下默认会将小于 12px 的文本强制按照 12px 显示
