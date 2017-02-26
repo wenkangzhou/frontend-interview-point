@@ -3014,6 +3014,8 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
 ```
 17.理解HTTP/304响应(HTTP原理中的缓存机制)
 
+![](http://static.oschina.net/uploads/space/2015/0119/015353_P04w_568818.png)
+
 ```
 	http://blog.csdn.net/soonfly/article/details/50953814
 	https://my.oschina.net/leejun2005/blog/369148
