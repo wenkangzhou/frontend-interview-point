@@ -3227,6 +3227,127 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
 	}
 ```
 
+21.在textarea光标处插入内容
+
+```
+	<html>   
+	<head>   
+	<script type='text/javascript'>   
+	function test(str){  
+
+		var tc = document.getElementById("mytextarea");  
+		var tclen = tc.value.length;  
+		tc.focus();  
+		if(typeof document.selection != "undefined")  
+		{  
+			document.selection.createRange().text = str;    
+		}  
+		else  
+		{  
+			tc.value = tc.value.substr(0,tc.selectionStart)+str+tc.value.substring(tc.selectionStart,tclen);  
+		}  
+	}  
+	</script>   
+	</head>   
+	<body>  
+	<textarea rows=5 name=s1 cols=27  id="mytextarea">目的通过点击页面上的按钮button 在textarea中的光标停留处插上文字 </textarea>   
+	<input type=button onclick="test('这是需要加入的文字')" />   
+	</body>   
+	</html> 
+```
+22.如何快速把一个多维数组转换成一个简单一维数组
+
+```
+	var a = [1,3,4,5,[6,7,9],[2],[5]];
+	a = a.join(",").split(",");//a.toString()..split(",")
+```
+
+23.nodeType
+
+```
+	Node类型(nodeType )
+		Node.ELEMENT_NODE 1
+		Node.ATTRIBUTE_NODE 2
+		Node.TEXT_NODE 3
+		Node.ENTITY_REFERENCE_NODE 5
+		Node.ENTITY_NODE 6
+		Node.PROCESSING_INSTRUCTION_NODE 7
+		Node.COMMENT_NODE 8
+		Node.DOCUMENT_NODE 9
+		Node.DOCUMENT_TYPE_NODE 10
+		Node.DOCUMENT_FRAGMENT_NODE 11
+		Node.NOTATION_NODE 12
+		节点类型	描述	子节点
+	1	Element	代表元素	Element, Text, Comment, ProcessingInstruction, CDATASection, EntityReference
+	2	Attr	代表属性	Text, EntityReference
+	3	Text	代表元素或属性中的文本内容。	None
+	4	CDATASection	代表文档中的 CDATA 部分（不会由解析器解析的文本）。	None
+	5	EntityReference	代表实体引用。	Element, ProcessingInstruction, Comment, Text, CDATASection, EntityReference
+	6	Entity	代表实体。	Element, ProcessingInstruction, Comment, Text, CDATASection, EntityReference
+	7	ProcessingInstruction	代表处理指令。	None
+	8	Comment	代表注释。	None
+	9	Document	代表整个文档（DOM 树的根节点）。	Element, ProcessingInstruction, Comment, DocumentType
+	10	DocumentType	向为文档定义的实体提供接口	None
+	11	DocumentFragment	代表轻量级的 Document 对象，能够容纳文档的某个部分	Element, ProcessingInstruction, Comment, Text, CDATASection, EntityReference
+	12	Notation	代表 DTD 中声明的符号。	None
+
+```
+
+24.正则表达式贪婪与非贪婪模式
+
+```
+	贪婪匹配:正则表达式一般趋向于最大长度匹配，也就是所谓的贪婪匹配。
+	非贪婪匹配：就是匹配到结果就好，就少的匹配字符。
+	默认是贪婪模式；在量词后面直接加上一个问号？就是非贪婪模式。
+		量词：{m,n}：m到n个
+
+　　　　　*：任意多个
+
+　　　　　+：一个到多个
+
+　　　　　？：0或一个
+	String rule1="content:\".+\"";    //贪婪模式
+	String rule2="content:\".+?\"";    //非贪婪模式
+	
+```
+
+25.正则捕获
+
+```
+	捕获组  
+		捕获组可以通过从左到右计算其开括号来编号 。例如，在表达式 (A)(B(C)) 中，存在四个这样的组：
+		0   (A)(B(C))
+		1   (A)
+		2  (B(C))
+		3  (C)
+		组零始终代表整个表达式,捕获的子序列稍后可以通过 Back 引用（反向引用） 在表达式中使用(\1)
+	非捕获组
+		以 (?) 开头的组是纯的非捕获 组，它不捕获文本 ，也不针对组合计进行计数。就是说，如果小括号中以?号开头，那么这个分组就不会捕获文本，
+		当然也不会有组的编号，因此也不存在Back 引用。
+		
+		1、非捕获组(?:Pattern)
+			它的作用就是匹配Pattern字符，好处就是不捕获文本，不将匹配到的字符存储到内存中，从而节省内存。
+		2、零宽度断言
+			(?=X ) 零宽度正先行断言。仅当子表达式 X 在 此位置的右侧匹配时才继续匹配。(正向预搜索)
+			也就是说要使此零宽度断言起到我们想要的效果的话，就必须把这个非捕获组放在整个表达式的右侧。
+			例如，/w+(?=/d) 与后跟数字的单词匹配，而不与该数字匹配。此构造不会回溯。
+			(?!X)零宽度负先行断言。仅当子表达式 X 不在 此位置的右侧匹配时才继续匹配。(正向预搜索)
+			例如，例如，/w+(?!/d) 与后不跟数字的单词匹配，而不与该数字匹配 。
+			(?<=X)零宽度正后发断言。仅当子表达式 X 在 此位置的左侧匹配时才继续匹配。(反向预搜索)
+			例如，(?<=19)99 与跟在 19 后面的 99 的实例匹配。此构造不会回溯。(反向预搜索)
+			(?<!X)零宽度负后发断言。仅当子表达式 X 不在此位置的左侧匹配时才继续匹配。
+			例如，(?<!19)99 与不跟在 19 后面的 99 的实例匹配
+		3、模式修正符
+			(?)开头的非捕获组除了零宽度断言之外，还有模式修正符。
+			正则表达式中常用的模式修正符有i、g、m、s、x、e等。它们之间可以组合搭配使用。
+			(?imnsx-imnsx: ) 应用或禁用子表达式中指定的选项。例如，(?i-s: ) 将打开不区分大小写并禁用单行模式。
+			【例1】(?i)ab
+			表示对(?i)后的所有字符都开启不区分大小写的开关。故它可以匹配ab、aB、Ab、AB
+		4、(?>Pattern)等同于侵占模式
+			匹配成功不进行回溯，这个比较复杂，与侵占量词“+”可以通用，比如：\d++ 可以写为 (?>\d+)。
+```
+
+
 ##移动端常见问题
 
 1.移动端click屏幕产生200-300 ms的延迟响应
