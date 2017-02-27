@@ -1144,6 +1144,74 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
 		SubType.prototype.sayAge = function(){
 			alert(this.age)
 		}
+	7.klass
+		var Man = klass(null,{
+			_construct:function(what){
+				console.log("Man's construct");
+				this.name = what;
+			},
+			getName:function(){
+				return this.name;
+			}
+		})
+		var first = new Man('Adam');
+		first.getName();//"Adam"
+
+		var SuperMan = klass(Man,{
+			_construct:function(what){
+				console.log("SuperMan's construct")
+			},
+			getName:function(){
+				var name = SuperMan.uber.getName.call(this);
+				return "I am"+ name;
+			}
+		})
+
+		var clark = new SuperMan('Clark Kent');
+		clark.getName();//结果为"I am Clark Kent"
+
+		var klass = function(Parent,props){
+			var Child,F,i;
+			//1.
+			//新构造函数
+			Child = function(){
+				if(Child.uber && Child.uber.hasOwnProperty("_construct")){
+					Child.uber._construct.apply(this,arguments);
+				}
+				if(Child.prototype.hasOwnProperty("_construct")){
+					Child.prototype._construct.apply(this,arguments)
+				}
+			}
+			//2
+			//继承
+			Parent = Parent || Object;
+			F = function(){};
+			F.prototype = Parent.prototype;
+			Child.prototype = new F();
+			Child.uber = Parent.prototype;
+			Child.prototype.construct =Child;  
+			//3
+			//添加实现方法
+			for(i in props){
+				if(props.hasOwnProperty(i)){
+					Child.prototype[i] = props[i];
+				}
+			}
+			return Child;
+		}
+		klass()实现中三个令人关注且独特的部分:
+		1.创建Child()构造函数。该函数将是最后返回的，并且该函数也用作类。在这个函数中，如果
+		  存在_construct方法，那么将会调用该方法。另外，在此之前，通过使用静态uber属性，其父
+		  类的_construct方法也会被自动调用（同样，如果存在改方法的话）。可能在有些情况下，当没
+		  有定义uber属性时，比如直接从Object类中继承时，这与Man类的定义中继承时相似的情况。
+
+		2.第二部分在一定程度上处理继承关系。它只是采用了本章前面章节中所讨论的类式继承的终极版。
+		从代码上，只有一个新语句（Parent = Parent || Object），即如果没有传递需要被继承的类，那
+		么就将Parent变为Object。
+
+		3.最后一节是遍历所有的实现方法（比如，本例中的_construct和getName），这些是该类的实际定义，
+		并且也是将它们添加到Child的原型中的部分代码。
+
 ```
 
 - new过程
@@ -3091,6 +3159,72 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
 			console.log("函数防抖");
 		}, 300);
 	};
+```
+
+20.实现一个LazyMan
+
+```
+	function _LazyMan(name) {
+	    this.tasks = [];   
+	    var self = this;
+	    var fn =(function(n){
+	        var name = n;
+	        return function(){
+	            console.log("Hi! This is " + name + "!");
+	            self.next();
+	        }
+	    })(name);
+	    this.tasks.push(fn);
+	    setTimeout(function(){
+	        self.next();
+	    }, 0); // 在下一个事件循环启动任务
+	}
+	/* 事件调度函数 */
+	_LazyMan.prototype.next = function() { 
+	    var fn = this.tasks.shift();
+	    fn && fn();
+	}
+	_LazyMan.prototype.eat = function(name) {
+	    var self = this;
+	    var fn =(function(name){
+	        return function(){
+	            console.log("Eat " + name + "~");
+	            self.next()
+	        }
+	    })(name);
+	    this.tasks.push(fn);
+	    return this; // 实现链式调用
+	}
+	_LazyMan.prototype.sleep = function(time) {
+	    var self = this;
+	    var fn = (function(time){
+	        return function() {
+	            setTimeout(function(){
+	                console.log("Wake up after " + time + "s!");
+	                self.next();
+	            }, time * 1000);
+	        }
+	    })(time);
+	    this.tasks.push(fn);
+	   return this;
+	}
+	_LazyMan.prototype.sleepFirst = function(time) {
+	    var self = this;
+	    var fn = (function(time) {
+	        return function() {
+	            setTimeout(function() {
+	                console.log("Wake up after " + time + "s!");
+	                self.next();
+	            }, time * 1000);
+	        }
+	    })(time);
+	    this.tasks.unshift(fn);
+	    return this;
+	}
+	/* 封装 */
+	function LazyMan(name){
+	    return new _LazyMan(name);
+	}
 ```
 
 ##移动端常见问题
