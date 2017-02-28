@@ -37,6 +37,8 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
 		如果没有将往其祖先元素寻找相对定位元素，一直找到html为止。
     fixed 固定 属于绝对定位
     inherit 规定应该从父元素继承 position 属性的值
+	fixed 固定定位，参照位置是浏览器窗口的左上角，即坐标点为(0px, 0px)
+	absolute 绝对定位，参展位置是离当前元素最近的定位方式为fixed,absolute,relative的祖先原则的左上角
 ```
 
 - display
@@ -46,7 +48,7 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
     block 此元素将显示为块级元素，此元素前后会带有换行符。
     inline-block 行内块元素。
     flex（早期版本叫box） 将对象作为弹性伸缩盒显示。（http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html）
-	
+	table 此元素会作为块级表格来显示（类似 <table>），表格前后带有换行符。
 	总体概念
 		block和inline这两个概念是简略的说法，完整确切的说应该是 block-level elements (块级元素) 和 inline elements (内联元素)。
 		block元素通常被现实为独立的一块，会单独换一行；inline元素则前后不会产生换行，一系列inline元素都在一行内显示，直到该行排满。
@@ -333,6 +335,8 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
         ease-in-out	规定以慢速开始和结束的过渡效果（等于 cubic-bezier(0.42,0,0.58,1)）。
         cubic-bezier(n,n,n,n)	在 cubic-bezier 函数中定义自己的值。可能的值是 0 至 1 之间的数值。
     	transition-delay	定义过渡效果何时开始。
+	常用的也就是：宽度、高度、字体大小、颜色、显示隐藏、2D、3D、定位之后的top/left/right/bottom、内外边距。
+	不支持：display属性。
     例子
         <style> 
         div
@@ -579,6 +583,28 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
    （4）<meta name=”viewport” content=”width=device-width, initial-scale=1″ />
    （5）相对大小的字体em、rem、vw、vh
 ```
+- 左侧固定 右侧自适应
+
+```
+	#left {   
+		float: left;   
+		width: 220px;   
+		background-color: green;   
+	}   
+	#content {   
+		background-color: orange;   
+		margin-left: 220px;/*==等于左边栏宽度==*/  
+	} 
+	
+	flex
+		flex-basis属性定义了在分配多余空间之前，项目占据的主轴空间（main size）。
+		浏览器根据这个属性，计算主轴是否有多余空间。它的默认值为auto，即项目的本来大小。
+		.item {
+		  flex-basis: <length> | auto; /* default auto */
+		}
+```
+
+
 
 5.其它
 
@@ -815,6 +841,11 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
 	用的比较多的，通过document.getElementsByTagName选择的dom 节点是一种类似array的array。它不能应用Array下的push,pop等方法。我们可以通过：
 	var domNodes = Array.prototype.slice.call(document.getElementsByTagName("*"));
 	这样domNodes就可以应用Array下的所有方法了。
+	
+	_____________________________________
+	
+	和bind的区别：bind返回的是函数，aplly、call直接执行	
+	
 ```
 
 - 垃圾收集
@@ -1506,6 +1537,20 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
 	PS:效率不如innerHTML
 ```
 
+- insertAdjacentHTML
+
+```
+	element.insertAdjacentHTML(position, text);
+	1.beforeBegin: 插入到标签开始前
+	2.afterBegin:插入到标签开始标记之后
+	3.beforeEnd:插入到标签结束标记前
+	4.afterEnd:插入到标签结束标记后
+	var d1 = document.getElementById('one');
+	d1.insertAdjacentHTML('afterend', '<div id="two">two</div>');
+	// At this point, the new structure is:
+	// <div id="one">one</div><div id="two">two</div>
+```
+
 - childNodes/parentNode
 
 ```
@@ -1545,6 +1590,106 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
         list.appendChild(fragment);
 ```
 
+- NodeType 
+
+```
+	.nodeType .nodeName
+	节点操作
+	appendChild()
+	insertBefore()
+	replaceChild()
+	removeChild()
+	cloneNode()//true、false深、浅复制
+	节点关系
+	childNodes
+	firstChild
+	lastChild
+	parentNode
+	nextSibling
+	previousSibling
+
+	Node类型(nodeType)
+	Node.ELEMENT_NODE 1
+		HTML
+			HTMLElement:
+				id
+				title
+				lang 元素语言代码
+				dir
+				className
+			var div = document.getElementById("div")
+			alert(div.id)
+			alert(div.className)
+			....
+		取得特性
+			var div = document.getElementById("div")
+			document.getAttribute("id")
+			document.getAttribute("class")
+			document.getAttribute("title")
+		var a = document.getElementsByTagNames("*");
+		for(var i in a){
+			if(a[i].nodeType == 1){
+				console.log(a[i].getAttribute("class"))
+			}
+		}
+		设置特性
+			document.setAttribute("id",'111')
+		删除特性
+			document.removeAttribute("id")
+		attributes
+			Element类型是使用attributes属性唯一一个DOM节点类型
+			attributes属性包含一个NamedNodeMap，与NodeList类似
+			元素每个特性都由一个Attr节点表示
+			每个节点保存在NamedNodeMap，NameNodeMap：
+				getNamedItem(name) 返回nodeName属性等于name的节点
+				removeNamedItem(name) 列表中移除nodeName属性等于name
+				setNamedItem(node) 列表添加节点，节点的nodeName为索引
+				item(pos) 返回数字pos处的节点
+			var value = element.attributes.getNamedItem("id").nodeValue
+			相当于 element.getAttribute("id")
+			var name = element.attributes.getNamedItem("id").nodeName
+		创建元素 
+			document.createElement
+	Node.ATTRIBUTE_NODE 2
+		Attr元素特性，对应三个属性
+			name 特性名称
+			value 特性值
+			specified 区别特性是在代码中指定的
+		var attr = document.createAttribute("align")
+		attr.value = "left"
+		element.setAttributeNode(attr)
+		alert(elemnt.attributes["align"].value)//left
+		alert(elemnt.getAttributeNode("align").value)//left
+		alert(elemnt.getAttribute("align"))//left
+	Node.TEXT_NODE 3
+		document.createTextNode
+		normalize()//合并相邻文本节点
+		splitText()//将一个文本节点拆分成两个文本节点
+	Node.CDATA_SECTION_NODE 4
+	Node.ENTITY_REFERENCE_NODE 5
+	Node.ENTITY_NODE 6
+	Node.PROCESSING_INSTRUCTION_NODE 7
+	Node.COMMENT_NODE 8
+	Node.DOCUMENT_NODE 9
+		document是HTMLDocument（继承自Document类型）的实例
+		document.documentElement//取得对<html>的引用
+		document.body//取得对<body>的引用
+		查找元素
+			getElementById
+			getElementsByTagName
+				NodeList
+				document.getElementByTagName(),返回HTMLCollection对象
+				<img src="xx.jpg" name="myImg">
+				var images = document.getElementByTagName("img")
+				images[0].src images.item(0).src
+				var myImg = images.namedItem("myImg")
+				images["myImg"]
+	Node.DOCUMENT_TYPE_NODE 10
+		<DOCTYPE　HTML>
+	Node.DOCUMENT_FRAGMENT_NODE 11
+		document.createDocumentFragment
+	Node.NOTATION_NODE 12
+```
 - 事件
    
 ```
@@ -1564,7 +1709,12 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
         */
         e.stopImmediatePropagation();
 		扩展：event.preventDefault()方法是用于取消事件的默认行为，例如，当点击提交按钮时阻止对表单的提交
-    (2) addEventListener/removeEventListener/attachEvent/detachEvent
+		
+	(2) DOM事件三个阶段	
+		1.捕获阶段：先由文档的根节点document往事件触发对象，从外向内捕获事件对象；
+		2.目标阶段：到达目标事件位置（事发地），触发事件；
+		3.冒泡阶段：再从目标事件位置往文档的根节点方向回溯，从内向外冒泡事件对象。
+    (3) addEventListener/removeEventListener/attachEvent/detachEvent
         var addMyEvent = function (el,ev,fn){
             if(el.addEventListener){
                 el.addEventListener(ev,fn,false)
@@ -1574,7 +1724,7 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
                 el["on" + ev] = fn;
             }
         }
-    (3) createEvent/dispatchEvent
+    (4) createEvent/dispatchEvent
         参数	事件接口	初始化方法
         HTMLEvents	HTMLEvent	iniEvent()
         MouseEvents	MouseEvent	iniMouseEvent()
@@ -2610,6 +2760,39 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
 
 		  return sort(result);
 		}
+	10.全排序
+		<script type="text/javascript">  
+		/*  
+		全排列（递归交换）算法  
+		1、将第一个位置分别放置各个不同的元素；  
+		2、对剩余的位置进行全排列（递归）；  
+		3、递归出口为只对一个元素进行全排列。  
+		*/ 
+		function swap(arr,i,j) {  
+			if(i!=j) {  
+				var temp=arr[i];  
+				arr[i]=arr[j];  
+				arr[j]=temp;  
+			}  
+		}  
+		var count=0;  
+		function show(arr) {  
+			document.write("P<sub>"+ ++count+"</sub>: "+arr+"<br />");  
+		}  
+		function perm(arr) {  
+			(function fn(n) { //为第n个位置选择元素  
+				for(var i=n;i<arr.length;i++) {  
+					swap(arr,i,n);  
+					if(n+1<arr.length-1) //判断数组中剩余的待全排列的元素是否大于1个  
+						fn(n+1); //从第n+1个下标进行全排列  
+					else 
+						show(arr); //显示一组结果  
+					swap(arr,i,n);  
+				}  
+			})(0);  
+		}  
+		perm(["e1","e2","e3","e4"]);  
+		</script>  
 ```
 
 2.搜索
@@ -3269,6 +3452,7 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
 		Node.ELEMENT_NODE 1
 		Node.ATTRIBUTE_NODE 2
 		Node.TEXT_NODE 3
+		Node.CDATA_SECTION_NODE 4
 		Node.ENTITY_REFERENCE_NODE 5
 		Node.ENTITY_NODE 6
 		Node.PROCESSING_INSTRUCTION_NODE 7
