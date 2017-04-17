@@ -3681,6 +3681,9 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
 	  interpolate : /<%=([\s\S]+?)%>/g,
 	  escape      : /<%-([\s\S]+?)%>/g
 	};
+	扩展-EJS（正好和_.template相反）：
+		Escapes html by default with <%= code %>
+		Unescaped buffering with <%- code %>
 ```
 
 
