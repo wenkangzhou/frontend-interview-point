@@ -18,7 +18,7 @@
 	- 内置对象
 	- 正则
 	- ES6
-- [WEB API](#WEB API)
+- [WEBAPI](#WEBAPI)
 	- DOM API
 	- CSSDOM
 	- canvas
@@ -1587,7 +1587,7 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
 ### 6.[ES6](http://es6.ruanyifeng.com/)
 
 
-## WEB API
+## WEBAPI
 
 ### 1.DOM API
 
