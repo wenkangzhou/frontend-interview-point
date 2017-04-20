@@ -1,6 +1,6 @@
 # 前端面试知识点整理
 
-##HTML
+## HTML
 
 1.viewport meta
 ```javascript
@@ -25,7 +25,7 @@ css命名的语义化是指：为html标签添加有意义的class，id补充未
 
 HTML5新增语义化标签：header、footer、nav、article、aside、section等。
 
-##CSS
+## CSS
 
 1.排版
  
@@ -674,7 +674,7 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
         阻止父子元素的margin折叠
 ```
 
-##JS
+## JS
 
 1.基本概念
 
@@ -1496,7 +1496,7 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
 6.ES6(http://es6.ruanyifeng.com/)
 
 
-##WEB API
+## WEB API
 
 1.DOM API
 
@@ -1992,7 +1992,7 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
 			通过event.state也可以获取history.state。
 ```
 
-##HTTP
+## HTTP
 
 1.状态码
 
@@ -2157,7 +2157,7 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
     OPTIONS方法请求web服务器告知其支持的各种功能。可以查询服务器支持哪些方法或者对某些特殊资源支持哪些方法。
     DELETE请求服务器删除请求URL指定的资源
 ```
-##常见框架
+## 常见框架
 
 1.vue
 
@@ -2184,7 +2184,7 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
 
 3.angular
 
-##模块化开发
+## 模块化开发
 
 1.AMD（RequireJS）
 
@@ -2234,7 +2234,7 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
 	3. AMD 的 API 默认是一个当多个用，CMD 的 API 严格区分，推崇职责单一。比如 AMD 里，require 分全局 require 和局部 require，都叫require。
 	   CMD 里，没有全局 require，而是根据模块系统的完备性，提供 seajs.use 来实现模块系统的加载启动。CMD 里，每个 API 都简单纯粹。
 ```
-##构建工具
+## 构建工具
 
 1.Grunt
 
@@ -2258,14 +2258,14 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
 ```
 
 
-##版本控制
+## 版本控制
 1.git
 
 ```
 	https://github.com/wenkangzhou/GitCmd
 ```
 
-##优化(https://aotu.io/notes/2016/03/16/optimization/)
+## 优化(https://aotu.io/notes/2016/03/16/optimization/)
 
 1.雅虎
 
@@ -2529,7 +2529,7 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
 		网站需要有一个良好的导航，控制根目录和各子目录的关键，通过sitemap可以帮助网站主了解网站结构，也方便搜索引擎收录整个站点。
 ```
 
-##算法
+## 算法
 
 1.排序（http://www.jianshu.com/p/7e6589306a27）
 
@@ -2848,7 +2848,7 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
 
 4.二叉树（http://blog.csdn.net/wbxx727124/article/details/52292832）
 
-##数据结构
+## 数据结构
 
 1.二叉树（AVL树、红黑树）
 
@@ -2869,7 +2869,7 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
 	最大堆：父结点的键值总是大于或等于任何一个子节点的键值；最小堆：父结点的键值总是小于或等于任何一个子节点的键值。
 ```
 
-##常见面试题
+## 常见面试题
 
 1.从浏览器地址栏输入url到显示页面的步骤(以HTTP为例)？
 
@@ -3689,7 +3689,7 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
 ```
 
 
-##移动端常见问题
+## 移动端常见问题
 
 1.移动端click屏幕产生200-300 ms的延迟响应
 
