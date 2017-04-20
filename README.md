@@ -3819,7 +3819,7 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
 ```
 
 
-## 移动端常见问题
+## 一些常见问题记录
 
 ### 1.移动端click屏幕产生200-300 ms的延迟响应
 
