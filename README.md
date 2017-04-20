@@ -1,8 +1,96 @@
 # 前端面试知识点整理
 
+## 目录
+
+- [HTML](#HTML)
+	- viewport meta
+	- 语义
+- [CSS](#CSS)
+	- 排版
+	- 绘制
+	- 动画
+	- 理解和还原设计图意
+	- 其它
+- [JS](#JS)
+	- 基本概念
+	- 函数
+	- 对象
+	- 内置对象
+	- 正则
+	- ES6
+- [WEB API](#WEB API)
+	- DOM API
+	- CSSDOM
+	- canvas
+	- BOM
+- [HTTP](#HTTP)
+	- 状态码
+	- 头
+	- 方法
+- [常见框架](#常见框架)
+	- vue
+	- react
+	- angular
+- [模块化开发](#模块化开发)
+	- AMD
+	- CMD
+	- CommonJS
+	- UMD
+- [构建工具](#构建工具)
+	- Grunt
+	- Gulp
+	- Webpack
+- [版本控制](#版本控制)
+	- Git
+	- Svn
+- [优化](#优化)
+	- 雅虎24法则
+	- More
+	- 稳定性
+	- 响应式
+	- 搜索SEO
+- [算法](#算法)
+	- 排序
+	- 搜索
+	- 动态规划
+	- 二叉树
+- [数据结构](#数据结构)
+	- 二叉树
+	- 二叉堆
+- [常见面试题](#常见面试题)
+	- 从浏览器地址栏输入url到显示页面的步骤(以HTTP为例)
+	- 原生AJAX
+	- 深浅复制
+	- 跨域方式
+	- 移动端1px细线解决方案总结
+	- 请编写一个JavaScript函数 parseQueryString，它的用途是把URL参数解析为一个对象
+	- 说说get和post请求的区别
+	- 什么是 “use strict”? 使用它的好处和坏处分别是什么？
+	- 有一个长度为100的数组，请以优雅的方式求出该数组的前10个元素之和
+	- 不使用loop循环，创建一个长度为100的数组，并且每个元素的值等于它的下标
+	- 实现对数组进行乱序
+	- xss和csrf分别是什么？
+	- 说说前端如何解决异步回调地狱？
+	- 淘宝那里的商品项，如图片，滚动到了才加载，你知道怎么实现么(图片可视区域加载)
+	- 到底该不该用 CSS reset？
+	- 前端link和import的区别
+	- 理解HTTP/304响应(HTTP原理中的缓存机制)
+	- css实现超出字体内容出现 …
+	- JavaScript函数节流和函数防抖之间的区别
+	- 实现一个LazyMan
+	- 在textarea光标处插入内容
+	- 如何快速把一个多维数组转换成一个简单一维数组
+	- nodeType
+	- 正则表达式贪婪与非贪婪模式
+	- 正则捕获
+	- 重排与重绘
+	- Underscore _.template 方法使用详解
+- [一些常见问题记录](#一些常见问题记录)
+
 ## HTML
 
-1.viewport meta
+### 1.viewport meta
+
 ```javascript
     <meta name ="viewport" content ="width=device-width,initial-scale=1,maximum-scale=1, minimum-scale=1, user-scalable=no"> 
     width  　　　　 viewport 宽度(数值/device-width)   
@@ -12,11 +100,14 @@
     minimum-scale  最小缩放比例   
     user-scalable  是否允许用户缩放(yes/no)  
 ```
-2.语义
+
+### 2.语义
 
 >web语义化是指通过HTML标记表示页面包含的信息，包含了HTML标签的语义化和css命名的语义化。 
 HTML标签的语义化是指：通过使用包含语义的标签（如h1-h6）恰当地表示文档结构 
-css命名的语义化是指：为html标签添加有意义的class，id补充未表达的语义，如Microformat通过添加符合规则的class描述信息 为什么需要语义化：
+css命名的语义化是指：为html标签添加有意义的class，id补充未表达的语义，如Microformat通过添加符合规则的class描述信息 
+
+为什么需要语义化：
 
 - 去掉样式后页面呈现清晰的结构
 - 盲人使用读屏器更好地阅读
@@ -27,7 +118,7 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
 
 ## CSS
 
-1.排版
+### 1.排版
  
 - position
  
@@ -239,7 +330,7 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
 		而word-break:break-all则不会把长单词放在一个新行里，当这一行放不下的时候就直接强制断句了。
 ```
  
-2.绘制
+### 2.绘制
 
 - background
  
@@ -315,7 +406,7 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
         }
 ```
 
-3.动画
+### 3.动画
  
 - transition（过渡）
  
@@ -397,7 +488,7 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
         </style>
  ```
  
-4.理解和还原设计图意
+### 4.理解和还原设计图意
 
 
 - 垂直居中（http://blog.csdn.net/freshlover/article/details/11579669）
@@ -608,7 +699,7 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
 
 
 
-5.其它
+### 5.其它
 
 - 继承性,特殊性,层叠性和重要性
 
@@ -676,7 +767,7 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
 
 ## JS
 
-1.基本概念
+### 1.基本概念
 
 - 标识符：首字母可以是字母、下划线、美元符号，其它多一个数字
 
@@ -727,7 +818,7 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
 ```
 
 
-2.函数
+### 2.函数
 
 - 闭包
 
@@ -858,7 +949,7 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
 	            相反，这个值引用的变量又得了另一个值，减1，为0则回收	
 ```
 
-3.对象
+### 3.对象
 
 - 创建对象
 
@@ -1317,7 +1408,7 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
 	
 ```
 
-4.内置对象
+### 4.内置对象
 
 - Array
 
@@ -1491,14 +1582,14 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
 			console.log(sum3(2,3));//5
 ```
 
-5.正则(https://github.com/wenkangzhou/RegularExpression)
+### 5.[正则](https://github.com/wenkangzhou/RegularExpression)
 
-6.ES6(http://es6.ruanyifeng.com/)
+### 6.[ES6](http://es6.ruanyifeng.com/)
 
 
 ## WEB API
 
-1.DOM API
+### 1.DOM API
 
 - querySelector
 
@@ -1745,7 +1836,7 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
         
 ```
 
-2.CSSDOM
+### 2.CSSDOM
 
 - doucment.getComputedStyle(http://www.zhangxinxu.com/wordpress/2012/05/getcomputedstyle-js-getpropertyvalue-currentstyle/)
 
@@ -1834,7 +1925,7 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
         TextRectangle的几个属性和鼠标位置比较可以知道鼠标在哪一行上
 ```
 
-3.canvas
+### 3.canvas
 
 ```
     例子:
@@ -1846,7 +1937,7 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
         ctx.fillRect(0,0,80,100);
         </script>
 ```
-4.BOM
+### 4.BOM
 
 - window对象
 
@@ -1994,7 +2085,7 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
 
 ## HTTP
 
-1.状态码
+### 1.状态码
 
 ```
     1XX：信息状态码
@@ -2046,7 +2137,7 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
         504 Gateway Timeout:
         505 HTTP Version Not Supported:
 ```
-2.头
+### 2.头
 
 ```
     Access-Control-Allow-Origin:* 支持跨域
@@ -2144,7 +2235,7 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
 				   例如：Via：1.0 236.D0707195.sina.com.cn:80 (squid/2.6.STABLE13)
 ```
 
-3.方法
+### 3.方法
 
 ```
     一台服务器要与HTTP1.1兼容，只要为资源实现GET和HEAD方法即可
@@ -2159,9 +2250,9 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
 ```
 ## 常见框架
 
-1.vue
+### 1.vue
 
-2.react
+### 2.react
 
 ```
 	https://github.com/bailicangdu/react-pxq
@@ -2182,15 +2273,15 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
 		当然不写key值也可以，但这样通常会报出警告，通知我们加上key值以提高react的性能。
 ```
 
-3.angular
+### 3.angular
 
 ## 模块化开发
 
-1.AMD（RequireJS）
+### 1.AMD（RequireJS）
 
-2.CMD（SeaJS）
+### 2.CMD（SeaJS）
 
-3.CommonJS
+### 3.CommonJS
 
 ```
 	CommonJS就是为JS的表现来制定规范，NodeJS是这种规范的实现，webpack 也是以CommonJS的形式来书写。
@@ -2202,8 +2293,34 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
 	那它肯定也要遵循CommonJS规范啦，它遵循包规范（还是理论）的。
 	CommonJS WIKI讲了它的历史，还介绍了modules和packages等。
 ```
+### 4.UMD(通用模块)
 
-4.区别
+```javascript
+	var root = (window !== 'undefined' ? window : self);
+
+	(function (global, factory) {
+
+		'use strict';
+
+		/* Use AMD */
+		if (typeof define === 'function' && define.amd) {
+			define(function () {
+				return new (factory(global, global.document))();
+			});
+		}
+		/* Use CommonJS */
+		else if (typeof module !== 'undefined' && module.exports) {
+			module.exports = (factory(global, global.document))();
+		}
+		/* Use Browser */
+		else {
+			global.Push = new (factory(global, global.document))();
+		}
+
+	})(root, function (w, d){})
+```
+
+### 5.区别
 
 ```
 	1. 对于依赖的模块，AMD 是提前执行，CMD 是延迟执行。不过 RequireJS 从 2.0 开始，也改成可以延迟执行（根据写法不同，处理方式不同）。
@@ -2233,16 +2350,17 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
 
 	3. AMD 的 API 默认是一个当多个用，CMD 的 API 严格区分，推崇职责单一。比如 AMD 里，require 分全局 require 和局部 require，都叫require。
 	   CMD 里，没有全局 require，而是根据模块系统的完备性，提供 seajs.use 来实现模块系统的加载启动。CMD 里，每个 API 都简单纯粹。
+	4. UMD 通用模块适合前后端同构
 ```
 ## 构建工具
 
-1.Grunt
+### 1.Grunt
 
-2.Gulp
+### 2.Gulp
 
-3.Webpack
+### 3.Webpack
 
-4.区别
+### 4.区别
 
 ```
 	Gulp应该和Grunt比较，他们的区别我就不说了，说说用处吧。Gulp / Grunt 是一种工具，能够优化前端工作流程。比如自动刷新页面、combo、压缩css、js、编译less等等。
@@ -2259,15 +2377,21 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
 
 
 ## 版本控制
-1.git
+
+### 1.Git
 
 ```
 	https://github.com/wenkangzhou/GitCmd
 ```
+### 2.Svn
 
-## 优化(https://aotu.io/notes/2016/03/16/optimization/)
+```
+	http://www.jianshu.com/p/786d225860cd
+```
 
-1.雅虎
+## [优化](https://aotu.io/notes/2016/03/16/optimization/)
+
+### 1.雅虎
 
 ![](http://img.aotu.io/wangcainuan/2016-03-16-optimization/%E9%9B%85%E8%99%8E35%E6%9D%A1%E5%86%9B%E8%A7%84.jpg)
 
@@ -2317,7 +2441,7 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
 		Pack Components into a Multipart Document
 ```
 
-2.more
+### 2.More
 
 ```
 	1.没事少烦我-服务端
@@ -2404,7 +2528,7 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
 				滚动加载
 		3.7 减少DNS 查询：DNS 查询一般需要几毫秒到几百毫秒，移动环境下会更慢。我们可以预先读取DNS，减少用户等待时间。
 ```
-3.稳定性
+### 3.稳定性
 
 ```
 	稳定性的第一要求是可用。最起码的要求是页面得出来，要不然没法用了。
@@ -2490,7 +2614,7 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
 			最好能够在服务端进行加密，可以配合CORS来获取网站的localstorage的信息。
 ```
 
-4.响应式
+### 4.响应式
 
 ```
 	基于栅格布局规划响应式设计，每个模块尽可能严格遵循栅格布局，符合栅格的小模块能很灵活的适应多个分辨率的展示。
@@ -2502,7 +2626,7 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
 	一套“自适应”素材兼容各种分辨率，提升页面性能，比如自适应的图片/视频素材。
 ```
 
-5.搜索SEO
+### 5.搜索SEO
 
 ```
 	1 语义化
@@ -2531,7 +2655,7 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
 
 ## 算法
 
-1.排序（http://www.jianshu.com/p/7e6589306a27）
+### 1.[排序](http://www.jianshu.com/p/7e6589306a27)
 
 ```
 	1.插入排序
@@ -2820,7 +2944,7 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
 		</script>  
 ```
 
-2.搜索
+### 2.搜索
 
 ```
 	1.二分搜索
@@ -2843,14 +2967,14 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
 		binarySearch(arr,4);  
 ```
 
-3.动态规划（http://blog.jobbole.com/83949/）
+### 3.[动态规划](http://blog.jobbole.com/83949/)
 
 
-4.二叉树（http://blog.csdn.net/wbxx727124/article/details/52292832）
+### 4.[二叉树](http://blog.csdn.net/wbxx727124/article/details/52292832)
 
 ## 数据结构
 
-1.二叉树（AVL树、红黑树）
+### 1.二叉树（AVL树、红黑树）
 
 ```
 	在计算机科学中，二叉树是每个节点最多有两个子树的树结构。通常子树被称作“左子树”（left subtree）和“右子树”（right subtree）。
@@ -2862,7 +2986,7 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
 	红黑树（Red Black Tree） 是一种自平衡二叉查找树，是在计算机科学中用到的一种数据结构，典型的用途是实现关联数组。
 ```
 
-2.二叉堆
+### 2.二叉堆
 
 ```
 	二叉堆是一种特殊的堆，二叉堆是完全二元树（二叉树）或者是近似完全二元树（二叉树）。二叉堆有两种：最大堆和最小堆。
@@ -2871,7 +2995,7 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
 
 ## 常见面试题
 
-1.从浏览器地址栏输入url到显示页面的步骤(以HTTP为例)？
+### 1.从浏览器地址栏输入url到显示页面的步骤(以HTTP为例)？
 
 ```
 	1.在浏览器地址栏输入URL
@@ -2937,7 +3061,7 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
 	23.显示页面（HTML解析过程中会逐步显示页面）
 ```
 
-2.原生AJAX
+### 2.原生AJAX
 
 ```
 	
@@ -2971,7 +3095,7 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
     4：完成。已经接收到全部响应数据，而且已经可以再客户端使用了
 ```
 
-3.深浅复制
+### 3.深浅复制
 
 ```
 	浅复制：
@@ -3045,7 +3169,7 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
 		dad.reads.paper//结果为true
 ```
 
-4.跨域方式
+### 4.跨域方式
 
 ```
 	1.CORS(Cross-Origin Resource Sharing,跨源資源共享) (http://www.ruanyifeng.com/blog/2016/04/cors.html)
@@ -3174,7 +3298,7 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
 		JSONP两个缺点，1是从其它域加载代码，其它域的安全要保证2是要确定JSONP请求是否失败并不容易
 ```
 
-5.移动端1px细线解决方案总结(http://www.cnblogs.com/lunarorbitx/p/5287309.html)
+### 5.[移动端1px细线解决方案总结](http://www.cnblogs.com/lunarorbitx/p/5287309.html)
 
 ```
 	css中的1px并不等于设备的1px,viewport的设置和屏幕物理分辨率是按比例而不是相同的
@@ -3230,7 +3354,7 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
 			}
 ```
 
-6.请编写一个JavaScript函数 parseQueryString，它的用途是把URL参数解析为一个对象
+### 6.请编写一个JavaScript函数 parseQueryString，它的用途是把URL参数解析为一个对象
 
 ```
 	function getQueryStringArgs() {
@@ -3254,7 +3378,7 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
         return args;
     }
 ```
-7.说说get和post请求的区别
+### 7.说说get和post请求的区别
 
 ```
  三个误解：
@@ -3264,7 +3388,7 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
 	所以我对于GET和POST的理解，是纯粹地来源于HTTP协议。GET和POST本质上就是TCP链接，并无差别。
 	他们只有一点根本区别，简单点儿说，语义上一个用于获取数据，一个用于修改数据。
 ```
-8.什么是 "use strict"? 使用它的好处和坏处分别是什么？
+### 8.什么是 "use strict"? 使用它的好处和坏处分别是什么？
 
 ```
 	（http://www.ruanyifeng.com/blog/2013/01/javascript_strict_mode.html）
@@ -3280,7 +3404,7 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
 	这时这些本来是严格模式的文件，被 merge 后，这个串就到了文件的中间，不仅没有指示严格模式，反而在压缩后浪费了字节。
 ```
 
-9.有一个长度为100的数组，请以优雅的方式求出该数组的前10个元素之和
+### 9.有一个长度为100的数组，请以优雅的方式求出该数组的前10个元素之和
 
 ```
 	 var a = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15],
@@ -3291,7 +3415,7 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
 	 console.log(sum); //55
 ```
 
-10.不使用loop循环，创建一个长度为100的数组，并且每个元素的值等于它的下标。
+### 10.不使用loop循环，创建一个长度为100的数组，并且每个元素的值等于它的下标。
 
 ```
 	var a = Array(100).join(",").split(",").map(function(item, index) {
@@ -3299,7 +3423,7 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
 	});
 ```
 
-11.实现对数组进行乱序
+### 11.实现对数组进行乱序
 
 ```
 	var a = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
@@ -3314,7 +3438,7 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
 
 ```
 
-12.xss和csrf分别是什么？
+### 12.xss和csrf分别是什么？
 
 ```
 	XSS (Cross Site Script) ，跨站脚本攻击
@@ -3323,13 +3447,13 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
 		CSRF是你点击了攻击者提供的链接的时候（正常网站或其它有攻击者代码的网站）
 ```
 
-13.说说前端如何解决异步回调地狱？
+### 13.说说前端如何解决异步回调地狱？
 
 ```
 	使用Promise来解决回调地狱问题
 ```
 
-14.淘宝那里的商品项，如图片，滚动到了才加载，你知道怎么实现么(图片可视区域加载)
+### 14.淘宝那里的商品项，如图片，滚动到了才加载，你知道怎么实现么(图片可视区域加载)
 
 ```
 	https://www.talkingcoder.com/article/6370149516108046040
@@ -3369,13 +3493,13 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
 	</script>
 ```
 
-15.到底该不该用 CSS reset？
+### 15.到底该不该用 CSS reset？
 
 ```
 	https://www.zhihu.com/question/23554164
 ```
 
-16.前端link和import的区别
+### 16.前端link和import的区别
 
 ```
 	link是HTML方式， @import是CSS方式
@@ -3385,7 +3509,7 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
 	@import必须在样式规则之前，可以在css文件中引用其他文件
 	总体来说：link优于@import
 ```
-17.理解HTTP/304响应(HTTP原理中的缓存机制)
+### 17.理解HTTP/304响应(HTTP原理中的缓存机制)
 
 ![](http://static.oschina.net/uploads/space/2015/0119/015353_P04w_568818.png)
 
@@ -3421,7 +3545,7 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
 		然后Fiddler就会:删除所有请求中的条件请求相同的请求头以及所有响应中的缓存时间相关的响应头.
 		此外,还会在每个请求中添加Pragma: no-cache请求头,在每个响应中添加Cache-Control: no-cache响应头,阻止浏览器缓存这些资源.
 ```
-18.css实现超出字体内容出现 ...
+### 18.css实现超出字体内容出现 ...
 
 ```
 	overflow: hidden;
@@ -3434,7 +3558,7 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
 	overflow: hidden;
 ```
 
-19.JavaScript函数节流和函数防抖之间的区别
+### 19.JavaScript函数节流和函数防抖之间的区别
 
 ```
 	http://www.jianshu.com/p/b73c2acad696?utm_campaign=hugo&utm_medium=reader_share&utm_content=note
@@ -3466,7 +3590,7 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
 	};
 ```
 
-20.实现一个LazyMan
+### 20.实现一个LazyMan
 
 ```
 	function _LazyMan(name) {
@@ -3532,7 +3656,7 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
 	}
 ```
 
-21.在textarea光标处插入内容
+### 21.在textarea光标处插入内容
 
 ```
 	<html>   
@@ -3560,14 +3684,14 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
 	</body>   
 	</html> 
 ```
-22.如何快速把一个多维数组转换成一个简单一维数组
+### 22.如何快速把一个多维数组转换成一个简单一维数组
 
 ```
 	var a = [1,3,4,5,[6,7,9],[2],[5]];
 	a = a.join(",").split(",");//a.toString()..split(",")
 ```
 
-23.nodeType
+### 23.nodeType
 
 ```
 	Node类型(nodeType )
@@ -3599,7 +3723,7 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
 
 ```
 
-24.正则表达式贪婪与非贪婪模式
+### 24.正则表达式贪婪与非贪婪模式
 
 ```
 	贪婪匹配:正则表达式一般趋向于最大长度匹配，也就是所谓的贪婪匹配。
@@ -3617,7 +3741,7 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
 	
 ```
 
-25.正则捕获
+### 25.正则捕获
 
 ```
 	捕获组  
@@ -3652,7 +3776,7 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
 		4、(?>Pattern)等同于侵占模式
 			匹配成功不进行回溯，这个比较复杂，与侵占量词“+”可以通用，比如：\d++ 可以写为 (?>\d+)。
 ```
-26.重排与重绘
+### 26.重排与重绘
 
 ```
 	浏览器下载完页面中的所有组件——HTML标记、JavaScript、CSS、图片之后会解析生成两个内部数据结构——DOM树和渲染树。
@@ -3668,7 +3792,7 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
 	这也是为什么我们要避免使用table做布局的一个原因。
 	并不是所有的DOM变化都会影响几何属性，比如改变一个元素的背景色并不会影响元素的宽和高，这种情况下只会发生重绘。
 ```
-27.Underscore _.template 方法使用详解
+### 27.Underscore _.template 方法使用详解
 
 ```
 	https://github.com/hanzichi/underscore-analysis/issues/26
@@ -3691,7 +3815,7 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
 
 ## 移动端常见问题
 
-1.移动端click屏幕产生200-300 ms的延迟响应
+### 1.移动端click屏幕产生200-300 ms的延迟响应
 
 ```
 	解决方案：
@@ -3699,7 +3823,7 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
 		zepto的touch模块，tap事件也是为了解决在click的延迟问题
 ```
 
-2.消除transition闪屏
+### 2.消除transition闪屏
 
 ```
 	开启硬件加速
@@ -3718,7 +3842,7 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
 
 ```
 
-3.fixed定位的问题
+### 3.fixed定位的问题
 
 ```
 	遇到的都知道在ios的safari里面不支持position:fixed;(呵呵了),其实也不算是不支持，只是在软键盘弹出来的时候使用fixed的元素就开始各种抽风了。
@@ -3726,7 +3850,7 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
 	当blur的时候再把footer设置回去.或者ISCROLL.js	
 ```
 
-4.0.1+0.2 != 0.3
+### 4.0.1+0.2 != 0.3
 
 ```
 	解决方案：
@@ -3734,13 +3858,13 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
 		三方库BigDecimal
 ```
 
-5.Chrome 中文界面下默认会将小于 12px 的文本强制按照 12px 显示
+### 5.Chrome 中文界面下默认会将小于 12px 的文本强制按照 12px 显示
 
 ```
 	可通过加入 CSS 属性 -webkit-text-size-adjust: none; 解决.	
 ```
 
-6.textarea的focus问题
+### 6.textarea的focus问题
 
 ```
 	这次有个需求是点击main的某个元素，需要textarea获取焦点并弹出软键盘。其实这些都不是关键。
@@ -3750,7 +3874,7 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
     同样在window.open()的时候也会遇到这个问题，解法相同。
 ```
 
-7.在特定的android的机子(vivo…)里，在键盘收起来不会失焦
+### 7.在特定的android的机子(vivo…)里，在键盘收起来不会失焦
 
 ```
 	本来是在失焦的时候触发了一个blur事件的东西，这样就会出现问题。
@@ -3772,20 +3896,26 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
 	如果感觉时间比较长可以把setTimeout的时间改小一点，默认在少于300ms的时候感觉不出页面的迟钝。
 ```
 
-8.微信
+### 8.微信
 
 ```
 	通过微信分享链接，后面被加上from=singlemessage&isappinstalled=1，会导致你之前的from参数可能获取不到	
 ```
 
-9.IOS上带-的日期，new Date时会出错
+### 9.IOS上带-的日期，new Date时会出错
 
 ```
 	换个格式
 ```
 
-10.revert merge会导致下次merge无效
+### 10.revert merge会导致下次merge无效
 
 ```
 	http://www.tuicool.com/articles/iIzeY3e
+```
+### 11.jquery在ios上事件委托失效
+
+```
+	PC、Android都没问题，IOS无法冒泡到，原因是事件委托在了body上，改为body内的元素即可；
+	另外，加cursor:pointer;也可以解决，但不明白为什么，如果a标签不加href也会失效，这个问题解决了，但原因还有待研究。
 ```
