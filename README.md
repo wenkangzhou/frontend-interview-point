@@ -765,6 +765,10 @@ HTML5新增语义化标签：header、footer、nav、article、aside、section�
         阻止父子元素的margin折叠
 ```
 
+- [幽灵空白节点](https://www.zhangxinxu.com/wordpress/2015/08/css-deep-understand-vertical-align-and-line-height/)
+
+内联元素前面有一个看不见的[幽灵空白节点](https://spades-s.github.io/2017-11-24-ghost-in-vertical-align/)，和line-height、vertical-align、font-size三者有关。
+
 ## JS
 
 ### 1.基本概念
